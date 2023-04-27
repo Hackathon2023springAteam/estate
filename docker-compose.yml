@@ -25,12 +25,10 @@ services:
 
   app:
     build:
-      context: .
-      dockerfile: django/Dockerfile
+      context: ./django/
     volumes:
-      - ./django:/app
       - tmp-data:/app/tmp
-      - ./requirements.txt:/app
+      - ./nginx/static:/app/static
     env_file:
       - .env
     # 先にdbを起動してからappを起動する
@@ -41,16 +39,15 @@ services:
 
   nginx:
     build:
-      context: .
-      dockerfile: nginx/Dockerfile
+      context: ./nginx/
     volumes:
       - tmp-data:/app/tmp
-      # - ./static:/app/static
+      - ./nginx/static:/app/static
     ports:
       - "80:80"
     depends_on:
       - app
-
+  
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     # コンテナ内の環境変数を.envを使って設定
