@@ -84,6 +84,10 @@
 
 - localhost に python がインストールされていれば、そのまま開発可能。ただしコンテナは requirements.txt に基づくため環境差が生じる。
 
+- Dev Containerでの開発は、その都度で拡張機能をインストールし直す必要がある。VSCodeのバグ？ python関係だけで十分と思われるが…
+
+- Dev ContainerのCLIでbashと入力すると見慣れたプロンプトになる。
+
 - .env の MODE_ENV で development と production に切り替える。
 
 - development の場合、build_containers.sh -> start_containers.sh で django の runserver が起動。
