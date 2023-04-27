@@ -1,0 +1,90 @@
+version: '3'
+services:
+  db:
+    build:
+      context: ./mysql/
+      args:
+      - MY_UID=${MY_UID}
+      - MY_GID=${MY_GID}
+    container_name: MySQL
+    env_file:
+      - .env
+    volumes:
+      - ./mysql/data/db:/var/lib/mysql/djangodb
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    command: mysqld 
+    
+    networks:
+      - hackathon_network
+  
+      # DBのコンテナのヘルスチェックを行う
+    # mysqladmin(MySQLサーバーの管理を行うクライアントを使ってDBコンテナ自身(127.0.0.1)にpingを送ってヘルスチェックを行う
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u$$MYSQL_USER -p$$MYSQL_PASSWORD
+      # ヘルスチェックのインターバルは10秒
+      interval: 10s
+      # タイムアウト時間は10秒
+      timeout: 10s
+      # リトライ回数は3回
+      retries: 3
+      # ヘルスチェックが失敗しても無視する時間は30秒
+      start_period: 30s
+      
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    # コンテナ内の環境変数を.envを使って設定
+    container_name: phpmyadmin
+    env_file:
+      - .env
+    depends_on:
+     - db
+    links:
+      - db
+    ports:
+      - 4000:80
+    volumes:
+      - ./phpmyadmin/sessions:/sessions
+    networks:
+      - hackathon_network
+  
+  django:
+    build:
+      context: .
+      args:
+        - MY_UID=${MY_UID}
+        - MY_GID=${MY_GID}
+    restart: always
+    tty: true
+    container_name: django
+    environment:
+      - MY_PROJECT=${MY_PROJECT}
+      - MY_APPLICATION=${MY_APPLICATION}
+    volumes:
+      - .:/home/appuser/app
+      - ./nginx/static:/home/appuser/app/hackathon_a/staticfiles
+    #port 8000:8000はuWSGIサーバーで動作するdjangoコンテナにlocalhostからアクセスする場合に使う。
+    ports:
+      #- 8000:8000
+      - 5000:5000
+    env_file:
+      - .env
+    depends_on:
+      - db
+    networks:
+      - hackathon_network
+  
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/static:/app/static
+    depends_on:
+      - django
+    networks:
+      - hackathon_network
+      
+networks:
+  hackathon_network:
