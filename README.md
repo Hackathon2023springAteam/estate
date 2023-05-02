@@ -29,4 +29,3 @@ http://localhost/admin
 docker compose -f docker-compose.yml up -d --build
 ```
 
-※requirements.txtは二つありますが、エクスプローラーの一番下のrequirements.txtに開発中は記述してください。
