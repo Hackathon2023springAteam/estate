@@ -46,3 +46,6 @@ docker compose -f docker-compose.yml exec app python manage.py collectstatic --n
 回避するには
 1.static フォルダを内部 volumes:を介して接続し、コンテナ内だけで完結させる。ただしコンテナ生成の度に collectstatic を実行する必要あり。
 2.nginx はホットスワップが出来ないので、nginx 起動用のシェルスクリプトを作り static のコピーと起動を纏める。
+
+dev コンテナで開発したかったので、docker-compose.yml の app に- ./django:/app を追加し、localhost の django フォルダと
+django コンテナを接続した。
