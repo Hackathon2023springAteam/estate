@@ -27,6 +27,7 @@ services:
     build:
       context: ./django/
     volumes:
+      - ./django:/app
       - tmp-data:/app/tmp
       - ./nginx/static:/app/static
        #テンプレーツをマウントする
