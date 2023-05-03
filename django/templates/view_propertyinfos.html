@@ -1,11 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}User Login{% endblock %}
-
-{% block header_links %}
-<a href="{% url 'register' %}">Register</a>
-{% endblock %}
+{% block title %}物件一覧{% endblock %}
 
 {% block content %}
-estate home page
+eestate home page
+
+<a href="{% url 'RealEstate360:create_propertyinfo' %}">登録</a>
 {% endblock %}

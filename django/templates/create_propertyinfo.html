@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}物件登録{% endblock %}
+
+{% block header_links %}
+<a href="{% url 'RealEstate360:register' %}">Register</a>
+{% endblock %}
+
+{% block content %}
+<h1>物件情報の登録</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ basic_information_form.as_p }}
+  {{ city_planning_form.as_p }}
+  {{ building_information_form.as_p }}
+  {{ land_information_form.as_p }}
+  {{ infrastructure_information_form.as_p }}
+  <button type="submit">登録</button>
+</form>
+<a href="{% url 'RealEstate360:view_propertyinfos' %}">一覧</a>
+{% endblock %}
