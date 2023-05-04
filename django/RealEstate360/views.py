@@ -2,7 +2,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .forms import (
     BasicInformationForm,
     CityPlanningForm,
@@ -10,6 +10,8 @@ from .forms import (
     LandInformationForm,
     InfrastructureInformationForm,
 )
+
+from .models import BasicInformation
 
 
 class CustomLoginView(LoginView):
@@ -30,16 +32,29 @@ def register(request):
 
 @login_required
 def view_propertyinfos(request):
-    # property_infos = CityPlanning.objects.select_related("basic_information").all()
+    basic_informations = BasicInformation.objects.all()
 
-    # context = {
-    #    "property_infos": property_infos,
-    # }
+    context = {
+        "basic_informations": basic_informations,
+    }
 
-    return render(
-        request,
-        "view_propertyinfos.html",
-    )  # context)
+    return render(request, "view_propertyinfos.html", context)
+
+
+@login_required
+def propertyinfo_detail(request, basic_information_id):
+    basic_information = get_object_or_404(BasicInformation, pk=basic_information_id)
+    fields = [
+        (field, field.value_from_object(basic_information))
+        for field in basic_information._meta.fields
+    ]
+
+    context = {
+        "basic_information": basic_information,
+        "fields": fields,
+    }
+
+    return render(request, "propertyinfo_detail.html", context)
 
 
 @login_required

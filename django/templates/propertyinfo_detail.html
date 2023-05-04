@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}物件の詳細{% endblock %}
+
+{% block content %}
+<h2>{{ basic_information.property_name }} の情報</h2>
+<h3>基本情報</h3>
+<table>
+  {% for field, value in fields %}
+  <tr>
+    <th>{{ field.verbose_name }}</th>
+    <td>{{ value }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
