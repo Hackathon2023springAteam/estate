@@ -13,10 +13,10 @@ class BasicInformationForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         # inputのラベルをカスタマイズ
-        self.fields["control_number"].label = "管理タグ"
-        self.fields["property_name"].label = "物件名"
-        self.fields["location"].label = "所在地"
-        self.fields["address"].label = "住所地"
+        # self.fields["control_number"].label = "管理タグ"
+        # self.fields["property_name"].label = "物件名"
+        # self.fields["location"].label = "所在地"
+        # self.fields["address"].label = "住所地"
 
     def save(self, commit=True):
         instance = super(BasicInformationForm, self).save(commit=False)
@@ -44,10 +44,10 @@ class CityPlanningForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         # 選択肢の表示をカスタマイズ
-        self.fields["zoning"].label = "用途地域"
-        self.fields["public_land_expansion_act"].label = "公用地拡大法"
-        self.fields["road_width"].label = "道路幅"
-        self.fields["condition"].label = "状態"
+        # self.fields["zoning"].label = "用途地域"
+        # self.fields["public_land_expansion_act"].label = "公用地拡大法"
+        # self.fields["road_width"].label = "道路幅"
+        # self.fields["condition"].label = "状態"
 
     def save(self, commit=True):
         instance = super(CityPlanningForm, self).save(commit=False)
@@ -77,13 +77,13 @@ class BuildingInformationForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         # inputのラベルをカスタマイズ
-        self.fields["certified_copy_of_building"].label = "建物謄本取得"
-        self.fields["building_drawing"].label = "建物図面取得"
-        self.fields["building_confirmation_screen"].label = "建築確認画面"
-        self.fields["property_tax_assessment_certificate"].label = "固定資産税評価証明書"
-        self.fields["building_use"].label = "物件用途"
-        self.fields["type_of_rights"].label = "権利の種類"
-        self.fields["relationship_to_land_owner"].label = "土地所有者との関係"
+        # self.fields["certified_copy_of_building"].label = "建物謄本取得"
+        # self.fields["building_drawing"].label = "建物図面取得"
+        # self.fields["building_confirmation_screen"].label = "建築確認画面"
+        # self.fields["property_tax_assessment_certificate"].label = "固定資産税評価証明書"
+        # self.fields["building_use"].label = "物件用途"
+        # self.fields["type_of_rights"].label = "権利の種類"
+        # self.fields["relationship_to_land_owner"].label = "土地所有者との関係"
 
     def save(self, commit=True):
         instance = super(BuildingInformationForm, self).save(commit=False)
@@ -123,13 +123,15 @@ class BuildingInformationForm(forms.ModelForm):
 class LandInformationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["area"].label = "面積"
-        self.fields["square_meter"].label = "坪数"
-        self.fields["land_category"].label = "地目"
-        self.fields["certified_copy_of_land"].label = "土地謄本"
-        self.fields["character_map"].label = "字図"
-        self.fields["survey_map"].label = "測量図"
-        self.fields["type_of_rights"].label = "権利の種類"
+
+        # inputのラベルをカスタマイズ
+        # self.fields["area"].label = "面積"
+        # self.fields["square_meter"].label = "坪数"
+        # self.fields["land_category"].label = "地目"
+        # self.fields["certified_copy_of_land"].label = "土地謄本"
+        # self.fields["character_map"].label = "字図"
+        # self.fields["survey_map"].label = "測量図"
+        # self.fields["type_of_rights"].label = "権利の種類"
 
     def save(self, commit=True):
         instance = super(LandInformationForm, self).save(commit=False)
@@ -161,9 +163,11 @@ class LandInformationForm(forms.ModelForm):
 class InfrastructureInformationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["water_supply"].label = "上水"
-        self.fields["sweage"].label = "下水"
-        self.fields["solar_power_generation"].label = "太陽光発電"
+
+        # inputのラベルをカスタマイズ
+        # self.fields["water_supply"].label = "上水"
+        # self.fields["sweage"].label = "下水"
+        # self.fields["solar_power_generation"].label = "太陽光発電"
 
     def save(self, commit=True):
         instance = super(InfrastructureInformationForm, self).save(commit=False)
