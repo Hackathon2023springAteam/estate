@@ -11,7 +11,7 @@ from .forms import (
     InfrastructureInformationForm,
 )
 
-from .models import BasicInformation
+from .models import BasicInformation, CityPlanning
 
 
 class CustomLoginView(LoginView):
@@ -44,14 +44,26 @@ def view_propertyinfos(request):
 @login_required
 def propertyinfo_detail(request, basic_information_id):
     basic_information = get_object_or_404(BasicInformation, pk=basic_information_id)
-    fields = [
+    city_planning = get_object_or_404(CityPlanning, basic_information=basic_information)
+
+    basic_information_exclude_fields = ["basic_information_id", "user"]
+    basic_information_fields = [
         (field, field.value_from_object(basic_information))
         for field in basic_information._meta.fields
+        if field.name not in basic_information_exclude_fields
+    ]
+
+    city_planning_exclude_fields = ["basic_information", "city_planning_id"]
+    city_planning_fields = [
+        (field, field.value_from_object(city_planning))
+        for field in city_planning._meta.fields
+        if field.name not in city_planning_exclude_fields
     ]
 
     context = {
         "basic_information": basic_information,
-        "fields": fields,
+        "basic_information_fields": basic_information_fields,
+        "city_planning_fields": city_planning_fields,
     }
 
     return render(request, "propertyinfo_detail.html", context)

@@ -13,16 +13,8 @@
 <body>
   <header>
     <nav>
-      {% if user.is_authenticated %}
-      <a href="{% url 'logout' %}">Logout</a>
-      <!-- ログイン時のみ表示するリンク -->
-      {% else %}
       {% block header_links %}
-      <a href="{% url 'RealEstate360:register' %}">Register</a>
-      <a href="{% url 'RealEstate360:login' %}">Login</a>
       {% endblock %}
-      {% endif %}
-      <!-- 他のナビゲーションリンク -->
     </nav>
   </header>
 

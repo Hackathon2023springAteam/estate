@@ -85,6 +85,9 @@ DATABASES = {
         "PASSWORD": os.environ.get("MYSQL_PASSWORD"),
         "HOST": os.environ.get("MYSQL_HOST"),
         "PORT": os.environ.get("MYSQL_PORT"),
+        "OPTIONS": {
+            "connect_timeout": 5,  # タイムアウト時間（秒）
+        },
     }
 }
 

@@ -1,9 +1,10 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}物件登録{% endblock %}
+{% block title %}Create{% endblock %}
 
 {% block header_links %}
-<a href="{% url 'RealEstate360:register' %}">Register</a>
+<a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'RealEstate360:view_propertyinfos' %}">View</a>
 {% endblock %}
 
 {% block content %}
@@ -17,5 +18,4 @@
   {{ infrastructure_information_form.as_p }}
   <button type="submit">登録</button>
 </form>
-<a href="{% url 'RealEstate360:view_propertyinfos' %}">一覧</a>
 {% endblock %}
