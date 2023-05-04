@@ -1,9 +1,20 @@
 {% extends 'base.html' %}
 
-{% block title %}物件一覧{% endblock %}
+{% block title %}物件登録{% endblock %}
 
 {% block content %}
-eestate home page
+
+
+<h2>物件情報一覧</h2>
+<ul>
+  {% for basic_information in basic_informations %}
+  <li>
+    <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}">
+      {{ basic_information.property_name }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
 
 <a href="{% url 'RealEstate360:create_propertyinfo' %}">登録</a>
 {% endblock %}
