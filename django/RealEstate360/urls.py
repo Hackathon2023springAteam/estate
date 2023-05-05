@@ -7,8 +7,13 @@ urlpatterns = [
     path("", views.view_propertyinfos, name="view_propertyinfos"),
     path("create_propertyinfo/", views.create_propertyinfo, name="create_propertyinfo"),
     path(
-        "propertyinfo_detail/<int:basic_information_id>",
+        "propertyinfo_detail/<int:basic_information_id>/",
         views.propertyinfo_detail,
         name="propertyinfo_detail",
+    ),
+    path(
+        "propertyinfo_detail/<int:basic_information_id>/<str:edit>/",
+        views.propertyinfo_detail,
+        name="propertyinfo_detail_edit",
     ),
 ]
