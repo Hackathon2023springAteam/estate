@@ -50,7 +50,7 @@ def view_propertyinfos(request):
 
 
 @login_required
-def propertyinfo_detail(request, basic_information_id, edit="False"):
+def propertyinfo_detail(request, basic_information_id):
     basic_information = get_object_or_404(BasicInformation, pk=basic_information_id)
     city_planning = get_object_or_404(CityPlanning, basic_information=basic_information)
     building_information = get_object_or_404(
@@ -65,22 +65,14 @@ def propertyinfo_detail(request, basic_information_id, edit="False"):
 
     basic_information_exclude_fields = ["basic_information_id", "user"]
     basic_information_fields = [
-        {
-            "field": field,
-            "value": field.value_from_object(basic_information),
-            "required": not field.null,
-        }
+        (field, field.value_from_object(basic_information))
         for field in basic_information._meta.fields
         if field.name not in basic_information_exclude_fields
     ]
 
     city_planning_exclude_fields = ["basic_information", "city_planning_id"]
     city_planning_fields = [
-        {
-            "field": field,
-            "value": field.value_from_object(city_planning),
-            "required": not field.null,
-        }
+        (field, field.value_from_object(city_planning))
         for field in city_planning._meta.fields
         if field.name not in city_planning_exclude_fields
     ]
@@ -90,11 +82,7 @@ def propertyinfo_detail(request, basic_information_id, edit="False"):
         "building_information_id",
     ]
     building_information_fields = [
-        {
-            "field": field,
-            "value": field.value_from_object(building_information),
-            "required": not field.null,
-        }
+        (field, field.value_from_object(building_information))
         for field in building_information._meta.fields
         if field.name not in building_information_exclude_fields
     ]
@@ -104,11 +92,7 @@ def propertyinfo_detail(request, basic_information_id, edit="False"):
         "land_information_id",
     ]
     land_information_fields = [
-        {
-            "field": field,
-            "value": field.value_from_object(land_information),
-            "required": not field.null,
-        }
+        (field, field.value_from_object(land_information))
         for field in land_information._meta.fields
         if field.name not in land_information_exclude_fields
     ]
@@ -118,11 +102,7 @@ def propertyinfo_detail(request, basic_information_id, edit="False"):
         "infrastructure_information_id",
     ]
     infrastructure_information_fields = [
-        {
-            "field": field,
-            "value": field.value_from_object(infrastructure_information),
-            "required": not field.null,
-        }
+        (field, field.value_from_object(infrastructure_information))
         for field in infrastructure_information._meta.fields
         if field.name not in infrastructure_information_exclude_fields
     ]
@@ -134,14 +114,7 @@ def propertyinfo_detail(request, basic_information_id, edit="False"):
         "building_information_fields": building_information_fields,
         "land_information_fields": land_information_fields,
         "infrastructure_information_fields": infrastructure_information_fields,
-        "edit": edit,
     }
-
-    if request.method == "POST" and edit:
-        form = BasicInformationForm(request.POST, instance=basic_information)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse("RealEstate360:view_propertyinfos"))
 
     return render(request, "propertyinfo_detail.html", context)
 

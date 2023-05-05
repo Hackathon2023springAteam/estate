@@ -1,98 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Detail{% endblock %}
+
+{% block header_links %}
+<a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'RealEstate360:view_propertyinfos' %}">View</a>
+<a href="{% url 'RealEstate360:create_propertyinfo' %}">Create</a>
+{% endblock %}
+
 {% block content %}
 <h2>{{ basic_information.property_name }} の情報</h2>
-{% if not edit %}
-<!-- 編集モードでない場合に編集リンクを表示 -->
-<a href="{% url 'RealEstate360:propertyinfo_detail_edit' basic_information.id 'True' %}">編集する</a>
-{% endif %}
-
-<form method="post">
-  {% csrf_token %}
-  <h3>基本情報</h3>
-  <table>
-    {% for field_data in basic_information_fields %}
-    <tr>
-      <th>{{ field_data.field.verbose_name }}</th>
-      <td>
-        {% if edit == "True" %}
-        <input type="{{ field_data.field.get_internal_type|lower }}" name="{{ field_data.field.name }}"
-          value="{{ field_data.value }}" {% if field_data.required %}required{% endif %}>
-        {% else %}
-        {{ field_data.value }}
-        {% endif %}
-      </td>
-    </tr>
-    {% endfor %}
-  </table>
-  <h3>都市計画情報</h3>
-  <table>
-    {% for field_data in city_planning_fields %}
-    <tr>
-      <th>{{ field_data.field.verbose_name }}</th>
-      <td>
-        {% if edit == "True" %}
-        <input type="{{ field_data.field.get_internal_type|lower }}" name="{{ field_data.field.name }}"
-          value="{{ field_data.value }}" {% if field_data.required %}required{% endif %}>
-        {% else %}
-        {{ field_data.value }}
-        {% endif %}
-      </td>
-    </tr>
-    {% endfor %}
-  </table>
-  <h3>建物情報</h3>
-  <table>
-    {% for field_data in building_information_fields %}
-    <tr>
-      <th>{{ field_data.field.verbose_name }}</th>
-      <td>
-        {% if edit == "True" %}
-        <input type="{{ field_data.field.get_internal_type|lower }}" name="{{ field_data.field.name }}"
-          value="{{ field_data.value }}" {% if field_data.required %}required{% endif %}>
-        {% else %}
-        {{ field_data.value }}
-        {% endif %}
-      </td>
-    </tr>
-    {% endfor %}
-  </table>
-  <h3>土地情報</h3>
-  <table>
-    {% for field_data in land_information_fields %}
-    <tr>
-      <th>{{ field_data.field.verbose_name }}</th>
-      <td>
-        {% if edit == "True" %}
-        <input type="{{ field_data.field.get_internal_type|lower }}" name="{{ field_data.field.name }}"
-          value="{{ field_data.value }}" {% if field_data.required %}required{% endif %}>
-        {% else %}
-        {{ field_data.value }}
-        {% endif %}
-      </td>
-    </tr>
-    {% endfor %}
-  </table>
-  <h3>インフラ情報</h3>
-  <table>
-    {% for field_data in infrastructure_information_fields %}
-    <tr>
-      <th>{{ field_data.field.verbose_name }}</th>
-      <td>
-        {% if edit == "True" %}
-        <input type="{{ field_data.field.get_internal_type|lower }}" name="{{ field_data.field.name }}"
-          value="{{ field_data.value }}" {% if field_data.required %}required{% endif %}>
-        {% else %}
-        {{ field_data.value }}
-        {% endif %}
-      </td>
-    </tr>
-    {% endfor %}
-  </table>
-
-  {% if edit == "True" %}
-  <a href="{% url 'RealEstate360:propertyinfo_detail_edit' basic_information.basic_information_id 'False' %}">編集しない</a>
-  <button type="submit">Save</button>
-  {% else %}
-  <a href="{% url 'RealEstate360:propertyinfo_detail_edit' basic_information.basic_information_id 'True' %}">編集する</a>
-  {% endif %}
-</form>
+<h3>基本情報</h3>
+<table>
+  {% for field, value in basic_information_fields %}
+  <tr>
+    <th>{{ field.verbose_name }}</th>
+    <td>{{ value }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<h3>都市計画情報</h3>
+<table>
+  {% for field, value in city_planning_fields %}
+  <tr>
+    <th>{{ field.verbose_name }}</th>
+    <td>{{ value }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<h3>建物情報</h3>
+<table>
+  {% for field, value in building_information_fields %}
+  <tr>
+    <th>{{ field.verbose_name }}</th>
+    <td>{{ value }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<h3>土地情報</h3>
+<table>
+  {% for field, value in land_information_fields %}
+  <tr>
+    <th>{{ field.verbose_name }}</th>
+    <td>{{ value }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<h3>インフラ情報</h3>
+<table>
+  {% for field, value in infrastructure_information_fields %}
+  <tr>
+    <th>{{ field.verbose_name }}</th>
+    <td>{{ value }}</td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}
