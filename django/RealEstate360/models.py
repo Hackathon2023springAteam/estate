@@ -10,6 +10,7 @@ class BasicInformation(models.Model):
     property_name = models.CharField(max_length=255, unique=False, verbose_name="物件名")
     location = models.CharField(max_length=255, unique=False, verbose_name="所在地")
     address = models.CharField(max_length=255, unique=True, verbose_name="住所地")
+    is_active = models.BooleanField(default=True, verbose_name="アクティブ")
 
 
 class CityPlanning(models.Model):

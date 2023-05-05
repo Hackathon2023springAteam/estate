@@ -56,4 +56,12 @@
   {% endfor %}
 </table>
 <a href="{% url 'RealEstate360:propertyinfo_edit' basic_information.basic_information_id %}">編集する</a>
+
+<!-- 削除フォームの追加 -->
+<form method="POST" action="{% url 'RealEstate360:propertyinfo_inactive' basic_information.basic_information_id %}">
+  {% csrf_token %}
+  <input type="hidden" name="is_active" value="false">
+  <input type="submit" value="削除する" onclick="return confirm('本当に削除してもよろしいですか？')">
+</form>
+
 {% endblock %}

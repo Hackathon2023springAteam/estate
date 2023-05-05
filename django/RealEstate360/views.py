@@ -1,8 +1,9 @@
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from .forms import (
@@ -40,7 +41,7 @@ def register(request):
 
 @login_required
 def propertyinfos_list(request):
-    basic_informations = BasicInformation.objects.all()
+    basic_informations = BasicInformation.objects.filter(is_active=True)
 
     context = {
         "basic_informations": basic_informations,
@@ -239,3 +240,14 @@ def propertyinfo_edit(request, basic_information_id):
         "basic_information": basic_information,
     }
     return render(request, "propertyinfo_edit.html", context)
+
+
+@csrf_protect
+def propertyinfo_inactive(request, basic_information_id):
+    if request.method == "POST":
+        basic_information = get_object_or_404(BasicInformation, pk=basic_information_id)
+        basic_information.is_active = False
+        basic_information.save()
+        return redirect("/")
+    else:
+        return HttpResponseNotAllowed(["POST"])

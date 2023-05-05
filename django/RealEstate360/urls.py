@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+
 app_name = "RealEstate360"
 urlpatterns = [
     path("login/", views.CustomLoginView.as_view(), name="login"),
@@ -16,5 +17,14 @@ urlpatterns = [
         views.propertyinfo_edit,
         name="propertyinfo_edit",
     ),
-    path("propertyinfo_detail/<int:basic_information_id>/", views.propertyinfo_detail, name="propertyinfo_detail"),  
+    path(
+        "propertyinfo_detail/<int:basic_information_id>/",
+        views.propertyinfo_detail,
+        name="propertyinfo_detail",
+    ),
+    path(
+        "propertyinfo_inactive/<int:basic_information_id>/",
+        views.propertyinfo_inactive,
+        name="propertyinfo_inactive",
+    ),
 ]
