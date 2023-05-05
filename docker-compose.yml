@@ -34,6 +34,8 @@ services:
     env_file:
       - .env
     # 先にdbを起動してからappを起動する
+    ports:
+      - "5000:5000"
     depends_on:
       db:
         # dbのヘルスチェックが終わってからappを起動させる

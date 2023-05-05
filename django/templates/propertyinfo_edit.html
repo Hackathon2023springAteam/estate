@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit{% endblock %}
+
+{% block header_links %}
+<a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'RealEstate360:propertyinfos_list' %}">View</a>
+{% endblock %}
+
+{% block content %}
+<h1>物件情報の更新</h1>
+<form method="post">
+  {% csrf_token %}
+  {% for form in forms %}
+  <table>
+    {% for field in form %}
+    <tr>
+      <th>{{ field.label }}:</th>
+      <td>{{ field }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endfor %}
+  <button type="submit">更新</button>
+</form>
+<a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}">編集しない</a>
+{% endblock %}

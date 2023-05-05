@@ -32,21 +32,21 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("RealEstate360:view_propertyinfos")
+            return redirect("RealEstate360:propertyinfos_list")
     else:
         form = UserCreationForm()
     return render(request, "registration/register.html", {"form": form})
 
 
 @login_required
-def view_propertyinfos(request):
+def propertyinfos_list(request):
     basic_informations = BasicInformation.objects.all()
 
     context = {
         "basic_informations": basic_informations,
     }
 
-    return render(request, "view_propertyinfos.html", context)
+    return render(request, "propertyinfos_list.html", context)
 
 
 @login_required
@@ -120,7 +120,7 @@ def propertyinfo_detail(request, basic_information_id):
 
 
 @login_required
-def create_propertyinfo(request):
+def propertyinfo_create(request):
     if request.method == "POST":
         basic_information_form = BasicInformationForm(request.POST)
         city_planning_form = CityPlanningForm(request.POST)
@@ -157,7 +157,7 @@ def create_propertyinfo(request):
             infrastructure_information.basic_information = basic_information
             infrastructure_information.save()
 
-            return redirect("RealEstate360:view_propertyinfos")
+            return redirect("RealEstate360:propertyinfos_list")
     else:
         basic_information_form = BasicInformationForm()
         city_planning_form = CityPlanningForm()
@@ -172,4 +172,70 @@ def create_propertyinfo(request):
         "land_information_form": land_information_form,
         "infrastructure_information_form": infrastructure_information_form,
     }
-    return render(request, "create_propertyinfo.html", context)
+    return render(request, "propertyinfo_create.html", context)
+
+
+@login_required
+def propertyinfo_edit(request, basic_information_id):
+    basic_information = get_object_or_404(BasicInformation, pk=basic_information_id)
+    city_planning = get_object_or_404(CityPlanning, basic_information=basic_information)
+    building_information = get_object_or_404(
+        BuildingInformation, basic_information=basic_information
+    )
+    land_information = get_object_or_404(
+        LandInformation, basic_information=basic_information
+    )
+    infrastructure_information = get_object_or_404(
+        InfrastructureInformation, basic_information=basic_information
+    )
+
+    basic_information_form = BasicInformationForm(instance=basic_information)
+    city_planning_form = CityPlanningForm(instance=city_planning)
+    building_information_form = BuildingInformationForm(instance=building_information)
+    land_information_form = LandInformationForm(instance=land_information)
+    infrastructure_information_form = InfrastructureInformationForm(
+        instance=infrastructure_information
+    )
+
+    if request.method == "POST":
+        basic_information_form = BasicInformationForm(
+            request.POST, instance=basic_information
+        )
+        city_planning_form = CityPlanningForm(request.POST, instance=city_planning)
+        building_information_form = BuildingInformationForm(
+            request.POST, instance=building_information
+        )
+        land_information_form = LandInformationForm(
+            request.POST, instance=land_information
+        )
+        infrastructure_information_form = InfrastructureInformationForm(
+            request.POST, instance=infrastructure_information
+        )
+
+        # フォームがすべて有効であることを確認して、保存します。
+        if (
+            basic_information_form.is_valid()
+            and city_planning_form.is_valid()
+            and building_information_form.is_valid()
+            and land_information_form.is_valid()
+            and infrastructure_information_form.is_valid()
+        ):
+            basic_information_form.save()
+            city_planning_form.save()
+            building_information_form.save()
+            land_information_form.save()
+            infrastructure_information_form.save()
+
+            return HttpResponseRedirect(reverse("RealEstate360:propertyinfos_list"))
+
+    context = {
+        "forms": [
+            basic_information_form,
+            city_planning_form,
+            building_information_form,
+            land_information_form,
+            infrastructure_information_form,
+        ],
+        "basic_information": basic_information,
+    }
+    return render(request, "propertyinfo_edit.html", context)

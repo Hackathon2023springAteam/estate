@@ -125,7 +125,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOGIN_REDIRECT_URL = "RealEstate360:view_propertyinfos"
+LOGIN_REDIRECT_URL = "RealEstate360:propertyinfos_list"
 LOGOUT_REDIRECT_URL = "login"
 
 # Static files (CSS, JavaScript, Images)

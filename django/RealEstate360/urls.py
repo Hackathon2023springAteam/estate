@@ -4,16 +4,17 @@ from . import views
 app_name = "RealEstate360"
 urlpatterns = [
     path("login/", views.CustomLoginView.as_view(), name="login"),
-    path("", views.view_propertyinfos, name="view_propertyinfos"),
-    path("create_propertyinfo/", views.create_propertyinfo, name="create_propertyinfo"),
+    path("", views.propertyinfos_list, name="propertyinfos_list"),
+    path("propertyinfo_create/", views.propertyinfo_create, name="propertyinfo_create"),
     path(
-        "propertyinfo_detail/<int:basic_information_id>/",
-        views.propertyinfo_detail,
-        name="propertyinfo_detail",
+        "propertyinfos_list/<int:basic_information_id>/",
+        views.propertyinfos_list,
+        name="propertyinfos_list",
     ),
     path(
-        "propertyinfo_detail/<int:basic_information_id>/<str:edit>/",
-        views.propertyinfo_detail,
-        name="propertyinfo_detail_edit",
+        "propertyinfo_edit/<int:basic_information_id>/",
+        views.propertyinfo_edit,
+        name="propertyinfo_edit",
     ),
+    path("propertyinfo_detail/<int:basic_information_id>/", views.propertyinfo_detail, name="propertyinfo_detail"),  
 ]
