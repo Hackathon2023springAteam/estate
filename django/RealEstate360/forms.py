@@ -10,7 +10,9 @@ from .models import (
 
 class BasicInformationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(BasicInformationForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({'autocomplete': 'off'})
 
         # inputのラベルをカスタマイズ
         # self.fields["control_number"].label = "管理タグ"
@@ -41,9 +43,11 @@ class BasicInformationForm(forms.ModelForm):
 
 class CityPlanningForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(CityPlanningForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({'autocomplete': 'off'})
 
-        # 選択肢の表示をカスタマイズ
+        # inputのラベルをカスタマイズ
         # self.fields["zoning"].label = "用途地域"
         # self.fields["public_land_expansion_act"].label = "公用地拡大法"
         # self.fields["road_width"].label = "道路幅"
@@ -74,7 +78,9 @@ class CityPlanningForm(forms.ModelForm):
 
 class BuildingInformationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(BuildingInformationForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({'autocomplete': 'off'})
 
         # inputのラベルをカスタマイズ
         # self.fields["certified_copy_of_building"].label = "建物謄本取得"
@@ -122,7 +128,9 @@ class BuildingInformationForm(forms.ModelForm):
 
 class LandInformationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(LandInformationForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({'autocomplete': 'off'})
 
         # inputのラベルをカスタマイズ
         # self.fields["area"].label = "面積"
@@ -162,7 +170,9 @@ class LandInformationForm(forms.ModelForm):
 
 class InfrastructureInformationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(InfrastructureInformationForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({'autocomplete': 'off'})
 
         # inputのラベルをカスタマイズ
         # self.fields["water_supply"].label = "上水"
