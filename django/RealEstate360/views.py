@@ -47,7 +47,7 @@ def propertyinfos_list(request):
         "basic_informations": basic_informations,
     }
 
-    return render(request, "propertyinfos_list.html", context)
+    return render(request, "list.html", context)
 
 
 @login_required
@@ -117,7 +117,7 @@ def propertyinfo_detail(request, basic_information_id):
         "infrastructure_information_fields": infrastructure_information_fields,
     }
 
-    return render(request, "propertyinfo_detail.html", context)
+    return render(request, "detail.html", context)
 
 
 @login_required
@@ -173,7 +173,7 @@ def propertyinfo_create(request):
         "land_information_form": land_information_form,
         "infrastructure_information_form": infrastructure_information_form,
     }
-    return render(request, "propertyinfo_create.html", context)
+    return render(request, "create.html", context)
 
 
 @login_required
@@ -239,7 +239,7 @@ def propertyinfo_edit(request, basic_information_id):
         ],
         "basic_information": basic_information,
     }
-    return render(request, "propertyinfo_edit.html", context)
+    return render(request, "edit.html", context)
 
 
 @csrf_protect

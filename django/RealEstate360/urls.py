@@ -8,11 +8,6 @@ urlpatterns = [
     path("", views.propertyinfos_list, name="propertyinfos_list"),
     path("propertyinfo_create/", views.propertyinfo_create, name="propertyinfo_create"),
     path(
-        "propertyinfos_list/<int:basic_information_id>/",
-        views.propertyinfos_list,
-        name="propertyinfos_list",
-    ),
-    path(
         "propertyinfo_edit/<int:basic_information_id>/",
         views.propertyinfo_edit,
         name="propertyinfo_edit",
