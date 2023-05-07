@@ -12,12 +12,9 @@
 
   {% block extra_head %}
   {% endblock %}
-  <script language="javascript" type="text/javascript">
-    function OnButtonClick() {
-      target = document.getElementById("output");
-      target.innerHTML = "Penguin";
-    }
-  </script>
+
+  {% load static %}
+  <script src="{% static 'js/main.js' %}" language="javascript" type="text/javascript"></script>
 </head>
 
 <body>
