@@ -21,7 +21,9 @@
     {% endfor %}
   </table>
   {% endfor %}
+  <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}">編集しない</a>
+  <br>
   <button type="submit">更新</button>
 </form>
-<a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}">編集しない</a>
+
 {% endblock %}
