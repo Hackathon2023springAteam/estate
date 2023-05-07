@@ -1,5 +1,5 @@
-from django.shortcuts import render
-
+from django.shortcuts import render,redirect,get_object_or_404
+from django.contrib.auth import authenticate, login, logout
 
 def view_propertyinfos(request):
     # property_infos = CityPlanning.objects.select_related("basic_information").all()
@@ -21,3 +21,20 @@ def edit(request):
 
 def lists(request):
     return render(request, "lists.html", )
+
+def loginfunc(request):
+    
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(request, username=username, password=password)
+
+        return redirect('lists')        
+        # if user is not None:
+        #     login(request, user)
+        #     return redirect('login')
+        # else:
+        #     return redirect('lists')
+
+    return render(request,'login.html', {})

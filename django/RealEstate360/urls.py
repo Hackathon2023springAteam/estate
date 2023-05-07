@@ -1,6 +1,6 @@
 from django.urls import path
 # from . import views
-from .views import view_propertyinfos, detail, edit, lists
+from .views import view_propertyinfos, detail, edit, lists, loginfunc
 
 app_name = "RealEstate360"
 urlpatterns = [
@@ -8,4 +8,6 @@ urlpatterns = [
     path("detail/", detail, name="detail"),
     path("edit/", edit, name="edit"),
     path("lists/", lists, name="lists"),
+    path("login/", loginfunc, name="login"),
+    
 ]
