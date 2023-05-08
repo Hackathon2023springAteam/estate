@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>detail</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-    lists.html
+{% block head %}
+<!-- CSS読み込みの記述 -->">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/lists.css' %}">
+{% endblock %}
 
-</body>
-</html>
+<!-- ページタイトルの読み込み -->
+{% block title %}
+    <title>登録物件一覧</title>
+{% endblock %}
+
+{% block content %}
+    <body>
+    </body>
+{% endblock %}

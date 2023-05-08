@@ -1,0 +1,23 @@
+:root {
+    --primary: #97040C;
+    --dark: #000000;
+    --body: #F9F9F9;
+}
+
+body {
+    font-family: 'BIZ UDPGothic';
+    color:red;
+    line-height: 1.7;
+}
+
+h1, h2 ,h3 {
+    font-weight: 700;
+}
+
+p {
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+}
