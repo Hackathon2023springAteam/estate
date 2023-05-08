@@ -1,37 +1,52 @@
 {% extends "base.html" %}
 
-
-
-
-
-
 {% block content %}
 
-<form method="POST">{% csrf_token %}
+<!-- Add Bootstrap navigation bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-    <h1 class="h3 mb-3 fw-normal">Please login</h1>
-    
-    <div class="form-floating">
-    
-    <input type="text" class="form-control" id="floatingInput" placeholder="username", name="username">
-    
-    <label for="floatingInput">User Name</label>
-    
-    </div>
-    
-    <div class="form-floating">
-    
-    <input type="password" class="form-control" id="floatingPassword" placeholder="Password", name="password">
-    
-    <label for="floatingPassword">Password</label>
-    
-    </div>
-    
-    <button class="w-100 btn btn-lg btn-primary" type="submit">login</button>
-    
-    <p class="mt-5 mb-3 text-muted">&copy; 2017–2023</p>
-    
+<!-- Login form -->
+<div class="container">
+    <form method="POST" class="mt-5">{% csrf_token %}
+
+        <h1 class="h3 mb-3 fw-normal">Please login</h1>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="username" , name="username">
+            <label for="floatingInput">User Name</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" , name="password">
+            <label for="floatingPassword">Password</label>
+        </div>
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit">login</button>
+
+        <p class="mt-5 mb-3 text-muted">&copy; 2017–2023</p>
+
     </form>
-
+</div>
 
 {% endblock content %}

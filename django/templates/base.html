@@ -7,15 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}デフォルトタイトル{% endblock %}</title>
 
-  <!-- Bootstrap CSS CDN -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  {% load static %}
+
+  <!-- Bootstrap CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="{% static 'js/jquery.slim.min.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
   {% block extra_head %}
   {% endblock %}
 
-  {% load static %}
-  <script src="{% static 'js/main.js' %}" language="javascript" type="text/javascript"></script>
 </head>
+
 
 <body>
   <header>
@@ -35,16 +42,7 @@
     <!-- フッターの内容 -->
   </footer>
 
-  <!-- jQuery and Bootstrap Bundle (includes Popper) -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSS_GFpoO/++P7eUVT0s9XczyFpVG-0U1Nm7Yw/6d6/7f+ILQbu2"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz4fnFO9gybBud7bkgUbeOfK7/rU1lGfG7E8iCud4VfQKX9f2D5G5E5Sy5"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD4Ck5BdPtF+to8xMm9prM0g"
-    crossorigin="anonymous"></script>
+
 </body>
 
 </html>
