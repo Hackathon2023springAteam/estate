@@ -1,11 +1,17 @@
 from django.db import models
-from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
+from django.contrib.auth.models import AbstractUser
+
+
+class User(AbstractUser):
+    username = models.CharField(max_length=255, unique=True)
+    password = models.CharField(max_length=255)
+    email = models.CharField(max_length=255, unique=False, null=True)
 
 
 class BasicInformation(models.Model):
     basic_information_id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     control_number = models.CharField(max_length=100, unique=False, verbose_name="管理番号")
     property_name = models.CharField(max_length=255, unique=False, verbose_name="物件名")
     location = models.CharField(max_length=255, unique=False, verbose_name="所在地")
@@ -68,11 +74,6 @@ class InfrastructureInformation(models.Model):
     water_supply = models.CharField(max_length=100, unique=False, verbose_name="上水")
     sweage = models.CharField(max_length=100, unique=False, verbose_name="下水")
     solar_power_generation = models.IntegerField(verbose_name="太陽光発電")
-# Create your models here.
-class Users(models.Model):
-    
-    username = models.CharField(max_length=255, unique=True)
-    password = models.CharField(max_length=255)
-    email = models.CharField(max_length=255, unique=False, null=True)
-    
 
+
+# Create your models here.

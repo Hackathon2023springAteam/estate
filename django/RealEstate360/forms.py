@@ -12,7 +12,7 @@ class BasicInformationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(BasicInformationForm, self).__init__(*args, **kwargs)
         for field in self.fields:
-            self.fields[field].widget.attrs.update({'autocomplete': 'off'})
+            self.fields[field].widget.attrs.update({"autocomplete": "off"})
 
         # inputのラベルをカスタマイズ
         # self.fields["control_number"].label = "管理タグ"
@@ -45,7 +45,7 @@ class CityPlanningForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(CityPlanningForm, self).__init__(*args, **kwargs)
         for field in self.fields:
-            self.fields[field].widget.attrs.update({'autocomplete': 'off'})
+            self.fields[field].widget.attrs.update({"autocomplete": "off"})
 
         # inputのラベルをカスタマイズ
         # self.fields["zoning"].label = "用途地域"
@@ -80,7 +80,7 @@ class BuildingInformationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(BuildingInformationForm, self).__init__(*args, **kwargs)
         for field in self.fields:
-            self.fields[field].widget.attrs.update({'autocomplete': 'off'})
+            self.fields[field].widget.attrs.update({"autocomplete": "off"})
 
         # inputのラベルをカスタマイズ
         # self.fields["certified_copy_of_building"].label = "建物謄本取得"
@@ -130,7 +130,7 @@ class LandInformationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(LandInformationForm, self).__init__(*args, **kwargs)
         for field in self.fields:
-            self.fields[field].widget.attrs.update({'autocomplete': 'off'})
+            self.fields[field].widget.attrs.update({"autocomplete": "off"})
 
         # inputのラベルをカスタマイズ
         # self.fields["area"].label = "面積"
@@ -172,7 +172,7 @@ class InfrastructureInformationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(InfrastructureInformationForm, self).__init__(*args, **kwargs)
         for field in self.fields:
-            self.fields[field].widget.attrs.update({'autocomplete': 'off'})
+            self.fields[field].widget.attrs.update({"autocomplete": "off"})
 
         # inputのラベルをカスタマイズ
         # self.fields["water_supply"].label = "上水"

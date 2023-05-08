@@ -125,6 +125,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_URL = "RealEstate360:login"
 LOGIN_REDIRECT_URL = "RealEstate360:propertyinfos_list"
 LOGOUT_REDIRECT_URL = "login"
 
@@ -139,3 +140,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR / "RealEstate360/static")]
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH_USER_MODEL = "RealEstate360.User"

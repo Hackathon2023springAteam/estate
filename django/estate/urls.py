@@ -19,8 +19,5 @@ from RealEstate360 import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("accounts/", include("django.contrib.auth.urls")),
-    path("accounts/register/", views.register, name="register"),
-    path("accounts/login/", views.CustomLoginView.as_view(), name="login"),
     path("", include("RealEstate360.urls")),
 ]

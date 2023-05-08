@@ -1,8 +1,9 @@
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
 from django.http import HttpResponseRedirect, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
@@ -20,23 +21,30 @@ from .models import (
     BuildingInformation,
     LandInformation,
     InfrastructureInformation,
+    User,
 )
 
 
-class CustomLoginView(LoginView):
-    template_name = "registration/login.html"
-
-
-def register(request):
+def loginfunc(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
+        username = request.POST["username"]
+        password = request.POST["password"]
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
             login(request, user)
             return redirect("RealEstate360:propertyinfos_list")
-    else:
-        form = UserCreationForm()
-    return render(request, "registration/register.html", {"form": form})
+        else:
+            # エラーメッセージを表示するなど、認証に失敗した場合の処理を追加できます
+            pass
+
+    return render(request, "login.html", {})
+
+
+def logoutfunc(request):
+    logout(request)
+    return redirect("RealEstate360:login")
 
 
 @login_required
@@ -137,7 +145,8 @@ def propertyinfo_create(request):
             and infrastructure_information_form.is_valid()
         ):
             basic_information = basic_information_form.save(commit=False)
-            basic_information.user = request.user
+            custom_user = User.objects.get(username=request.user.username)
+            basic_information.user = custom_user
             basic_information.save()
 
             city_planning = city_planning_form.save(commit=False)
