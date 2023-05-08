@@ -68,3 +68,11 @@ class InfrastructureInformation(models.Model):
     water_supply = models.CharField(max_length=100, unique=False, verbose_name="上水")
     sweage = models.CharField(max_length=100, unique=False, verbose_name="下水")
     solar_power_generation = models.IntegerField(verbose_name="太陽光発電")
+# Create your models here.
+class Users(models.Model):
+    
+    username = models.CharField(max_length=255, unique=True)
+    password = models.CharField(max_length=255)
+    email = models.CharField(max_length=255, unique=False, null=True)
+    
+
