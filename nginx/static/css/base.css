@@ -1,13 +1,14 @@
 :root {
     --primary: #97040C;
+    --secondary: #D8C3C4;
     --dark: #000000;
-    --body: #F9F9F9;
+    --background-color: #F9F9F9;
 }
 
 body {
-    font-family: 'BIZ UDPGothic';
-    color:red;
-    line-height: 1.7;
+    font-family: 'BIZ UDPGothic', sans-serif !important;
+    color:var(--dark) !important;
+    line-height: 1.7 !important;
 }
 
 h1, h2 ,h3 {
@@ -20,4 +21,19 @@ p {
 
 a {
     text-decoration: none;
+}
+
+
+.btn-primary {
+    background-color: var(--primary);
+    border: none;
+}
+
+.btn-secondary {
+    background-color: var(--secondary);
+    border: none;
+}
+
+.web-header-svg {
+    width: 100;
 }

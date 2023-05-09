@@ -15,24 +15,56 @@
 
     <!-- staticフォルダ内のcss読み込み -->
     {% load static %}
+    <!-- <link rel="stylesheet" href="{% static 'css/custom-color-bootstrap.css' %}"> -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/custom-color-bootstrap.css' %}">
     <!-- 各ページのタイトル読み込み -->
     {% block title %}{% endblock %}
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbae-light bg-light py-3">
+    <header class="navbar navbar-expand-lg navbar-light bg-light py-3">
         <div class="container">
-            <img src="{% static 'img/web-header-logo.svg' %}" alt="" width="110" height="62.24" class="d-inline-block align-text-top">
+            <img src="{% static 'img/web-header-logo.svg' %}" alt="" width="110" height="62.24" class=".img-fluid col-lg-2 d-inline-block align-text-top">
             <form class="d-flex" role="search">
                 <input type="search" class="form-control me-2" placeholder="物件を検索" aria-label="物件を検索">
-                <button type="submit" class="btn btn-secondary flex-shrink-0">検索</button>
+                <button type="submit" class="btn btn-primary flex-shrink-0">検索</button>
             </form>
             <button type="button" class="btn btn-secondary flex-shrink-0">ログアウト</button>
         </div>
+    </header>
 
-    </nav>
+
+    <header class="navbar navbar-expand-md navbar-light bg-light py-2">
+        <div class="container">
+            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+            <img src="{% static 'img/web-header-logo.svg' %}" alt="" width="110" height="62.24" class=".d-none .d-lg-block">
+            <img src="{% static 'img/web-header-logo.svg' %}" alt="" width="40" height="22.13" class=".d-md-none col-lg-2 d-inline-block align-text-top">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item d-md-none">
+                    <a class="nav-link" href="{% url 'RealEstate360:view_propertyinfos' %}">新規登録</a>
+                </li>
+                <li class="nav-item d-md-none">
+                    <a class="nav-link" href="{% url 'RealEstate360:edit' %}">登録情報編集</a>
+                </li>
+                <li class="nav-item d-md-none">
+                    <a class="nav-link" href="{% url 'RealEstate360:detail' %}">概要書</a>
+                </li>
+                <li class="nav-item d-md-none">
+                    <a class="nav-link" href="{% url 'RealEstate360:lists' %}">物件一覧</a>
+                </li>
+            </ul>
+            <form class="d-flex col-lg-5">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <button type="button" class="btn btn-secondary flex-shrink-0">ログアウト</button>
+        </div>
+        </div>
+    </header>
 
 
     <!-- 各ページのbodyタグ内読み込み -->
