@@ -36,7 +36,7 @@ def loginfunc(request):
             login(request, user)
             return redirect("RealEstate360:propertyinfos_list")
         else:
-            # エラーメッセージを表示するなど、認証に失敗した場合の処理を追加できます
+            #エラーメッセージを表示するなど、認証に失敗した場合の処理を追加できます
             pass
 
     return render(request, "login.html", {})
