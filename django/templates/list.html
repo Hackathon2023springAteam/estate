@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Edit{% endblock %}
+{% block title %}物件一覧{% endblock %}
 
 {% block header_links %}
 <!-- Add Bootstrap navigation bar -->
@@ -17,7 +17,7 @@
           <a class="nav-link" href="{% url 'RealEstate360:logout' %}">Logout</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'RealEstate360:propertyinfos_list' %}">View</a>
+          <a class="nav-link" href="{% url 'RealEstate360:propertyinfo_create' %}">Create</a>
         </li>
       </ul>
     </div>
@@ -26,22 +26,14 @@
 {% endblock %}
 
 {% block content %}
-<h1>物件情報の更新</h1>
-<form method="post">
-  {% csrf_token %}
-  {% for form in forms %}
-  <table>
-    {% for field in form %}
-    <tr>
-      <th>{{ field.label }}:</th>
-      <td>{{ field }}</td>
-    </tr>
-    {% endfor %}
-  </table>
+<h2>物件情報一覧</h2>
+<ul>
+  {% for basic_information in basic_informations %}
+  <li>
+    <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}">
+      {{ basic_information.property_name }}
+    </a>
+  </li>
   {% endfor %}
-  <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}">編集しない</a>
-  <br>
-  <button type="submit">更新</button>
-</form>
-
+</ul>
 {% endblock %}
