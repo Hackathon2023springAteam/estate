@@ -36,7 +36,7 @@ def loginfunc(request):
             login(request, user)
             return redirect("RealEstate360:propertyinfos_list")
         else:
-            #エラーメッセージを表示するなど、認証に失敗した場合の処理を追加できます
+            # エラーメッセージを表示するなど、認証に失敗した場合の処理を追加できます
             pass
 
     return render(request, "login.html", {})
@@ -167,7 +167,14 @@ def propertyinfo_create(request):
             infrastructure_information.basic_information = basic_information
             infrastructure_information.save()
 
-            return redirect("RealEstate360:propertyinfos_list")
+            return HttpResponseRedirect(
+                reverse(
+                    "RealEstate360:propertyinfo_detail",
+                    kwargs={
+                        "basic_information_id": basic_information.basic_information_id
+                    },
+                )
+            )
     else:
         basic_information_form = BasicInformationForm()
         city_planning_form = CityPlanningForm()
@@ -235,8 +242,14 @@ def propertyinfo_edit(request, basic_information_id):
             building_information_form.save()
             land_information_form.save()
             infrastructure_information_form.save()
-
-            return HttpResponseRedirect(reverse("RealEstate360:propertyinfos_list"))
+            return HttpResponseRedirect(
+                reverse(
+                    "RealEstate360:propertyinfo_detail",
+                    kwargs={
+                        "basic_information_id": basic_information.basic_information_id
+                    },
+                )
+            )
 
     context = {
         "forms": [
