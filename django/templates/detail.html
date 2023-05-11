@@ -1,13 +1,87 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>detail</title>
-</head>
-<body>
-    
-    detail.html
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Detail{% endblock %}
+
+{% block header_links %}
+<!-- Add Bootstrap navigation bar -->
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'RealEstate360:logout' %}">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'RealEstate360:propertyinfos_list' %}">View</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'RealEstate360:propertyinfo_create' %}">Create</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+{% endblock %}
+
+{% block content %}
+<h2>{{ basic_information.property_name }} の情報</h2>
+<h3>基本情報</h3>
+<table>
+  {% for field, value in basic_information_fields %}
+  <tr>
+    <th>{{ field.verbose_name }}</th>
+    <td>{{ value }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<h3>都市計画情報</h3>
+<table>
+  {% for field, value in city_planning_fields %}
+  <tr>
+    <th>{{ field.verbose_name }}</th>
+    <td>{{ value }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<h3>建物情報</h3>
+<table>
+  {% for field, value in building_information_fields %}
+  <tr>
+    <th>{{ field.verbose_name }}</th>
+    <td>{{ value }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<h3>土地情報</h3>
+<table>
+  {% for field, value in land_information_fields %}
+  <tr>
+    <th>{{ field.verbose_name }}</th>
+    <td>{{ value }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<h3>インフラ情報</h3>
+<table>
+  {% for field, value in infrastructure_information_fields %}
+  <tr>
+    <th>{{ field.verbose_name }}</th>
+    <td>{{ value }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<a href="{% url 'RealEstate360:propertyinfo_edit' basic_information.basic_information_id %}">編集する</a>
+
+<!-- 削除フォームの追加 -->
+<form method="POST" action="{% url 'RealEstate360:propertyinfo_inactive' basic_information.basic_information_id %}">
+  {% csrf_token %}
+  <input type="hidden" name="is_active" value="false">
+  <input type="submit" value="削除する" onclick="return confirm('本当に削除してもよろしいですか？')">
+</form>
+
+{% endblock %}

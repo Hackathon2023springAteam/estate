@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}Edit{% endblock %}
+{% block title %}
+    <title>新規登録</title>
+{% endblock %}
 
 {% block header_links %}
 <!-- Add Bootstrap navigation bar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -22,26 +24,18 @@
       </ul>
     </div>
   </div>
-</nav>
+</nav> -->
 {% endblock %}
 
 {% block content %}
-<h1>物件情報の更新</h1>
+<h3>新規登録</h3>
 <form method="post">
   {% csrf_token %}
-  {% for form in forms %}
-  <table>
-    {% for field in form %}
-    <tr>
-      <th>{{ field.label }}:</th>
-      <td>{{ field }}</td>
-    </tr>
-    {% endfor %}
-  </table>
-  {% endfor %}
-  <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}">キャンセル</a>
-  <br>
-  <button type="submit">更新する</button>
+  {{ basic_information_form.as_p }}
+  {{ city_planning_form.as_p }}
+  {{ building_information_form.as_p }}
+  {{ land_information_form.as_p }}
+  {{ infrastructure_information_form.as_p }}
+  <button type="submit">登録</button>
 </form>
-
 {% endblock %}

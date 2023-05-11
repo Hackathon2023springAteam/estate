@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %}Edit{% endblock %}
+{% block head %}
+<!-- CSS読み込みの記述 -->">
+    {% load static %}
+    <link rel="stylesheet" href="#">
+{% endblock %}
 
-{% block header_links %}
+{% block title %}
+    <title>物件一覧</title>
+{% endblock %}
+
+<!-- {% block header_links %} -->
 <!-- Add Bootstrap navigation bar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -17,31 +25,23 @@
           <a class="nav-link" href="{% url 'RealEstate360:logout' %}">Logout</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'RealEstate360:propertyinfos_list' %}">View</a>
+          <a class="nav-link" href="{% url 'RealEstate360:propertyinfo_create' %}">Create</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-{% endblock %}
+{% endblock %} -->
 
 {% block content %}
-<h1>物件情報の更新</h1>
-<form method="post">
-  {% csrf_token %}
-  {% for form in forms %}
-  <table>
-    {% for field in form %}
-    <tr>
-      <th>{{ field.label }}:</th>
-      <td>{{ field }}</td>
-    </tr>
-    {% endfor %}
-  </table>
+<h3>物件一覧</h3>
+<ul>
+  {% for basic_information in basic_informations %}
+  <li>
+    <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}">
+      {{ basic_information.property_name }}
+    </a>
+  </li>
   {% endfor %}
-  <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}">キャンセル</a>
-  <br>
-  <button type="submit">更新する</button>
-</form>
-
+</ul>
 {% endblock %}

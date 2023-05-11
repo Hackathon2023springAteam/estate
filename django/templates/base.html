@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,63 +16,50 @@
 
     <!-- staticフォルダ内のcss読み込み -->
     {% load static %}
-    <!-- <link rel="stylesheet" href="{% static 'css/custom-color-bootstrap.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/custom-color-bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
     <!-- 各ページのタイトル読み込み -->
     {% block title %}{% endblock %}
 </head>
+
+
 <body>
-
-    <header class="navbar navbar-expand-lg navbar-light bg-light py-3">
-        <div class="container">
-            <img src="{% static 'img/web-header-logo.svg' %}" alt="" width="110" height="62.24" class=".img-fluid col-lg-2 d-inline-block align-text-top">
-            <form class="d-flex" role="search">
-                <input type="search" class="form-control me-2" placeholder="物件を検索" aria-label="物件を検索">
-                <button type="submit" class="btn btn-primary flex-shrink-0">検索</button>
-            </form>
-            <button type="button" class="btn btn-secondary flex-shrink-0">ログアウト</button>
-        </div>
-    </header>
-
-
-    <header class="navbar navbar-expand-md navbar-light bg-light py-2">
-        <div class="container">
-            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-            <img src="{% static 'img/web-header-logo.svg' %}" alt="" width="110" height="62.24" class=".d-none .d-lg-block">
-            <img src="{% static 'img/web-header-logo.svg' %}" alt="" width="40" height="22.13" class=".d-md-none col-lg-2 d-inline-block align-text-top">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- ヘッダー -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-md-3">
+        <div class="container mx-auto">
+            <div class="navbar-brand">
+                <img src="{% static 'img/web-header-logo.svg' %}" alt=""  width="85" height="48.1" class="img-fluid">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item d-md-none">
-                    <a class="nav-link" href="{% url 'RealEstate360:view_propertyinfos' %}">新規登録</a>
-                </li>
-                <li class="nav-item d-md-none">
-                    <a class="nav-link" href="{% url 'RealEstate360:edit' %}">登録情報編集</a>
-                </li>
-                <li class="nav-item d-md-none">
-                    <a class="nav-link" href="{% url 'RealEstate360:detail' %}">概要書</a>
-                </li>
-                <li class="nav-item d-md-none">
-                    <a class="nav-link" href="{% url 'RealEstate360:lists' %}">物件一覧</a>
-                </li>
-            </ul>
-            <form class="d-flex col-lg-5">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-            <button type="button" class="btn btn-secondary flex-shrink-0">ログアウト</button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-lg-3">
+                    <li class="nav-item ms-lg-3">
+                        <a class="nav-link active" aria-current="page" href="{% url 'RealEstate360:propertyinfos_list' %}">物件一覧</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="nav-link active" aria-current="page" href="{% url 'RealEstate360:propertyinfo_create' %}">新規登録</a>                
+                    </li>
+                </ul>
+                <form class="d-flex ms-lg-5">
+                    <input class="serch-form form-control" type="search" placeholder="管理タグで検索" aria-label="Search">
+                    <button class="serch-btn btn-secondary" type="submit">検索</button>
+                </form>
+                <button type="button" class="logout-btn btn-secondary flex-shrink-0 ms-auto"><a class="nav-link" href="{% url 'RealEstate360:logout' %}">ログアウト</a></button>
+            </div>
+
         </div>
-        </div>
-    </header>
+    </nav>
 
 
     <!-- 各ページのbodyタグ内読み込み -->
     {% block content %}{% endblock %}
-    
+
 
     <!-- Bootstrap JavaScript読み込み -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
+
 </html>
