@@ -31,7 +31,7 @@
   {% for basic_information in basic_informations %}
   <li>
     <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}">
-      {{ basic_information.property_name }}
+      {{ basic_information.control_number }}:{{ basic_information.property_name }}
     </a>
   </li>
   {% endfor %}
