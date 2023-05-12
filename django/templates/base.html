@@ -26,7 +26,7 @@
 
 <body>
     <!-- ヘッダー -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light py-md-3">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-sm-2">
         <div class="container mx-auto">
             <div class="navbar-brand">
                 <img src="{% static 'img/web-header-logo.svg' %}" alt=""  width="85" height="48.1" class="img-fluid">
@@ -35,7 +35,7 @@
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-lg-3">
+                <ul class="navbar-nav">
                     <li class="nav-item ms-lg-3">
                         <a class="nav-link active" aria-current="page" href="{% url 'RealEstate360:propertyinfos_list' %}">物件一覧</a>
                     </li>
@@ -43,13 +43,13 @@
                         <a class="nav-link active" aria-current="page" href="{% url 'RealEstate360:propertyinfo_create' %}">新規登録</a>                
                     </li>
                 </ul>
-                <form class="d-flex ms-lg-5">
+
+                <form class="d-flex ms-lg-5 mb-md-2 my-sm-2@">
                     <input class="serch-form form-control" type="search" placeholder="管理タグで検索" aria-label="Search">
                     <button class="serch-btn btn-secondary" type="submit">検索</button>
                 </form>
-                <button type="button" class="logout-btn btn-secondary flex-shrink-0 ms-auto"><a class="nav-link" href="{% url 'RealEstate360:logout' %}">ログアウト</a></button>
+                <button type="button" class="logout-btn btn-secondary flex-shrink-0 ms-auto mb-md-2 my-sm-2@"><a class="nav-link" href="{% url 'RealEstate360:logout' %}">ログアウト</a></button>
             </div>
-
         </div>
     </nav>
 
