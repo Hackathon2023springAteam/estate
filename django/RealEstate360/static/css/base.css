@@ -2,12 +2,13 @@
     --primary: #97040C;
     --secondary: #D8C3C4;
     --dark: #000000;
-    --body: #F9F9F9;
+    --background-color: #F9F9F9;
 }
 
 body {
-    font-family: 'BIZ UDPGothic';
-    line-height: 1.7;
+    font-family: 'BIZ UDPGothic', sans-serif !important;
+    color:var(--dark) !important;
+    line-height: 1.7 !important;
 }
 
 h1, h2 ,h3 {
@@ -20,4 +21,66 @@ p {
 
 a {
     text-decoration: none;
+    color: var(--dark) !important;
+}
+
+/* primary属性を付けたボタンの色変更 */
+.btn-primary {
+    background-color: var(--primary);
+    border: none;
+}
+
+/* secondary属性を付けたボタンの色変更 */
+.btn-secondary {
+    background-color: var(--secondary);
+    border: none;
+    color: var(--dark);
+}
+
+/* navbarの背景色 */
+.navbar {
+    background-color: var(--background-color);
+}
+
+/* 検索フォームの指定 */
+.serch-form {
+    position: relative;
+    width: 280px;
+    height: 40px;
+    border: 1px solid #BBBBBB;
+    border-radius: 5px 0px 0px 5px;
+}
+
+/* 検索ボタンの指定 */
+.serch-btn {
+    position: relative;
+    width: 85px;
+    height: 40px;
+    border-radius: 0px 5px 5px 0px;
+    line-height: 16px;
+}
+
+/* ログアウトボタンの指定 */
+.logout-btn {
+    width: 153px;
+    height: 40px;
+    border-radius: 5px;
+    line-height: 16px;
+}
+
+.navbar-light .navbar-toggler {
+    border-color: rgba(0,0,0,0);
+}
+
+/* トグルメニューを出した時の指定 メニューサイズとログアウトボタンのマージン*/
+@media screen and (max-width:991px) {
+/* 　画面サイズが991px以下からはここを読み込む　 */
+    .navbar-collapse {
+        width: 150px;
+    }
+
+    .logout-btn {
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+    }
 }

@@ -45,7 +45,7 @@ a {
 /* 検索フォームの指定 */
 .serch-form {
     position: relative;
-    width: 221px;
+    width: 280px;
     height: 40px;
     border: 1px solid #BBBBBB;
     border-radius: 5px 0px 0px 5px;
@@ -66,4 +66,21 @@ a {
     height: 40px;
     border-radius: 5px;
     line-height: 16px;
+}
+
+.navbar-light .navbar-toggler {
+    border-color: rgba(0,0,0,0);
+}
+
+/* トグルメニューを出した時の指定 メニューサイズとログアウトボタンのマージン*/
+@media screen and (max-width:991px) {
+/* 　画面サイズが991px以下からはここを読み込む　 */
+    .navbar-collapse {
+        width: 150px;
+    }
+
+    .logout-btn {
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+    }
 }
