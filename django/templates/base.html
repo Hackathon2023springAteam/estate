@@ -18,7 +18,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/custom-color-bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-
+    {% block head %}{% endblock %}
     <!-- 各ページのタイトル読み込み -->
     {% block title %}{% endblock %}
 </head>

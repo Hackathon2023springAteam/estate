@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<!-- CSS読み込みの記述 -->">
+<!-- CSS読み込みの記述 -->
     {% load static %}
-    <link rel="stylesheet" href="#">
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
 {% endblock %}
 
 {% block title %}
@@ -33,15 +33,56 @@
 </nav>
 {% endblock %} -->
 
+<!-- 
+    <ul>
+        {% for basic_information in basic_informations %}
+        <li>
+            <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}">
+                {{ basic_information.control_number }}:{{ basic_information.property_name }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul> -->
+    
 {% block content %}
-<h3>物件一覧</h3>
-<ul>
-  {% for basic_information in basic_informations %}
-  <li>
-    <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}">
-      {{ basic_information.property_name }}
-    </a>
-  </li>
-  {% endfor %}
-</ul>
+
+    <!-- ページタイトル -->
+    <div class="container-lg container-md container-sm">
+        <div class="row page-name">
+            <div class="col"><h2>物件情報一覧</h2></div>
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <!-- 一覧リストの項目名 -->
+    <div class="container-lg container-md container-sm">
+        <div class="row list__title">
+            <div class="col"><h3>管理タグ</div>
+            <div class="col"><h3>物件名</h3></div>
+            <div class="col-2"><h3>所在地</h3></div>
+            <div class="col-1"></div>
+        </div>
+
+        <!-- 物件リストの列 -->
+        {% for basic_information in basic_informations %}
+        <div class="row list__item">
+            <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}" class="d-flex">
+                <div class="col">
+                    {{ basic_information.control_number }}
+                </div>
+                <div class="col">
+                    {{ basic_information.property_name }}
+                </div>
+                <div class="col-2">
+                    {{ basic_information.location }}
+                </div>
+                <div class="col-1 list__item--arrow">
+                    <img src="{% static 'img/web-arrow.svg' %}" alt=""  width="12.5" height="25" class="web-arrow">
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+
 {% endblock %}
