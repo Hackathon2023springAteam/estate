@@ -3,6 +3,7 @@
     --secondary: #D8C3C4;
     --dark: #000000;
     --background-color: #F9F9F9;
+    --form-border-color: #5D0C10;
 }
 
 body {
@@ -10,6 +11,7 @@ body {
     color:var(--dark) !important;
     line-height: 1.7 !important;
 }
+
 
 h1, h2 ,h3 {
     font-weight: 700;
@@ -49,6 +51,10 @@ a {
     height: 40px;
     border: 1px solid #BBBBBB;
     border-radius: 5px 0px 0px 5px;
+    &:focus {
+        box-shadow:none !important;
+        border-color: var(--form-border-color);
+    }
 }
 
 /* 検索ボタンの指定 */
@@ -58,6 +64,9 @@ a {
     height: 40px;
     border-radius: 0px 5px 5px 0px;
     line-height: 16px;
+    &:focus {
+        box-shadow:none !important;
+    }
 }
 
 /* ログアウトボタンの指定 */
@@ -70,6 +79,9 @@ a {
 
 .navbar-light .navbar-toggler {
     border-color: rgba(0,0,0,0);
+    &:focus {
+        box-shadow:none !important;
+    }
 }
 
 /* トグルメニューを出した時の指定 メニューサイズとログアウトボタンのマージン*/
