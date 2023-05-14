@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<!-- CSS読み込みの記述 -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/create.css' %}">
+{% endblock %}
+
 {% block title %}
     <title>新規登録</title>
 {% endblock %}
 
-{% block header_links %}
-<!-- Add Bootstrap navigation bar -->
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- {% block header_links %}
+Add Bootstrap navigation bar
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -24,12 +30,22 @@
       </ul>
     </div>
   </div>
-</nav> -->
-{% endblock %}
+</nav>
+{% endblock %} -->
 
 {% block content %}
-<h3>新規登録</h3>
-<form method="post">
+
+    <!-- ページタイトル -->
+    <div class="page__title container-lg container-md container-sm">
+        <div class="row page-name">
+            <div class="col"><h2>物件情報登録</h2></div>
+        </div>
+    </div>
+
+
+
+
+<!-- <form method="post">
   {% csrf_token %}
 
   <div class="mb-3">
@@ -65,5 +81,237 @@
   {{ land_information_form.as_p }}
   {{ infrastructure_information_form.as_p }}
   <button type="submit">登録</button>
+</form> -->
+
+<form method="POST">{% csrf_token %}
+    <p class="error-message">{{ error }}</p>
+<!-- 基本情報入力欄 -->
+    <div class="container-lg container-md container-sm input-container">
+        <div class="row d-flex input-form gx-sm-0">
+            <div class="col col-12 col-md-12 col-lg-2 input-form__title">
+                <h3>基本情報</h3>
+            </div>
+            <div class="col col-12 col-sm-12 col-md-12 col-lg-10 ms-auto">
+                <!-- 一行目 -->
+                <div class="row d-flex">
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">物件名</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required autofocus>
+                    </div>
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">管理タグ</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                </div>
+                <!-- 2行目 -->
+                <div class="row d-flex mt-lg-4">
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">所在地</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">住所地</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                </div>
+            </div>
+            <div class="cotainer-border"></div>
+        </div>
+    </div>
+
+    <!-- 都市計画入力欄 -->
+    <div class="container-lg container-md container-sm input-container">
+        <div class="row d-flex input-form gx-sm-0">
+            <div class="col col-12 col-md-12 col-lg-2 input-form__title">
+                <h3>都市計画</h3>
+            </div>
+            <div class="col col-12 col-sm-12 col-md-12 col-lg-10 ms-auto">
+                <!-- 一行目 -->
+                <div class="row d-flex">
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">用途地域</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required autofocus>
+                    </div>
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">道路幅</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                </div>
+                <!-- 2行目 -->
+                <div class="row d-flex mt-lg-4">
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">公用地拡大法</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">状態</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                </div>
+            </div>
+            <div class="cotainer-border"></div>
+        </div>
+    </div>
+
+    <!-- 土地入力欄 -->
+    <div class="container-lg container-md container-sm input-container">
+        <div class="row d-flex input-form gx-sm-0">
+            <div class="col col-12 col-md-12 col-lg-2 input-form__title">
+                <h3>土地</h3>
+            </div>
+            <div class="col col-12 col-sm-12 col-md-12 col-lg-10 ms-auto">
+                <!-- 一行目 -->
+                <div class="row d-flex">
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">地目</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required autofocus>
+                    </div>
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">土地坪数</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                </div>
+                <!-- 2行目 -->
+                <div class="row d-flex mt-lg-4">
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">測量図面</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">実測土地坪数</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                </div>
+                <!-- 3行目 -->
+                <div class="row d-flex mt-lg-4">
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">権利の種類</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <!-- <label for="" class="">---</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required> -->
+                    </div>
+                </div>
+                <!-- 4行目 -->
+                <div class="row d-flex mt-lg-4">
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">字図</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <!-- <label for="" class="">---</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required> -->
+                    </div>
+                </div>
+                <!-- 5行目 -->
+                <div class="row d-flex mt-lg-4">
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">土地謄本</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <!-- <label for="" class="">---</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required> -->
+                    </div>
+                </div>
+            </div>
+            <div class="cotainer-border"></div>
+        </div>
+    </div>
+
+    <!-- 建物入力欄 -->
+    <div class="container-lg container-md container-sm input-container">
+        <div class="row d-flex input-form gx-sm-0">
+            <div class="col col-12 col-md-12 col-lg-2 input-form__title">
+                <h3>建物</h3>
+            </div>
+            <div class="col col-12 col-sm-12 col-md-12 col-lg-10 ms-auto">
+                <!-- 一行目 -->
+                <div class="row d-flex">
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">物件用途</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required autofocus>
+                    </div>
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">建築確認図面</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                </div>
+                <!-- 2行目 -->
+                <div class="row d-flex mt-lg-4">
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">建物図面</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">固定資産税評価証明書</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                </div>
+                <!-- 3行目 -->
+                <div class="row d-flex mt-lg-4">
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">権利の種類</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required autofocus>
+                    </div>
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">土地所有者との関係</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                </div>
+                <!-- 4行目 -->
+                <div class="row d-flex mt-lg-4">
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">建物謄本</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <!-- <label for="" class="">固定資産税評価証明書</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required> -->
+                    </div>
+                </div>
+            </div>
+            <div class="cotainer-border"></div>
+        </div>
+    </div>
+
+    <!-- インフラ入力欄 -->
+    <div class="container-lg container-md container-sm input-container">
+        <div class="row d-flex input-form gx-sm-0">
+            <div class="col col-12 col-md-12 col-lg-2 input-form__title">
+                <h3>インフラ</h3>
+            </div>
+            <div class="col col-12 col-sm-12 col-md-12 col-lg-10 ms-auto">
+                <!-- 一行目 -->
+                <div class="row d-flex">
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">上水</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required autofocus>
+                    </div>
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">下水</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                </div>
+                <!-- 2行目 -->
+                <div class="row d-flex mt-lg-4">
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="" class="">太陽光発電</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required>
+                    </div>
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <!-- <label for="" class="">状態</label>
+                        <input type="text"id="" class="input-text" placeholder="" name="" required> -->
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="cotainer-border"></div> -->
+        </div>
+    </div>
+
+    <button type="submit">登録</button>
 </form>
+
+
 {% endblock %}
