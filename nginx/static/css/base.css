@@ -52,9 +52,18 @@ a {
     color: var(--dark);
 }
 
-/* navbarの背景色 */
+/* navbarの背景色と下戦 */
 .navbar {
     background-color: var(--background-color);
+    border-bottom: 1px solid var(--list-border-color);
+}
+
+/* navbarのモバイル時の罫線削除 */
+@media screen and (max-width:575px) {
+    /* 画面サイズが575px以下からはここを読み込む */
+    .navbar {
+        border-bottom: none;
+    }
 }
 
 /* 検索フォームの指定 */
@@ -62,7 +71,7 @@ a {
     position: relative;
     width: 280px;
     height: 40px;
-    border: 1px solid #BBBBBB;
+    border: 1px solid var(--list-border-color);
     border-radius: 5px 0px 0px 5px;
     &:focus {
         box-shadow:none !important;
@@ -92,6 +101,7 @@ a {
 
 /* トグルメニューボタン（3本線）の周りの線を削除 */
 .navbar-light .navbar-toggler {
+    margin-right: -2.5%;
     border-color: rgba(0,0,0,0);
     &:focus {
         box-shadow:none !important;
@@ -100,7 +110,7 @@ a {
 
 /* トグルメニューを出した時の指定 メニューサイズとログアウトボタンのマージン*/
 @media screen and (max-width:991px) {
-/* 　画面サイズが991px以下からはここを読み込む　 */
+/* 画面サイズが991px以下からはここを読み込む */
     .navbar-collapse {
         width: 150px;
     }

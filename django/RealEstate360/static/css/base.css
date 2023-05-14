@@ -1,24 +1,39 @@
 :root {
+    /* primaryカラー */
     --primary: #97040C;
+    /* secondaryカラー */
     --secondary: #D8C3C4;
+    /* 文字などの黒色 */
     --dark: #000000;
+    /* 全ページの背景色 */
     --background-color: #F9F9F9;
+    /* フォームを選択している時のフォーカスカラー */
+    --form-border-color: #5D0C10;
+    /* 物件詳細・一覧・新規登録・更新のリストタイトルの背景色 */
+    --list-title-color: #EAEAEA;
+    /* 物件詳細・一覧・新規登録・更新のリストの罫線の色 */
+    --list-border-color: #BBBBBB;
 }
 
+/* bodyタグ内の背景色・文字フォント・文字色・文字ラインハイト指定 */
 body {
     font-family: 'BIZ UDPGothic', sans-serif !important;
     color:var(--dark) !important;
     line-height: 1.7 !important;
+    background-color: var(--background-color);
 }
 
+/* h1-3の文字をBold指定 */
 h1, h2 ,h3 {
     font-weight: 700;
 }
 
+/* pタグの文字をregular指定 */
 p {
     font-weight: 400;
 }
 
+/* aタグの下線削除と文字の色を黒に指定 */
 a {
     text-decoration: none;
     color: var(--dark) !important;
@@ -37,9 +52,18 @@ a {
     color: var(--dark);
 }
 
-/* navbarの背景色 */
+/* navbarの背景色と下戦 */
 .navbar {
     background-color: var(--background-color);
+    border-bottom: 1px solid var(--list-border-color);
+}
+
+/* navbarのモバイル時の罫線削除 */
+@media screen and (max-width:575px) {
+    /* 画面サイズが575px以下からはここを読み込む */
+    .navbar {
+        border-bottom: none;
+    }
 }
 
 /* 検索フォームの指定 */
@@ -47,8 +71,12 @@ a {
     position: relative;
     width: 280px;
     height: 40px;
-    border: 1px solid #BBBBBB;
+    border: 1px solid var(--list-border-color);
     border-radius: 5px 0px 0px 5px;
+    &:focus {
+        box-shadow:none !important;
+        border-color: var(--form-border-color);
+    }
 }
 
 /* 検索ボタンの指定 */
@@ -58,6 +86,9 @@ a {
     height: 40px;
     border-radius: 0px 5px 5px 0px;
     line-height: 16px;
+    &:focus {
+        box-shadow:none !important;
+    }
 }
 
 /* ログアウトボタンの指定 */
@@ -68,13 +99,18 @@ a {
     line-height: 16px;
 }
 
+/* トグルメニューボタン（3本線）の周りの線を削除 */
 .navbar-light .navbar-toggler {
+    margin-right: -2.5%;
     border-color: rgba(0,0,0,0);
+    &:focus {
+        box-shadow:none !important;
+    }
 }
 
 /* トグルメニューを出した時の指定 メニューサイズとログアウトボタンのマージン*/
 @media screen and (max-width:991px) {
-/* 　画面サイズが991px以下からはここを読み込む　 */
+/* 画面サイズが991px以下からはここを読み込む */
     .navbar-collapse {
         width: 150px;
     }

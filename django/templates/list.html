@@ -47,37 +47,37 @@
 {% block content %}
 
     <!-- ページタイトル -->
-    <div class="container-lg container-md container-sm">
+    <div class="page__title container-lg container-md container-sm">
         <div class="row page-name">
             <div class="col"><h2>物件情報一覧</h2></div>
-            <div class="col"></div>
+            <!-- <div class="col"></div> -->
         </div>
     </div>
 
     <!-- 一覧リストの項目名 -->
     <div class="container-lg container-md container-sm">
-        <div class="row list__title">
-            <div class="col"><h3>管理タグ</div>
-            <div class="col"><h3>物件名</h3></div>
-            <div class="col-2"><h3>所在地</h3></div>
+        <div class="row list__title gx-sm-0 gx-md-1">
+            <div class="col-4"><h3 class="list__title--tagname">管理タグ</h3></div>
+            <div class="col-4"><h3 class="list__title--property">物件名</h3></div>
+            <div class="col-3"><h3 class="list__title--location">所在地</h3></div>
             <div class="col-1"></div>
         </div>
 
         <!-- 物件リストの列 -->
         {% for basic_information in basic_informations %}
-        <div class="row list__item">
+        <div class="row list__item gx-1">
             <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}" class="d-flex">
-                <div class="col">
-                    {{ basic_information.control_number }}
+                <div class="col-4">
+                    <p class="list__item--tagname">{{ basic_information.control_number }}</p>
                 </div>
-                <div class="col">
-                    {{ basic_information.property_name }}
+                <div class="col-4">
+                    <p>{{ basic_information.property_name }}</p>
                 </div>
-                <div class="col-2">
-                    {{ basic_information.location }}
+                <div class="col-3">
+                    <p>{{ basic_information.location }}</p>
                 </div>
                 <div class="col-1 list__item--arrow">
-                    <img src="{% static 'img/web-arrow.svg' %}" alt=""  width="12.5" height="25" class="web-arrow">
+                    <img src="{% static 'img/web-arrow.svg' %}" alt="詳細ページを見る"  width="12.5" height="25" class="web-arrow">
                 </div>
             </a>
         </div>
