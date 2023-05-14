@@ -9,40 +9,6 @@
 {% block title %}
     <title>物件一覧</title>
 {% endblock %}
-
-<!-- {% block header_links %} -->
-<!-- Add Bootstrap navigation bar -->
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'RealEstate360:logout' %}">Logout</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'RealEstate360:propertyinfo_create' %}">Create</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-{% endblock %} -->
-
-<!-- 
-    <ul>
-        {% for basic_information in basic_informations %}
-        <li>
-            <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}">
-                {{ basic_information.control_number }}:{{ basic_information.property_name }}
-            </a>
-        </li>
-        {% endfor %}
-    </ul> -->
     
 {% block content %}
 

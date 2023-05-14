@@ -14,11 +14,10 @@ class BasicInformationForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs.update({"autocomplete": "off"})
 
-        # inputのラベルをカスタマイズ
-        # self.fields["control_number"].label = "管理タグ"
-        # self.fields["property_name"].label = "物件名"
-        # self.fields["location"].label = "所在地"
-        # self.fields["address"].label = "住所地"
+        self.fields["control_number"].widget = forms.TextInput(attrs={'class': 'form-control'})
+        self.fields["property_name"].widget = forms.TextInput(attrs={'class': 'form-control'})
+        self.fields["location"].widget = forms.TextInput(attrs={'class': 'form-control'})
+        self.fields["address"].widget = forms.TextInput(attrs={'class': 'form-control'})
 
     def save(self, commit=True):
         instance = super(BasicInformationForm, self).save(commit=False)
