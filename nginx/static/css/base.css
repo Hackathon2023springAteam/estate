@@ -75,7 +75,7 @@ a {
     border-radius: 5px 0px 0px 5px;
     &:focus {
         box-shadow:none !important;
-        border-color: var(--form-border-color);
+        border-color: var(--dark);
     }
 }
 
