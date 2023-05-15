@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>新規登録</title>
+<title>新規登録</title>
 {% endblock %}
 
 {% block header_links %}
@@ -29,41 +29,210 @@
 
 {% block content %}
 <h3>新規登録</h3>
+
 <form method="post">
   {% csrf_token %}
-
   <div class="mb-3">
-    <label for="{{ basic_information_form.control_number.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
-      {{ basic_information_form.control_number.label }}
+    <label for="basic_information_control_number" class="p-6 mb-2 bg-primary text-white">
+      {{ basic_information_labels.control_number }}
     </label>
-    {{ basic_information_form.control_number }}
+    <input type="text" name="basic_information_control_number" id="basic_information_control_number"
+      class="form-control" autocomplete="off" required />
   </div>
 
   <div class="mb-3">
-    <label for="{{ basic_information_form.property_name.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
-      {{ basic_information_form.property_name.label }}
+    <label for="basic_information_property_name" class="p-6 mb-2 bg-secondary text-white">
+      {{ basic_information_labels.property_name }}
     </label>
-    {{ basic_information_form.property_name }}
+    <input type="text" name="basic_information_property_name" id="basic_information_property_name" class="form-control"
+      autocomplete="off" required />
   </div>
 
   <div class="mb-3">
-    <label for="{{ basic_information_form.location.id_for_label }}" class="p-6 mb-2 bg-success text-white">
-      {{ basic_information_form.location.label }}
+    <label for="basic_information_location" class="p-6 mb-2 bg-success text-white">
+      {{ basic_information_labels.location }}
     </label>
-    {{ basic_information_form.location }}
+    <input type="text" name="basic_information_location" id="basic_information_location" class="form-control"
+      autocomplete="off" required />
   </div>
 
   <div class="mb-3">
-    <label for="{{ basic_information_form.address.id_for_label }}" class="p-6 mb-2 bg-danger text-white">
-      {{ basic_information_form.address.label }}
+    <label for="basic_information_address" class="p-6 mb-2 bg-danger text-white">
+      {{ basic_information_labels.address }}
     </label>
-    {{ basic_information_form.address }}
+    <input type="text" name="basic_information_address" id="basic_information_address" class="form-control"
+      autocomplete="off" required />
   </div>
 
-  {{ city_planning_form.as_p }}
-  {{ building_information_form.as_p }}
-  {{ land_information_form.as_p }}
-  {{ infrastructure_information_form.as_p }}
+  <div class="mb-3">
+    <label for="city_planning_zoning" class="p-6 mb-2 bg-primary text-white">
+      {{ city_planning_labels.zoning }}
+    </label>
+    <input type="text" name="city_planning_zoning" id="city_planning_zoning" class="form-control" autocomplete="off"
+      required />
+  </div>
+
+  <div class="mb-3">
+    <label for="city_planning_public_land_expansion_act" class="p-6 mb-2 bg-secondary text-white">
+      {{ city_planning_labels.public_land_expansion_act }}
+    </label>
+    <input type="text" name="city_planning_public_land_expansion_act" id="city_planning_public_land_expansion_act"
+      class="form-control" autocomplete="off" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="city_planning_road_width" class="p-6 mb-2 bg-success text-white">
+      {{ city_planning_labels.road_width }}
+    </label>
+    <input type="number" name="city_planning_road_width" id="city_planning_road_width" class="form-control"
+      autocomplete="off" step="0.1" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="city_planning_condition" class="p-6 mb-2 bg-danger text-white">
+      {{ city_planning_labels.condition }}
+    </label>
+    <input type="text" name="city_planning_condition" id="city_planning_condition" class="form-control"
+      autocomplete="off" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="building_information_certified_copy_of_building" class="p-6 mb-2 bg-primary text-white">
+      {{ building_information_labels.certified_copy_of_building }}
+    </label>
+    <input type="text" name="building_information_certified_copy_of_building"
+      id="building_information_certified_copy_of_building" class="form-control" autocomplete="off" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="building_information_building_drawing" class="p-6 mb-2 bg-secondary text-white">
+      {{ building_information_labels.building_drawing }}
+    </label>
+    <input type="text" name="building_information_building_drawing" id="building_information_building_drawing"
+      class="form-control" autocomplete="off" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="building_information_building_confirmation_screen" class="p-6 mb-2 bg-success text-white">
+      {{ building_information_labels.building_confirmation_screen }}
+    </label>
+    <input type="text" name="building_information_building_confirmation_screen"
+      id="building_information_building_confirmation_screen" class="form-control" autocomplete="off" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="building_information_property_tax_assessment_certificate" class="p-6 mb-2 bg-danger text-white">
+      {{ building_information_labels.property_tax_assessment_certificate }}
+    </label>
+    <input type="text" name="building_information_property_tax_assessment_certificate"
+      id="building_information_property_tax_assessment_certificate" class="form-control" autocomplete="off" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="building_information_building_use" class="p-6 mb-2 bg-warning text-white">
+      {{ building_information_labels.building_use }}
+    </label>
+    <input type="text" name="building_information_building_use" id="building_information_building_use"
+      class="form-control" autocomplete="off" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="building_information_type_of_rights" class="p-6 mb-2 bg-info text-white">
+      {{ building_information_labels.type_of_rights }}
+    </label>
+    <input type="text" name="building_information_type_of_rights" id="building_information_type_of_rights"
+      class="form-control" autocomplete="off" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="building_information_relationship_to_land_owner" class="p-6 mb-2 bg-alert-light text-black">
+      {{ building_information_labels.relationship_to_land_owner }}
+    </label>
+    <input type="text" name="building_information_relationship_to_land_owner"
+      id="building_information_relationship_to_land_owner" class="form-control" autocomplete="off" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="land_information_area" class="p-6 mb-2 bg-primary text-white">
+      {{ land_information_labels.area }}
+    </label>
+    <input type="number" name="land_information_area" id="land_information_area" class="form-control" autocomplete="off"
+      step="0.1" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="land_information_square_meter" class="p-6 mb-2 bg-secondary text-white">
+      {{ land_information_labels.square_meter }}
+    </label>
+    <input type="number" name="land_information_square_meter" id="land_information_square_meter" class="form-control"
+      autocomplete="off" step="0.1" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="land_information_land_category" class="p-6 mb-2 bg-success text-white">
+      {{ land_information_labels.land_category }}
+    </label>
+    <input type="number" name="land_information_land_category" id="land_information_land_category" class="form-control"
+      autocomplete="off" step="1" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="land_information_certified_copy_of_land" class="p-6 mb-2 bg-danger text-white">
+      {{ land_information_labels.certified_copy_of_land }}
+    </label>
+    <input type="text" name="land_information_certified_copy_of_land" id="land_information_certified_copy_of_land"
+      class="form-control" autocomplete="off" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="land_information_character_map" class="p-6 mb-2 bg-warning text-white">
+      {{ land_information_labels.character_map }}
+    </label>
+    <input type="text" name="land_information_character_map" id="land_information_character_map" class="form-control"
+      autocomplete="off" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="land_information_survey_map" class="p-6 mb-2 bg-info text-white">
+      {{ land_information_labels.survey_map }}
+    </label>
+    <input type="text" name="land_information_survey_map" id="land_information_survey_map" class="form-control"
+      autocomplete="off" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="land_information_type_of_rights" class="p-6 mb-2 bg-alert-light text-black">
+      {{ land_information_labels.type_of_rights }}
+    </label>
+    <input type="text" name="land_information_type_of_rights" id="land_information_type_of_rights" class="form-control"
+      autocomplete="off" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="infrastructure_information_water_supply" class="p-6 mb-2 bg-primary text-white">
+      {{ infrastructure_information_labels.water_supply }}
+    </label>
+    <input type="text" name="infrastructure_information_water_supply" id="infrastructure_information_water_supply"
+      class="form-control" autocomplete="off" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="infrastructure_information_sweage" class="p-6 mb-2 bg-secondary text-white">
+      {{ infrastructure_information_labels.sweage }}
+    </label>
+    <input type="text" name="infrastructure_information_sweage" id="infrastructure_information_sweage"
+      class="form-control" autocomplete="off" required />
+  </div>
+
+  <div class="mb-3">
+    <label for="infrastructure_information_solar_power_generation" class="p-6 mb-2 bg-success text-white">
+      {{ infrastructure_information_labels.solar_power_generation }}
+    </label>
+    <input type="number" name="infrastructure_information_solar_power_generation"
+      id="infrastructure_information_solar_power_generation" class="form-control" autocomplete="off" step="1"
+      required />
+  </div>
+
   <button type="submit">登録</button>
 </form>
 {% endblock %}
