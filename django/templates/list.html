@@ -1,47 +1,54 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<!-- CSS読み込みの記述 -->">
+<!-- CSS読み込みの記述 -->
     {% load static %}
-    <link rel="stylesheet" href="#">
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
 {% endblock %}
 
 {% block title %}
     <title>物件一覧</title>
 {% endblock %}
-
-<!-- {% block header_links %} -->
-<!-- Add Bootstrap navigation bar -->
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'RealEstate360:logout' %}">Logout</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'RealEstate360:propertyinfo_create' %}">Create</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-{% endblock %} -->
-
+    
 {% block content %}
-<h3>物件一覧</h3>
-<ul>
-  {% for basic_information in basic_informations %}
-  <li>
-    <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}">
-      {{ basic_information.control_number }}:{{ basic_information.property_name }}
-    </a>
-  </li>
-  {% endfor %}
-</ul>
+
+    <!-- ページタイトル -->
+    <div class="page__title container-lg container-md container-sm">
+        <div class="row page-name">
+            <div class="col"><h2>物件情報一覧</h2></div>
+            <!-- <div class="col"></div> -->
+        </div>
+    </div>
+
+    <!-- 一覧リストの項目名 -->
+    <div class="container-lg container-md container-sm">
+        <div class="row list__title gx-sm-0 gx-md-1">
+            <div class="col-4"><h3 class="list__title--tagname">管理タグ</h3></div>
+            <div class="col-4"><h3 class="list__title--property">物件名</h3></div>
+            <div class="col-3"><h3 class="list__title--location">所在地</h3></div>
+            <div class="col-1"></div>
+        </div>
+
+        <!-- 物件リストの列 -->
+        {% for basic_information in basic_informations %}
+        <div class="row list__item gx-1">
+            <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}" class="d-flex">
+                <div class="col-4">
+                    <p class="list__item--tagname">{{ basic_information.control_number }}</p>
+                </div>
+                <div class="col-4">
+                    <p>{{ basic_information.property_name }}</p>
+                </div>
+                <div class="col-3">
+                    <p>{{ basic_information.location }}</p>
+                </div>
+                <div class="col-1 list__item--arrow">
+                    <img src="{% static 'img/web-arrow.svg' %}" alt="詳細ページを見る"  width="12.5" height="25" class="web-arrow">
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+
 {% endblock %}
