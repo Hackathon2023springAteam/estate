@@ -45,10 +45,10 @@ Add Bootstrap navigation bar
 
 
 
-<!-- <form method="post">
+<form method="post">
   {% csrf_token %}
 
-  <div class="mb-3">
+  <!-- <div class="mb-3">
     <label for="{{ basic_information_form.control_number.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
       {{ basic_information_form.control_number.label }}
     </label>
@@ -74,14 +74,15 @@ Add Bootstrap navigation bar
       {{ basic_information_form.address.label }}
     </label>
     {{ basic_information_form.address }}
-  </div>
+  </div> -->
 
   {{ city_planning_form.as_p }}
-  {{ building_information_form.as_p }}
+  <!-- {{ building_information_form.as_p }}
   {{ land_information_form.as_p }}
-  {{ infrastructure_information_form.as_p }}
+  {{ infrastructure_information_form.as_p }} -->
+
   <button type="submit">登録</button>
-</form> -->
+</form>
 
 <form method="POST">{% csrf_token %}
     <p class="error-message">{{ error }}</p>
@@ -203,7 +204,7 @@ Add Bootstrap navigation bar
                         <label for="" class="label-damy">　　</label>
                         <button type="button" class="pic-upload-btn btn-secondary">
                             <p>画像選択</p>
-                            <img src="{% static 'img/mobile-camera-logo.svg' %}" alt=""  width="35" height="28.64" class="camera-img">
+                            <img src="{% static 'img/mobile-camera-logo.svg' %}" alt=""  width="30" height="24.55" class="camera-img">
                         </button>
                     </div>
                 </div>
@@ -215,7 +216,10 @@ Add Bootstrap navigation bar
                     </div>
                     <div class="col col-3 col-md-3 col-lg-3 d-flex input-form__area">
                         <label for="" class="label-damy">　　</label>
-                        <button type="button" class="pic-upload-btn btn-secondary"><p>画像選択</p></button>
+                        <button type="button" class="pic-upload-btn btn-secondary">
+                            <p>画像選択</p>
+                            <img src="{% static 'img/mobile-camera-logo.svg' %}" alt=""  width="30" height="24.55" class="camera-img">
+                        </button>
                     </div>
                 </div>
             </div>
@@ -271,7 +275,10 @@ Add Bootstrap navigation bar
                     </div>
                     <div class="col col-3 col-md-3 col-lg-3 d-flex input-form__area">
                         <label for="" class="label-damy">　　</label>
-                        <button type="button" class="pic-upload-btn btn-secondary"><p>画像選択</p></button>
+                        <button type="button" class="pic-upload-btn btn-secondary">
+                            <p>画像選択</p>
+                            <img src="{% static 'img/mobile-camera-logo.svg' %}" alt=""  width="30" height="24.55" class="camera-img">
+                        </button>
                     </div>
                 </div>
             </div>
