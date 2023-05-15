@@ -2,47 +2,67 @@
 <html lang="ja">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}デフォルトタイトル{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  {% load static %}
+    <!-- GoogleFontsインポート/フォント名：BIZ UDPGothic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Bootstrap CSS -->
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Bootstrap CDN読み込み -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="{% static 'js/jquery.slim.min.js' %}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- staticフォルダ内のcss読み込み -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/custom-color-bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
-  {% block extra_head %}
-  {% endblock %}
-
+    <!-- 各ページのタイトル読み込み -->
+    {% block title %}{% endblock %}
 </head>
 
 
 <body>
-  <header>
-    <nav>
-      {% block header_links %}
-      {% endblock %}
+    <!-- ヘッダー -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+
+            <div class="navbar-brand">
+                <img src="{% static 'img/web-header-logo.svg' %}" alt=""  width="85" height="48.1" class="img-fluid">
+            </div>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item ms-lg-5">
+                        <a class="nav-link active" aria-current="page" href="{% url 'RealEstate360:propertyinfos_list' %}">物件一覧</a>
+                    </li>
+                    <li class="nav-item ms-lg-5">
+                        <a class="nav-link active" aria-current="page" href="{% url 'RealEstate360:propertyinfo_create' %}">新規登録</a>                
+                    </li>
+                </ul>
+
+                <form class="d-flex mx-auto">
+                    <input class="serch-form form-control" type="search" placeholder="管理タグで検索" aria-label="Search">
+                    <button class="serch-btn btn-secondary" type="submit">検索</button>
+                </form>
+                <button type="button" class="logout-btn btn-secondary flex-shrink-0 ms-auto my-sm-2"><a class="nav-link" href="{% url 'RealEstate360:logout' %}">ログアウト</a></button>
+            </div>
+        </div>
     </nav>
-  </header>
-
-  <main>
-    {% block content %}
-    <!-- 子テンプレートでオーバーライドされる部分 -->
-    {% endblock %}
-  </main>
-
-  <footer>
-    <!-- フッターの内容 -->
-  </footer>
 
 
+    <!-- 各ページのbodyタグ内読み込み -->
+    {% block content %}{% endblock %}
+
+
+    <!-- Bootstrap JavaScript読み込み -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>

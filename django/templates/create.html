@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}Create{% endblock %}
+{% block title %}
+    <title>新規登録</title>
+{% endblock %}
 
 {% block header_links %}
 <!-- Add Bootstrap navigation bar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -22,11 +24,11 @@
       </ul>
     </div>
   </div>
-</nav>
+</nav> -->
 {% endblock %}
 
 {% block content %}
-<h1>物件情報の登録</h1>
+<h3>新規登録</h3>
 <form method="post">
   {% csrf_token %}
 

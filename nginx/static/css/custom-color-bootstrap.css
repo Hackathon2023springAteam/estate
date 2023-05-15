@@ -1,0 +1,52 @@
+/* primaryの色変更指定 */
+.btn-primary {
+    background: #97040C; /* //ボタンの背景色 */
+    color: #ffffff; /* ボタンのテキストの色 */
+}
+
+.btn-primary:hover, .btn-primary:focus, 
+.btn-primary:active, .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary:active.focus,
+.btn-primary.active, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary.active.focus,
+.open > .dropdown-toggle.btn-primary, 
+.open > .dropdown-toggle.btn-primary:hover,
+.open > .dropdown-toggle.btn-primary:focus, 
+.open > .dropdown-toggle.btn-primary.focus,
+.btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus {
+    background: #5D0C10;  /* ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色 */
+    color: #ffffff;  /* ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色 */
+}
+
+.btn-primary.outline {
+    border: 3px solid #97040C;  /* アウトラインのみのボタンの線の色 */
+    color :#97040C;  /* アウトラインのみのボタンのテキストの色 */
+}
+
+
+
+
+/* secondaryの色変更指定 */
+.btn-primary {
+    background: #D8C3C4; /* //ボタンの背景色 */
+    color: #000000; /* ボタンのテキストの色 */
+}
+
+.btn-secondary:hover, .btn-secondary:focus, 
+.btn-secondary:active, .btn-secondary:active:focus, .btn-secondary:active:hover, .btn-secondary:active.focus,
+.btn-secondary.active, .btn-secondary.active:focus, .btn-secondary.active:hover, .btn-secondary.active.focus,
+.open > .dropdown-toggle.btn-secondary, 
+.open > .dropdown-toggle.btn-secondary:hover,
+.open > .dropdown-toggle.btn-secondary:focus, 
+.open > .dropdown-toggle.btn-secondary.focus,
+.btn-secondary.disabled:hover, .btn-secondary[disabled]:hover, fieldset[disabled] .btn-secondary:hover,
+.btn-secondary.disabled:focus, .btn-secondary[disabled]:focus, fieldset[disabled] .btn-secondary:focus,
+.btn-secondary.disabled.focus, .btn-secondary[disabled].focus, fieldset[disabled] .btn-secondary.focus {
+    background: #B89D9E;  /* ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色 */
+    color: #000000;  /* ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色 */
+}
+
+.btn-secondary.outline {
+    border: 3px solid #D8C3C4;  /* アウトラインのみのボタンの線の色 */
+    color :#D8C3C4;  /* アウトラインのみのボタンのテキストの色 */
+}

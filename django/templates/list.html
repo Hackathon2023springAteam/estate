@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %}物件一覧{% endblock %}
+{% block head %}
+<!-- CSS読み込みの記述 -->">
+    {% load static %}
+    <link rel="stylesheet" href="#">
+{% endblock %}
 
-{% block header_links %}
+{% block title %}
+    <title>物件一覧</title>
+{% endblock %}
+
+<!-- {% block header_links %} -->
 <!-- Add Bootstrap navigation bar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -23,10 +31,10 @@
     </div>
   </div>
 </nav>
-{% endblock %}
+{% endblock %} -->
 
 {% block content %}
-<h2>物件情報一覧</h2>
+<h3>物件一覧</h3>
 <ul>
   {% for basic_information in basic_informations %}
   <li>
