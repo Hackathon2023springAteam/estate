@@ -45,12 +45,11 @@ class CityPlanningForm(forms.ModelForm):
         super(CityPlanningForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs.update({"autocomplete": "off"})
-
-        # inputのラベルをカスタマイズ
-        # self.fields["zoning"].label = "用途地域"
-        # self.fields["public_land_expansion_act"].label = "公用地拡大法"
-        # self.fields["road_width"].label = "道路幅"
-        # self.fields["condition"].label = "状態"
+        
+        self.fields["zoning"].widget = forms.TextInput(attrs={'class': 'form-control'})
+        self.fields["public_land_expansion_act"].widget = forms.TextInput(attrs={'class': 'form-control'})
+        self.fields["road_width"].widget = forms.NumberInput(attrs={'class': 'form-control', 'step': '0.1'})
+        self.fields["condition"].widget = forms.TextInput(attrs={'class': 'form-control'})
 
     def save(self, commit=True):
         instance = super(CityPlanningForm, self).save(commit=False)
@@ -81,14 +80,13 @@ class BuildingInformationForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs.update({"autocomplete": "off"})
 
-        # inputのラベルをカスタマイズ
-        # self.fields["certified_copy_of_building"].label = "建物謄本取得"
-        # self.fields["building_drawing"].label = "建物図面取得"
-        # self.fields["building_confirmation_screen"].label = "建築確認画面"
-        # self.fields["property_tax_assessment_certificate"].label = "固定資産税評価証明書"
-        # self.fields["building_use"].label = "物件用途"
-        # self.fields["type_of_rights"].label = "権利の種類"
-        # self.fields["relationship_to_land_owner"].label = "土地所有者との関係"
+        self.fields["certified_copy_of_building"].widget = forms.TextInput(attrs={'class': 'form-control'})
+        self.fields["building_drawing"].widget = forms.TextInput(attrs={'class': 'form-control'})
+        self.fields["building_confirmation_screen"].widget = forms.TextInput(attrs={'class': 'form-control'})
+        self.fields["property_tax_assessment_certificate"].widget = forms.TextInput(attrs={'class': 'form-control'})
+        self.fields["building_use"].widget = forms.TextInput(attrs={'class': 'form-control'})
+        self.fields["type_of_rights"].widget = forms.TextInput(attrs={'class': 'form-control'})
+        self.fields["relationship_to_land_owner"].widget = forms.TextInput(attrs={'class': 'form-control'})
 
     def save(self, commit=True):
         instance = super(BuildingInformationForm, self).save(commit=False)
@@ -130,15 +128,14 @@ class LandInformationForm(forms.ModelForm):
         super(LandInformationForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs.update({"autocomplete": "off"})
-
-        # inputのラベルをカスタマイズ
-        # self.fields["area"].label = "面積"
-        # self.fields["square_meter"].label = "坪数"
-        # self.fields["land_category"].label = "地目"
-        # self.fields["certified_copy_of_land"].label = "土地謄本"
-        # self.fields["character_map"].label = "字図"
-        # self.fields["survey_map"].label = "測量図"
-        # self.fields["type_of_rights"].label = "権利の種類"
+        
+        self.fields["area"].widget = forms.NumberInput(attrs={'class': 'form-control', 'step': '0.1'})
+        self.fields["square_meter"].widget = forms.NumberInput(attrs={'class': 'form-control', 'step': '0.1'})
+        self.fields["land_category"].widget = forms.NumberInput(attrs={'class': 'form-control', 'step': '1'})
+        self.fields["certified_copy_of_land"].widget = forms.TextInput(attrs={'class': 'form-control'})
+        self.fields["character_map"].widget = forms.TextInput(attrs={'class': 'form-control'})
+        self.fields["survey_map"].widget = forms.TextInput(attrs={'class': 'form-control'})
+        self.fields["type_of_rights"].widget = forms.TextInput(attrs={'class': 'form-control'})
 
     def save(self, commit=True):
         instance = super(LandInformationForm, self).save(commit=False)
@@ -173,10 +170,10 @@ class InfrastructureInformationForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs.update({"autocomplete": "off"})
 
-        # inputのラベルをカスタマイズ
-        # self.fields["water_supply"].label = "上水"
-        # self.fields["sweage"].label = "下水"
-        # self.fields["solar_power_generation"].label = "太陽光発電"
+        self.fields["water_supply"].widget = forms.TextInput(attrs={'class': 'form-control'})
+        self.fields["sweage"].widget = forms.TextInput(attrs={'class': 'form-control'})
+        self.fields["solar_power_generation"].widget = forms.NumberInput(attrs={'class': 'form-control', 'step': '1'})
+
 
     def save(self, commit=True):
         instance = super(InfrastructureInformationForm, self).save(commit=False)
