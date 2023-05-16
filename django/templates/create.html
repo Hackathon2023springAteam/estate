@@ -10,29 +10,6 @@
     <title>新規登録</title>
 {% endblock %}
 
-<!-- {% block header_links %}
-Add Bootstrap navigation bar
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'RealEstate360:logout' %}">Logout</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'RealEstate360:propertyinfos_list' %}">View</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-{% endblock %} -->
-
 {% block content %}
 
     <!-- ページタイトル -->
@@ -42,290 +19,226 @@ Add Bootstrap navigation bar
         </div>
     </div>
 
+    
+    
+    <!-- start-- 入力フォーム -->
+    <form method="post">
+        {% csrf_token %}
+        
 
-
-
-<!-- <form method="post">
-  {% csrf_token %} -->
-
-  <!-- <div class="mb-3">
-    <label for="{{ basic_information_form.control_number.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
-      {{ basic_information_form.control_number.label }}
-    </label>
-    {{ basic_information_form.control_number }}
-  </div>
-
-  <div class="mb-3">
-    <label for="{{ basic_information_form.property_name.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
-      {{ basic_information_form.property_name.label }}
-    </label>
-    {{ basic_information_form.property_name }}
-  </div>
-
-  <div class="mb-3">
-    <label for="{{ basic_information_form.location.id_for_label }}" class="p-6 mb-2 bg-success text-white">
-      {{ basic_information_form.location.label }}
-    </label>
-    {{ basic_information_form.location }}
-  </div>
-
-  <div class="mb-3">
-    <label for="{{ basic_information_form.address.id_for_label }}" class="p-6 mb-2 bg-danger text-white">
-      {{ basic_information_form.address.label }}
-    </label>
-    {{ basic_information_form.address }}
-  </div> -->
-
-  <!-- {{ city_planning_form.as_p }} -->
-  <!-- {{ building_information_form.as_p }}
-  {{ land_information_form.as_p }}
-  {{ infrastructure_information_form.as_p }} -->
-
-  <!-- <button type="submit">登録</button>
-</form> -->
-
-<form method="POST">{% csrf_token %}
-    <p class="error-message">{{ error }}</p>
-<!-- 基本情報入力欄 -->
-    <div class="container-lg container-md container-sm input-container">
-        <div class="row d-flex input-form gx-sm-0">
-            <div class="col col-12 col-md-12 col-lg-2 input-form__title">
-                <h3>基本情報</h3>
-            </div>
-            <div class="col col-12 col-sm-12 col-md-12 col-lg-10 ms-auto">
-                <!-- 一行目 -->
-                <div class="row d-flex">
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">物件名</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required autofocus>
-                    </div>
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">管理タグ</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                </div>
-                <!-- 2行目 -->
-                <div class="row d-flex mt-lg-3">
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">所在地</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">住所地</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                </div>
-            </div>
-            <div class="cotainer-border"></div>
+<!-- ◆基本情報 -->
+        <!-- 管理番号  -->
+        <div class="mb-3">
+            <label for="{{ basic_information_form.control_number.id_for_label }}" class="">
+            {{ basic_information_form.control_number.label }}
+            </label>
+            {{ basic_information_form.control_number }}
         </div>
-    </div>
 
-    <!-- 都市計画入力欄 -->
-    <div class="container-lg container-md container-sm input-container">
-        <div class="row d-flex input-form gx-sm-0">
-            <div class="col col-12 col-md-12 col-lg-2 input-form__title">
-                <h3>都市計画</h3>
-            </div>
-            <div class="col col-12 col-sm-12 col-md-12 col-lg-10 ms-auto">
-                <!-- 一行目 -->
-                <div class="row d-flex">
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">用途地域</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required autofocus>
-                    </div>
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">道路幅</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                </div>
-                <!-- 2行目 -->
-                <div class="row d-flex mt-lg-3">
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">公用地拡大法</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">状態</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                </div>
-            </div>
-            <div class="cotainer-border"></div>
+        <!-- 物件名 -->
+        <div class="mb-3">
+            <label for="{{ basic_information_form.property_name.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
+            {{ basic_information_form.property_name.label }}
+            </label>
+            {{ basic_information_form.property_name }}
         </div>
-    </div>
+        
+        <!-- 所在地 -->
+        <div class="mb-3">
+            <label for="{{ basic_information_form.location.id_for_label }}" class="p-6 mb-2 bg-success text-white">
+            {{ basic_information_form.location.label }}
+            </label>
+            {{ basic_information_form.location }}
+        </div>
 
-    <!-- 土地入力欄 -->
-    <div class="container-lg container-md container-sm input-container">
-        <div class="row d-flex input-form gx-sm-0">
-            <div class="col col-12 col-md-12 col-lg-2 input-form__title--land">
-                <h3>土地</h3>
-            </div>
-            <div class="col col-12 col-sm-12 col-md-12 col-lg-10 ms-auto">
-                <!-- 一行目 -->
-                <div class="row d-flex">
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">地目</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required autofocus>
-                    </div>
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">土地坪数</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                </div>
-                <!-- 2行目 -->
-                <div class="row d-flex mt-lg-3">
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">測量図面</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">実測土地坪数</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                </div>
-                <!-- 3行目 -->
-                <div class="row d-flex mt-lg-4">
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">権利の種類</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                    <div class="col col-3 col-md-3 col-lg-3 d-flex input-form__area">
-                        <!-- <label for="" class="label-damy">　　</label>
-                        <button type="button" class="pic-upload-btn btn-secondary"></button> -->
-                    </div>
-                </div>
-                <!-- 4行目 -->
-                <div class="row d-flex mt-lg-3">
-                    <div class="col col-9 col-md-9 col-lg-9 d-flex input-form__area">
-                        <label for="" class="">字図</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                    <div class="col col-3 col-md-3 col-lg-3 d-flex input-form__area">
-                        <label for="" class="label-damy">　　</label>
-                        <button type="button" class="pic-upload-btn btn-secondary">
-                            <p>画像選択</p>
-                            <img src="{% static 'img/mobile-camera-logo.svg' %}" alt=""  width="30" height="24.55" class="camera-img">
-                        </button>
-                    </div>
-                </div>
-                <!-- 5行目 -->
-                <div class="row d-flex mt-lg-4">
-                    <div class="col col-9 col-md-9 col-lg-9 d-flex input-form__area">
-                        <label for="" class="">土地謄本</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                    <div class="col col-3 col-md-3 col-lg-3 d-flex input-form__area">
-                        <label for="" class="label-damy">　　</label>
-                        <button type="button" class="pic-upload-btn btn-secondary">
-                            <p>画像選択</p>
-                            <img src="{% static 'img/mobile-camera-logo.svg' %}" alt=""  width="30" height="24.55" class="camera-img">
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="cotainer-border"></div>
+        <!-- 住所地 -->
+        <div class="mb-3">
+            <label for="{{ basic_information_form.address.id_for_label }}" class="p-6 mb-2 bg-danger text-white">
+            {{ basic_information_form.address.label }}
+            </label>
+            {{ basic_information_form.address }}
         </div>
-    </div>
+        
+<!-- ◆都市計画 -->
+        <!-- 用途地域 -->
+        <div class="mb-3">
+            <label for="{{ city_planning_form.zoning.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
+                {{ city_planning_form.zoning.label }}
+            </label>
+            {{ city_planning_form.zoning }}
+        </div>
 
-    <!-- 建物入力欄 -->
-    <div class="container-lg container-md container-sm input-container">
-        <div class="row d-flex input-form gx-sm-0">
-            <div class="col col-12 col-md-12 col-lg-2 input-form__title--building">
-                <h3>建物</h3>
-            </div>
-            <div class="col col-12 col-sm-12 col-md-12 col-lg-10 ms-auto">
-                <!-- 一行目 -->
-                <div class="row d-flex">
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">物件用途</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required autofocus>
-                    </div>
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">建築確認図面</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                </div>
-                <!-- 2行目 -->
-                <div class="row d-flex mt-lg-3">
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">建物図面</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">固定資産税評価証明書</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                </div>
-                <!-- 3行目 -->
-                <div class="row d-flex mt-lg-4">
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">権利の種類</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required autofocus>
-                    </div>
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">土地所有者との関係</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                </div>
-                <!-- 4行目 -->
-                <div class="row d-flex mt-lg-3">
-                    <div class="col col-9 col-md-9 col-lg-9 d-flex input-form__area">
-                        <label for="" class="">建物謄本</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                    <div class="col col-3 col-md-3 col-lg-3 d-flex input-form__area">
-                        <label for="" class="label-damy">　　</label>
-                        <button type="button" class="pic-upload-btn btn-secondary">
-                            <p>画像選択</p>
-                            <img src="{% static 'img/mobile-camera-logo.svg' %}" alt=""  width="30" height="24.55" class="camera-img">
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="cotainer-border"></div>
+        <!-- 公用地拡大法 -->
+        <div class="mb-3">
+            <label for="{{ city_planning_form.public_land_expansion_act.id_for_label }}"
+                class="p-6 mb-2 bg-secondary text-white">
+                {{ city_planning_form.public_land_expansion_act.label }}
+            </label>
+            {{ city_planning_form.public_land_expansion_act }}
         </div>
-    </div>
 
-    <!-- インフラ入力欄 -->
-    <div class="container-lg container-md container-sm input-container">
-        <div class="row d-flex input-form gx-sm-0">
-            <div class="col col-12 col-md-12 col-lg-2 input-form__title">
-                <h3>インフラ</h3>
-            </div>
-            <div class="col col-12 col-sm-12 col-md-12 col-lg-10 ms-auto">
-                <!-- 一行目 -->
-                <div class="row d-flex">
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">上水</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required autofocus>
-                    </div>
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">下水</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                </div>
-                <!-- 2行目 -->
-                <div class="row d-flex mt-lg-3">
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="" class="">太陽光発電</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required>
-                    </div>
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                    </div>
-                </div>
-            </div>
+        <!-- 道路幅 -->
+        <div class="mb-3">
+            <label for="{{ city_planning_form.road_width.id_for_label }}" class="p-6 mb-2 bg-success text-white">
+                {{ city_planning_form.road_width.label }}
+            </label>
+            {{ city_planning_form.road_width }}
         </div>
-    </div>
-    <div class="container-lg container-md container-sm input-container">
-        <div class="row">
-            <div class="col"></div>
-            <div class="col col-12 col-md-4 col-lg-3 col-xl-2">
-                <button type="submit" class="registration-btn btn-primary">登録する</button>
-            </div>
-            <div class="col"></div>
+
+        <!-- 状態 -->
+        <div class="mb-3">
+            <label for="{{ city_planning_form.condition.id_for_label }}" class="p-6 mb-2 bg-danger text-white">
+                {{ city_planning_form.condition.label }}
+            </label>
+            {{ city_planning_form.condition }}
         </div>
-    </div>
-</form>
+
+<!-- ◆建物情報 -->
+        <!-- 建物謄本取得 -->
+        <div class="mb-3">
+            <label for="{{ building_information_form.certified_copy_of_building.id_for_label }}"
+                class="p-6 mb-2 bg-primary text-white">
+                {{ building_information_form.certified_copy_of_building.label }}
+            </label>
+            {{ building_information_form.certified_copy_of_building }}
+        </div>
+
+        <!-- 建物図面取得 -->
+        <div class="mb-3">
+            <label for="{{ building_information_form.building_drawing.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
+                {{ building_information_form.building_drawing.label }}
+            </label>
+            {{ building_information_form.building_drawing }}
+        </div>
+
+        <!-- 建物確認図面 -->
+        <div class="mb-3">
+            <label for="{{ building_information_form.building_confirmation_screen.id_for_label }}"
+                class="p-6 mb-2 bg-success text-white">
+                {{ building_information_form.building_confirmation_screen.label }}
+            </label>
+            {{ building_information_form.building_confirmation_screen }}
+        </div>
+
+        <!-- 固定資産税評価証明書 -->
+        <div class="mb-3">
+            <label for="{{ building_information_form.property_tax_assessment_certificate.id_for_label }}"
+                class="p-6 mb-2 bg-danger text-white">
+                {{ building_information_form.property_tax_assessment_certificate.label }}
+            </label>
+            {{ building_information_form.property_tax_assessment_certificate }}
+        </div>
+
+        <!-- 物件用途 -->
+        <div class="mb-3">
+            <label for="{{ building_information_form.building_use.id_for_label }}" class="p-6 mb-2 bg-warning text-white">
+                {{ building_information_form.building_use.label }}
+            </label>
+            {{ building_information_form.building_use }}
+        </div>
+
+        <!-- 新築年数 -->
+        <div class="mb-3">
+            <label for="{{ building_information_form.type_of_rights.id_for_label }}" class="p-6 mb-2 bg-info text-white">
+                {{ building_information_form.type_of_rights.label }}
+            </label>
+            {{ building_information_form.type_of_rights }}
+        </div>
+
+        <!-- 土地所有者との関係 -->
+        <div class="mb-3">
+            <label for="{{ building_information_form.relationship_to_land_owner.id_for_label }}"
+                class="p-6 mb-2 bg-light text-black">
+                {{ building_information_form.relationship_to_land_owner.label }}
+            </label>
+            {{ building_information_form.relationship_to_land_owner }}
+        </div>
+
+<!-- ◆土地情報 -->
+        <!-- 面積 -->
+        <div class="mb-3">
+            <label for="{{ land_information_form.area.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
+                {{ land_information_form.area.label }}
+            </label>
+            {{ land_information_form.area }}
+        </div>
+
+        <!-- 坪数 -->
+        <div class="mb-3">
+            <label for="{{ land_information_form.square_meter.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
+                {{ land_information_form.square_meter.label }}
+            </label>
+            {{ land_information_form.square_meter }}
+        </div>
+
+        <!-- 地目 -->
+        <div class="mb-3">
+            <label for="{{ land_information_form.land_category.id_for_label }}" class="p-6 mb-2 bg-success text-white">
+                {{ land_information_form.land_category.label }}
+            </label>
+            {{ land_information_form.land_category }}
+        </div>
+        
+        <!-- 土地謄本  -->
+        <div class="mb-3">
+            <label for="{{ land_information_form.certified_copy_of_land.id_for_label }}" class="p-6 mb-2 bg-danger text-white">
+                {{ land_information_form.certified_copy_of_land.label }}
+            </label>
+            {{ land_information_form.certified_copy_of_land }}
+        </div>
+
+        <!-- 字図 -->
+        <div class="mb-3">
+            <label for="{{ land_information_form.character_map.id_for_label }}" class="p-6 mb-2 bg-warning text-white">
+                {{ land_information_form.character_map.label }}
+            </label>
+            {{ land_information_form.character_map }}
+        </div>
+
+        <!-- 測量図 -->
+        <div class="mb-3">
+            <label for="{{ land_information_form.survey_map.id_for_label }}" class="p-6 mb-2 bg-info text-white">
+                {{ land_information_form.survey_map.label }}
+            </label>
+            {{ land_information_form.survey_map }}
+        </div>
+
+        <!-- 権利の種類 -->
+        <div class="mb-3">
+            <label for="{{ land_information_form.type_of_rights.id_for_label }}" class="p-6 mb-2 bg-light text-black">
+                {{ land_information_form.type_of_rights.label }}
+            </label>
+            {{ land_information_form.type_of_rights }}
+        </div>
+
+<!-- ◆インフラ情報 -->
+        <!-- 上水 -->
+        <div class="mb-3">
+            <label for="{{ infrastructure_information_form.water_supply.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
+                {{ infrastructure_information_form.water_supply.label }}
+            </label>
+            {{ infrastructure_information_form.water_supply }}
+        </div>
+
+        <!-- 下水 -->
+        <div class="mb-3">
+            <label for="{{ infrastructure_information_form.sweage.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
+                {{ infrastructure_information_form.sweage.label }}
+            </label>
+            {{ infrastructure_information_form.sweage }}
+        </div>
+
+        <!-- 太陽光発電 -->
+        <div class="mb-3">
+            <label for="{{ infrastructure_information_form.solar_power_generation.id_for_label }}"
+                class="p-6 mb-2 bg-success text-white">
+                {{ infrastructure_information_form.solar_power_generation.label }}
+            </label>
+            {{ infrastructure_information_form.solar_power_generation }}
+        </div>
+
+        <button type="submit">登録</button>
+    </form>
 
 
 {% endblock %}
