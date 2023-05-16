@@ -60,7 +60,7 @@ def propertyinfos_list(request):
 
 @login_required
 def propertyinfo_detail(request, basic_information_id):
-    basic_information = get_object_or_404(BasicInformation, pk=basic_information_id)
+    basic_information = get_object_or_404(BasicInformation, pk=basic_information_id)    
     city_planning = get_object_or_404(CityPlanning, basic_information=basic_information)
     building_information = get_object_or_404(
         BuildingInformation, basic_information=basic_information
@@ -72,61 +72,24 @@ def propertyinfo_detail(request, basic_information_id):
         InfrastructureInformation, basic_information=basic_information
     )
 
-    basic_information_exclude_fields = ["basic_information_id", "user"]
-    basic_information_fields = [
-        (field, field.value_from_object(basic_information))
-        for field in basic_information._meta.fields
-        if field.name not in basic_information_exclude_fields
-    ]
-
-    city_planning_exclude_fields = ["basic_information", "city_planning_id"]
-    city_planning_fields = [
-        (field, field.value_from_object(city_planning))
-        for field in city_planning._meta.fields
-        if field.name not in city_planning_exclude_fields
-    ]
-
-    building_information_exclude_fields = [
-        "basic_information",
-        "building_information_id",
-    ]
-    building_information_fields = [
-        (field, field.value_from_object(building_information))
-        for field in building_information._meta.fields
-        if field.name not in building_information_exclude_fields
-    ]
-
-    land_information_exclude_fields = [
-        "basic_information",
-        "land_information_id",
-    ]
-    land_information_fields = [
-        (field, field.value_from_object(land_information))
-        for field in land_information._meta.fields
-        if field.name not in land_information_exclude_fields
-    ]
-
-    infrastructure_information_exclude_fields = [
-        "basic_information",
-        "infrastructure_information_id",
-    ]
-    infrastructure_information_fields = [
-        (field, field.value_from_object(infrastructure_information))
-        for field in infrastructure_information._meta.fields
-        if field.name not in infrastructure_information_exclude_fields
-    ]
+    basic_information_form = BasicInformationForm(instance=basic_information)
+    city_planning_form = CityPlanningForm(instance=city_planning)
+    building_information_form = BuildingInformationForm(instance=building_information)
+    land_information_form = LandInformationForm(instance=land_information)
+    infrastructure_information_form = InfrastructureInformationForm(
+        instance=infrastructure_information
+    )
+    
 
     context = {
-        "basic_information": basic_information,
-        "basic_information_fields": basic_information_fields,
-        "city_planning_fields": city_planning_fields,
-        "building_information_fields": building_information_fields,
-        "land_information_fields": land_information_fields,
-        "infrastructure_information_fields": infrastructure_information_fields,
+        "basic_information_form": basic_information_form,
+        "city_planning_form":city_planning_form,
+        "building_information_form":building_information_form,
+        "land_information_form":land_information_form,
+        "infrastructure_information_form":infrastructure_information_form,
     }
 
     return render(request, "detail.html", context)
-
 
 @login_required
 def propertyinfo_create(request):
