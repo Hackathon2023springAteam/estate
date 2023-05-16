@@ -46,7 +46,9 @@ class BuildingInformation(models.Model):
         max_length=100, unique=False, verbose_name="固定資産税評価証明書"
     )
     building_use = models.CharField(max_length=100, unique=False, verbose_name="物件用途")
-    type_of_rights = models.CharField(max_length=100, unique=False, verbose_name="新築年数")
+    type_of_rights = models.CharField(
+        max_length=100, unique=False, verbose_name="権利の種類"
+    )
     relationship_to_land_owner = models.CharField(
         max_length=100, unique=False, verbose_name="土地所有者との関係"
     )
