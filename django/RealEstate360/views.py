@@ -230,6 +230,7 @@ def propertyinfo_inactive(request, basic_information_id):
         basic_information = get_object_or_404(BasicInformation, pk=basic_information_id)
         basic_information.is_active = False
         basic_information.save()
-        return redirect("/")
+        return redirect("RealEstate360:propertyinfos_list")
     else:
         return HttpResponseNotAllowed(["POST"])
+
