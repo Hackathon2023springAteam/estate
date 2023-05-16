@@ -25,15 +25,26 @@
     <form method="post">
         {% csrf_token %}
         
+        {{ city_planning_form.as_p }}
+
+
 
 <!-- ◆基本情報 -->
         <!-- 管理番号  -->
-        <div class="mb-3">
-            <label for="{{ basic_information_form.control_number.id_for_label }}" class="">
-            {{ basic_information_form.control_number.label }}
-            </label>
-            {{ basic_information_form.control_number }}
+        <div class="container-lg container-md container-sm input-container">
+            <div class="row d-flex input-form gx-sm-0">
+                <div class="col col-12 col-md-12 col-lg-2 input-form__title">
+                    <h3>基本情報</h3>
+                </div>
+                <div class="col col-12 col-sm-12 col-md-12 col-lg-10 ms-auto">
+                    <label for="{{ basic_information_form.control_number.id_for_label }}" class="">
+                    {{ basic_information_form.control_number.label }}
+                    </label>
+                    {{ basic_information_form.control_number }}
+                </div>
+            </div>
         </div>
+
 
         <!-- 物件名 -->
         <div class="mb-3">
