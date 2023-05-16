@@ -215,14 +215,11 @@ def propertyinfo_edit(request, basic_information_id):
             )
 
     context = {
-        "forms": [
-            basic_information_form,
-            city_planning_form,
-            building_information_form,
-            land_information_form,
-            infrastructure_information_form,
-        ],
-        "basic_information": basic_information,
+        "basic_information_form":basic_information_form,
+        "city_planning_form":city_planning_form,
+        "building_information_form":building_information_form,
+        "land_information_form":land_information_form,
+        "infrastructure_information_form":infrastructure_information_form,
     }
     return render(request, "edit.html", context)
 

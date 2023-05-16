@@ -29,17 +29,189 @@
 <h1>物件情報の更新</h1>
 <form method="post">
   {% csrf_token %}
-  {% for form in forms %}
-  <table>
-    {% for field in form %}
-    <tr>
-      <th>{{ field.label }}:</th>
-      <td>{{ field }}</td>
-    </tr>
-    {% endfor %}
-  </table>
-  {% endfor %}
-  <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}">キャンセル</a>
+
+  <div class="mb-3">
+    <label for="{{ basic_information_form.control_number.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
+      {{ basic_information_form.control_number.label }}
+    </label>
+    {{ basic_information_form.control_number }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ basic_information_form.property_name.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
+      {{ basic_information_form.property_name.label }}
+    </label>
+    {{ basic_information_form.property_name }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ basic_information_form.location.id_for_label }}" class="p-6 mb-2 bg-success text-white">
+      {{ basic_information_form.location.label }}
+    </label>
+    {{ basic_information_form.location }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ basic_information_form.address.id_for_label }}" class="p-6 mb-2 bg-danger text-white">
+      {{ basic_information_form.address.label }}
+    </label>
+    {{ basic_information_form.address }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ city_planning_form.zoning.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
+      {{ city_planning_form.zoning.label }}
+    </label>
+    {{ city_planning_form.zoning }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ city_planning_form.public_land_expansion_act.id_for_label }}"
+      class="p-6 mb-2 bg-secondary text-white">
+      {{ city_planning_form.public_land_expansion_act.label }}
+    </label>
+    {{ city_planning_form.public_land_expansion_act }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ city_planning_form.road_width.id_for_label }}" class="p-6 mb-2 bg-success text-white">
+      {{ city_planning_form.road_width.label }}
+    </label>
+    {{ city_planning_form.road_width }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ city_planning_form.condition.id_for_label }}" class="p-6 mb-2 bg-danger text-white">
+      {{ city_planning_form.condition.label }}
+    </label>
+    {{ city_planning_form.condition }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ building_information_form.certified_copy_of_building.id_for_label }}"
+      class="p-6 mb-2 bg-primary text-white">
+      {{ building_information_form.certified_copy_of_building.label }}
+    </label>
+    {{ building_information_form.certified_copy_of_building }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ building_information_form.building_drawing.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
+      {{ building_information_form.building_drawing.label }}
+    </label>
+    {{ building_information_form.building_drawing }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ building_information_form.building_confirmation_screen.id_for_label }}"
+      class="p-6 mb-2 bg-success text-white">
+      {{ building_information_form.building_confirmation_screen.label }}
+    </label>
+    {{ building_information_form.building_confirmation_screen }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ building_information_form.property_tax_assessment_certificate.id_for_label }}"
+      class="p-6 mb-2 bg-danger text-white">
+      {{ building_information_form.property_tax_assessment_certificate.label }}
+    </label>
+    {{ building_information_form.property_tax_assessment_certificate }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ building_information_form.building_use.id_for_label }}" class="p-6 mb-2 bg-warning text-white">
+      {{ building_information_form.building_use.label }}
+    </label>
+    {{ building_information_form.building_use }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ building_information_form.type_of_rights.id_for_label }}" class="p-6 mb-2 bg-info text-white">
+      {{ building_information_form.type_of_rights.label }}
+    </label>
+    {{ building_information_form.type_of_rights }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ building_information_form.relationship_to_land_owner.id_for_label }}"
+      class="p-6 mb-2 bg-light text-black">
+      {{ building_information_form.relationship_to_land_owner.label }}
+    </label>
+    {{ building_information_form.relationship_to_land_owner }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ land_information_form.area.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
+      {{ land_information_form.area.label }}
+    </label>
+    {{ land_information_form.area }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ land_information_form.square_meter.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
+      {{ land_information_form.square_meter.label }}
+    </label>
+    {{ land_information_form.square_meter }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ land_information_form.land_category.id_for_label }}" class="p-6 mb-2 bg-success text-white">
+      {{ land_information_form.land_category.label }}
+    </label>
+    {{ land_information_form.land_category }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ land_information_form.certified_copy_of_land.id_for_label }}" class="p-6 mb-2 bg-danger text-white">
+      {{ land_information_form.certified_copy_of_land.label }}
+    </label>
+    {{ land_information_form.certified_copy_of_land }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ land_information_form.character_map.id_for_label }}" class="p-6 mb-2 bg-warning text-white">
+      {{ land_information_form.character_map.label }}
+    </label>
+    {{ land_information_form.character_map }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ land_information_form.survey_map.id_for_label }}" class="p-6 mb-2 bg-info text-white">
+      {{ land_information_form.survey_map.label }}
+    </label>
+    {{ land_information_form.survey_map }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ land_information_form.type_of_rights.id_for_label }}" class="p-6 mb-2 bg-light text-black">
+      {{ land_information_form.type_of_rights.label }}
+    </label>
+    {{ land_information_form.type_of_rights }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ infrastructure_information_form.water_supply.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
+      {{ infrastructure_information_form.water_supply.label }}
+    </label>
+    {{ infrastructure_information_form.water_supply }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ infrastructure_information_form.sweage.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
+      {{ infrastructure_information_form.sweage.label }}
+    </label>
+    {{ infrastructure_information_form.sweage }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ infrastructure_information_form.solar_power_generation.id_for_label }}"
+      class="p-6 mb-2 bg-success text-white">
+      {{ infrastructure_information_form.solar_power_generation.label }}
+    </label>
+    {{ infrastructure_information_form.solar_power_generation }}
+  </div>
+
+  <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information_form.instance.basic_information_id %}">キャンセル</a>
   <br>
   <button type="submit">更新する</button>
 </form>
