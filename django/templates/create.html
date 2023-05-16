@@ -45,8 +45,8 @@ Add Bootstrap navigation bar
 
 
 
-<form method="post">
-  {% csrf_token %}
+<!-- <form method="post">
+  {% csrf_token %} -->
 
   <!-- <div class="mb-3">
     <label for="{{ basic_information_form.control_number.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
@@ -76,13 +76,13 @@ Add Bootstrap navigation bar
     {{ basic_information_form.address }}
   </div> -->
 
-  {{ city_planning_form.as_p }}
+  <!-- {{ city_planning_form.as_p }} -->
   <!-- {{ building_information_form.as_p }}
   {{ land_information_form.as_p }}
   {{ infrastructure_information_form.as_p }} -->
 
-  <button type="submit">登録</button>
-</form>
+  <!-- <button type="submit">登録</button>
+</form> -->
 
 <form method="POST">{% csrf_token %}
     <p class="error-message">{{ error }}</p>
@@ -157,7 +157,7 @@ Add Bootstrap navigation bar
     <!-- 土地入力欄 -->
     <div class="container-lg container-md container-sm input-container">
         <div class="row d-flex input-form gx-sm-0">
-            <div class="col col-12 col-md-12 col-lg-2 input-form__title">
+            <div class="col col-12 col-md-12 col-lg-2 input-form__title--land">
                 <h3>土地</h3>
             </div>
             <div class="col col-12 col-sm-12 col-md-12 col-lg-10 ms-auto">
@@ -230,7 +230,7 @@ Add Bootstrap navigation bar
     <!-- 建物入力欄 -->
     <div class="container-lg container-md container-sm input-container">
         <div class="row d-flex input-form gx-sm-0">
-            <div class="col col-12 col-md-12 col-lg-2 input-form__title">
+            <div class="col col-12 col-md-12 col-lg-2 input-form__title--building">
                 <h3>建物</h3>
             </div>
             <div class="col col-12 col-sm-12 col-md-12 col-lg-10 ms-auto">
@@ -311,19 +311,16 @@ Add Bootstrap navigation bar
                         <input type="text"id="" class="input-text" placeholder="" name="" required>
                     </div>
                     <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <!-- <label for="" class="">状態</label>
-                        <input type="text"id="" class="input-text" placeholder="" name="" required> -->
                     </div>
                 </div>
             </div>
-            <!-- <div class="cotainer-border"></div> -->
         </div>
     </div>
-    <div class="container">
+    <div class="container-lg container-md container-sm input-container">
         <div class="row">
             <div class="col"></div>
-            <div class="col">
-                <button type="submit" class="registration-btn btn-primary">登録</button>
+            <div class="col col-12 col-md-4 col-lg-3 col-xl-2">
+                <button type="submit" class="registration-btn btn-primary">登録する</button>
             </div>
             <div class="col"></div>
         </div>
