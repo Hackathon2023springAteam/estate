@@ -32,6 +32,14 @@
 <form method="post">
   {% csrf_token %}
 
+  <select id="prefecturesSelect">
+
+  </select>
+
+  <select id="citiessSelect">
+    <!-- ここにAPIから取得したデータが反映されます -->
+  </select>
+
   <div class="mb-3">
     <label for="{{ basic_information_form.control_number.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
       {{ basic_information_form.control_number.label }}
@@ -215,4 +223,29 @@
 
   <button type="submit">登録</button>
 </form>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  window.onload = function () {
+    fetch('http://geoapi.heartrails.com/api/json?method=getPrefectures')
+      .then(response => response.json())
+      .then(data => {
+        const locationSelect = document.getElementById('prefecturesSelect');
+        locationSelect.innerHTML = ''; // clear current options
+
+        data.response.prefecture.forEach(prefecture => {
+          const option = document.createElement('option');
+          option.value = prefecture;
+          option.text = prefecture;
+          locationSelect.add(option);
+        });
+      });
+  };
+
+  document.getElementById('prefecturesSelect').addEventListener('change', function (e) {
+    console.log(e.target.value)
+
+  });
+</script>
 {% endblock %}
