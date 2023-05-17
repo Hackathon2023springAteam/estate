@@ -1,0 +1,231 @@
+/* h2-3のフォントサイズ指定 */
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 20px;
+    line-height: 3.8rem;
+}
+label {
+    font-size: 18px;
+    font-weight: 400;
+}
+p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 2.5rem;
+}
+@media screen and (max-width:991px) {
+    h2 {
+        font-size: 18px;
+    }
+    
+    h3 {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 2.8rem;
+    }
+    label {
+        font-size: 16px;
+        font-weight: 400;
+    }
+}
+
+/* 入力フォームエリアの区切り横線 */
+.cotainer-border {
+    height: 33px;
+    margin-bottom: 30px;
+    border-bottom: 5px solid var(--list-title-color);
+}
+/* 入力フォームエリアの区切り横線 削除 */
+@media screen and (max-width:991px) {
+    /* 画面サイズが991px以下からはここを読み込む */
+    .cotainer-border{
+        border-bottom: 0px;
+    }
+}
+
+
+/* ページタイトルの指定（物件情報登録） */
+.page__title {
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+@media screen and (max-width:991px) {
+    /* 画面サイズが991px以下からはここを読み込む */
+    .page__title {
+        margin-top: 53px;
+        text-align: center;
+    }
+}
+
+/* 項目タイトルの大きさ指定 入力欄の左側の濃いグレーの四角 */
+/* 基本情報・都市計画・インフラ */
+.input-form__title {
+    display: flex;
+    width: 14.6%;
+    height: 160px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--list-title-color);
+}
+/* 項目タイトル モバイル時の文字位置調整 */
+@media screen and (max-width:991px) {
+    /* 画面サイズが991px以下からはここを読み込む */
+    .input-form__title {
+        width: 100%;
+        height: 40px;
+        padding-top: 8px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #BBBBBB;
+    }
+}
+/* 土地 */
+.input-form__title--land {
+    display: flex;
+    width: 14.6%;
+    height: 442px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--list-title-color);
+}
+/* 項目タイトル モバイル時の文字位置調整 */
+@media screen and (max-width:991px) {
+    /* 画面サイズが991px以下からはここを読み込む */
+    .input-form__title--land {
+        width: 100%;
+        height: 40px;
+        padding-top: 8px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #BBBBBB;
+    }
+}
+/* 建物 */
+.input-form__title--building {
+    display: flex;
+    width: 14.6%;
+    height: 346px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--list-title-color);
+}
+/* 項目タイトル モバイル時の文字位置調整 */
+@media screen and (max-width:991px) {
+    /* 画面サイズが991px以下からはここを読み込む */
+    .input-form__title--building {
+        width: 100%;
+        height: 40px;
+        padding-top: 8px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #BBBBBB;
+    }
+}
+
+/* ラベルと入力フォームの縦並び指定 */
+.input-form__area {
+    flex-direction: column;
+}
+/* /* 入力フォーム 間隔の指定:991px)  */
+@media screen and (max-width:991px) {
+    /* 画面サイズが991px以下からはここを読み込む */
+    .input-form__area  {
+        margin-top: 6px;
+    }
+}
+
+/* 入力フォームの高さ指定 */
+.form-control {
+    height: 42px;
+    border: none;
+    background: #FFFFFF;
+    border: 1px solid #BBBBBB;
+    border: 1px solid var(--list-border-color);
+    border-radius: 5px;
+    &:focus {
+        box-shadow:none !important;
+        border-color: var(--dark);
+    }
+}
+/* 入力フォーム タブレットサイズからモバイルの高さ指定 */
+@media screen and (max-width:767px) {
+    /* 画面サイズが767px以下からはここを読み込む */
+    .form-control {
+        height: 48px;
+        &:focus {
+            box-shadow:none !important;
+            border-color: var(--dark);
+        }
+    }
+}
+
+/* 画像アプロードボタンのラベルダミー文字の色指定 */
+.label-damy{
+    opacity:0;
+}
+
+/* 画像アプロードボタンの指定 */
+.pic-upload-btn {
+    height: 42px;
+    border-radius: 5px;
+    outline:0;
+    &:focus {
+        box-shadow:none !important;
+
+    }
+}
+/* カメラアイコンを画面サイズが576px以上の時は消す */
+.camera-img {
+    opacity:0;
+}
+
+/* 画像アプロードボタン モバイル時の指定 */
+@media screen and (max-width:575px) {
+    /* 画面サイズが575px以下からはここを読み込む */
+    /* 画像登録ボタンも文字消す */
+    .pic-upload-btn p {
+        display: none;
+    }
+    /* 登録ボタン指定 */
+    .pic-upload-btn {
+        position: relative;
+        display: inline-flex;
+        height: 42px;
+        justify-content: center;
+        align-items: center;
+        outline:0;
+        &:focus {
+            box-shadow:none !important;
+        }
+    }
+    /* カメラアイコン表示指定 */
+    .camera-img {
+        position: relative;
+        opacity:1;
+    }
+}
+
+/* 登録するボタンの指定 */
+.registration-btn {
+    height: 42px;
+    width: 100%;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    color: #FFFFFF;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 20px;
+}
+@media screen and (max-width:767px) {
+    /* 画面サイズが767px以下からはここを読み込む */
+    .registration-btn {
+        height: 48px;
+        width: 100%;
+        color: #FFFFFF;
+        font-weight: 700;
+        font-size: 20px;
+    }
+}
+

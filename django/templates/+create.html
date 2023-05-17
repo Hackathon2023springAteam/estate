@@ -1,0 +1,254 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<!-- CSS読み込みの記述 -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/create.css' %}">
+{% endblock %}
+
+{% block title %}
+    <title>新規登録</title>
+{% endblock %}
+
+{% block content %}
+
+    <!-- ページタイトル -->
+    <div class="page__title container-lg container-md container-sm">
+        <div class="row page-name">
+            <div class="col"><h2>物件情報登録</h2></div>
+        </div>
+    </div>
+
+    
+    
+    <!-- start-- 入力フォーム -->
+    <form method="post">
+        {% csrf_token %}
+        
+
+
+<!-- ◆基本情報 -->
+        <!-- 管理番号  -->
+        <div class="container-lg container-md container-sm input-container">
+            <div class="row d-flex input-form gx-sm-0">
+                <div class="col col-12 col-md-12 col-lg-2 input-form__title">
+                    <h3>基本情報</h3>
+                </div>
+
+                <div class="col col-12 col-sm-12 col-md-12 col-lg-10 ms-auto">
+                    <label for="{{ basic_information_form.control_number.id_for_label }}" class="">
+                    {{ basic_information_form.control_number.label }}
+                    </label>
+                    {{ basic_information_form.control_number }}
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 物件名 -->
+        <div class="mb-3">
+            <label for="{{ basic_information_form.property_name.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
+            {{ basic_information_form.property_name.label }}
+            </label>
+            {{ basic_information_form.property_name }}
+        </div>
+        
+        <!-- 所在地 -->
+        <div class="mb-3">
+            <label for="{{ basic_information_form.location.id_for_label }}" class="p-6 mb-2 bg-success text-white">
+            {{ basic_information_form.location.label }}
+            </label>
+            {{ basic_information_form.location }}
+        </div>
+
+        <!-- 住所地 -->
+        <div class="mb-3">
+            <label for="{{ basic_information_form.address.id_for_label }}" class="p-6 mb-2 bg-danger text-white">
+            {{ basic_information_form.address.label }}
+            </label>
+            {{ basic_information_form.address }}
+        </div>
+        
+<!-- ◆都市計画 -->
+        <!-- 用途地域 -->
+        <div class="mb-3">
+            <label for="{{ city_planning_form.zoning.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
+                {{ city_planning_form.zoning.label }}
+            </label>
+            {{ city_planning_form.zoning }}
+        </div>
+
+        <!-- 公用地拡大法 -->
+        <div class="mb-3">
+            <label for="{{ city_planning_form.public_land_expansion_act.id_for_label }}"
+                class="p-6 mb-2 bg-secondary text-white">
+                {{ city_planning_form.public_land_expansion_act.label }}
+            </label>
+            {{ city_planning_form.public_land_expansion_act }}
+        </div>
+
+        <!-- 道路幅 -->
+        <div class="mb-3">
+            <label for="{{ city_planning_form.road_width.id_for_label }}" class="p-6 mb-2 bg-success text-white">
+                {{ city_planning_form.road_width.label }}
+            </label>
+            {{ city_planning_form.road_width }}
+        </div>
+
+        <!-- 状態 -->
+        <div class="mb-3">
+            <label for="{{ city_planning_form.condition.id_for_label }}" class="p-6 mb-2 bg-danger text-white">
+                {{ city_planning_form.condition.label }}
+            </label>
+            {{ city_planning_form.condition }}
+        </div>
+
+<!-- ◆建物情報 -->
+        <!-- 建物謄本取得/ -->
+        <div class="mb-3">
+            <label for="{{ building_information_form.certified_copy_of_building.id_for_label }}"
+                class="p-6 mb-2 bg-primary text-white">
+                {{ building_information_form.certified_copy_of_building.label }}
+            </label>
+            {{ building_information_form.certified_copy_of_building }}
+        </div>
+
+        <!-- 建物図面取得/ -->
+        <div class="mb-3">
+            <label for="{{ building_information_form.building_drawing.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
+                {{ building_information_form.building_drawing.label }}
+            </label>
+            {{ building_information_form.building_drawing }}
+        </div>
+
+        <!-- 建物確認図面/ -->
+        <div class="mb-3">
+            <label for="{{ building_information_form.building_confirmation_screen.id_for_label }}"
+                class="p-6 mb-2 bg-success text-white">
+                {{ building_information_form.building_confirmation_screen.label }}
+            </label>
+            {{ building_information_form.building_confirmation_screen }}
+        </div>
+
+        <!-- 固定資産税評価証明書/ -->
+        <div class="mb-3">
+            <label for="{{ building_information_form.property_tax_assessment_certificate.id_for_label }}"
+                class="p-6 mb-2 bg-danger text-white">
+                {{ building_information_form.property_tax_assessment_certificate.label }}
+            </label>
+            {{ building_information_form.property_tax_assessment_certificate }}
+        </div>
+
+        <!-- 物件用途/ -->
+        <div class="mb-3">
+            <label for="{{ building_information_form.building_use.id_for_label }}" class="p-6 mb-2 bg-warning text-white">
+                {{ building_information_form.building_use.label }}
+            </label>
+            {{ building_information_form.building_use }}
+        </div>
+
+        <!-- 新築年数/ -->
+        <div class="mb-3">
+            <label for="{{ building_information_form.type_of_rights.id_for_label }}" class="p-6 mb-2 bg-info text-white">
+                {{ building_information_form.type_of_rights.label }}
+            </label>
+            {{ building_information_form.type_of_rights }}
+        </div>
+
+        <!-- 土地所有者との関係/ -->
+        <div class="mb-3">
+            <label for="{{ building_information_form.relationship_to_land_owner.id_for_label }}"
+                class="p-6 mb-2 bg-light text-black">
+                {{ building_information_form.relationship_to_land_owner.label }}
+            </label>
+            {{ building_information_form.relationship_to_land_owner }}
+        </div>
+
+<!-- ◆土地情報 -->
+        <!-- 面積/ -->
+        <div class="mb-3">
+            <label for="{{ land_information_form.area.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
+                {{ land_information_form.area.label }}
+            </label>
+            {{ land_information_form.area }}
+        </div>
+
+        <!-- 坪数 /-->
+        <div class="mb-3">
+            <label for="{{ land_information_form.square_meter.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
+                {{ land_information_form.square_meter.label }}
+            </label>
+            {{ land_information_form.square_meter }}
+        </div>
+
+        <!-- 地目 /-->
+        <div class="mb-3">
+            <label for="{{ land_information_form.land_category.id_for_label }}" class="p-6 mb-2 bg-success text-white">
+                {{ land_information_form.land_category.label }}
+            </label>
+            {{ land_information_form.land_category }}
+        </div>
+        
+        <!-- 土地謄本  -->
+        <div class="mb-3">
+            <label for="{{ land_information_form.certified_copy_of_land.id_for_label }}" class="p-6 mb-2 bg-danger text-white">
+                {{ land_information_form.certified_copy_of_land.label }}
+            </label>
+            {{ land_information_form.certified_copy_of_land }}
+        </div>
+
+        <!-- 字図/ -->
+        <div class="mb-3">
+            <label for="{{ land_information_form.character_map.id_for_label }}" class="p-6 mb-2 bg-warning text-white">
+                {{ land_information_form.character_map.label }}
+            </label>
+            {{ land_information_form.character_map }}
+        </div>
+
+        <!-- 測量図/ -->
+        <div class="mb-3">
+            <label for="{{ land_information_form.survey_map.id_for_label }}" class="p-6 mb-2 bg-info text-white">
+                {{ land_information_form.survey_map.label }}
+            </label>
+            {{ land_information_form.survey_map }}
+        </div>
+
+        <!-- 権利の種類/ -->
+        <div class="mb-3">
+            <label for="{{ land_information_form.type_of_rights.id_for_label }}" class="p-6 mb-2 bg-light text-black">
+                {{ land_information_form.type_of_rights.label }}
+            </label>
+            {{ land_information_form.type_of_rights }}
+        </div>
+
+<!-- ◆インフラ情報 -->
+        <!-- 上水/ -->
+        <div class="mb-3">
+            <label for="{{ infrastructure_information_form.water_supply.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
+                {{ infrastructure_information_form.water_supply.label }}
+            </label>
+            {{ infrastructure_information_form.water_supply }}
+        </div>
+
+        <!-- 下水/ -->
+        <div class="mb-3">
+            <label for="{{ infrastructure_information_form.sweage.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
+                {{ infrastructure_information_form.sweage.label }}
+            </label>
+            {{ infrastructure_information_form.sweage }}
+        </div>
+
+        <!-- 太陽光発電/ -->
+        <div class="mb-3">
+            <label for="{{ infrastructure_information_form.solar_power_generation.id_for_label }}"
+                class="p-6 mb-2 bg-success text-white">
+                {{ infrastructure_information_form.solar_power_generation.label }}
+            </label>
+            {{ infrastructure_information_form.solar_power_generation }}
+        </div>
+
+        <button type="submit">登録</button>
+    </form>
+
+
+{% endblock %}
