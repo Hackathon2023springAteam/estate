@@ -23,4 +23,5 @@ urlpatterns = [
         views.propertyinfo_inactive,
         name="propertyinfo_inactive",
     ),
+    path("get_properties/", views.get_properties, name="get_properties"),
 ]
