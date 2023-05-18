@@ -32,16 +32,6 @@
 <form method="post">
   {% csrf_token %}
 
-  <select id="geoapi-prefectures" name="geoapi-prefectures">
-    <option value="都道府県を選択してください">都道府県を選択してください</option>
-  </select>
-  <select id="geoapi-cities" name="geoapi-cities">
-    <option value="市区町村名を選択してください">市区町村名を選択してください</option>
-  </select>
-  <select id="geoapi-towns" name="geoapi-towns">
-    <option value="町域を選択してください">町域を選択してください</option>
-  </select>
-
   <div class="mb-3">
     <label for="{{ basic_information_form.control_number.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
       {{ basic_information_form.control_number.label }}
@@ -62,6 +52,16 @@
     </label>
     {{ basic_information_form.location }}
   </div>
+
+  <select id="geoapi-prefectures" name="geoapi-prefectures">
+    <option value="都道府県を選択してください">都道府県を選択してください</option>
+  </select>
+  <select id="geoapi-cities" name="geoapi-cities">
+    <option value="市区町村名を選択してください">市区町村名を選択してください</option>
+  </select>
+  <select id="geoapi-towns" name="geoapi-towns">
+    <option value="町域を選択してください">町域を選択してください</option>
+  </select>
 
   <div class="mb-3">
     <label for="{{ basic_information_form.address.id_for_label }}" class="p-6 mb-2 bg-danger text-white">
@@ -231,9 +231,33 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="http://geoapi.heartrails.com/api/geoapi.js"></script>
 <script>
-  document.getElementById('geoapi-towns').addEventListener('change', function (e) {
-    console.log("test")
 
+  document.getElementById('geoapi-prefectures').addEventListener('change', function (e) {
+    const idLocation = document.getElementById('id_address');
+    idLocation.value = ""
+  });
+
+  document.getElementById('geoapi-cities').addEventListener('change', function (e) {
+    const idLocation = document.getElementById('id_address');
+    idLocation.value = ""
+  });
+
+  document.getElementById('geoapi-towns').addEventListener('change', function (e) {
+    const idLocation = document.getElementById('id_address');
+    const citiesSelect = document.getElementById('geoapi-cities');
+    var encodedCity = encodeURIComponent(citiesSelect.value);
+    var selectedTown = e.target.value;
+
+    fetch('http://geoapi.heartrails.com/api/json?method=getTowns&city=' + encodedCity)
+      .then(response => response.json())
+      .then(data => {
+        let json_obj = data.response.location.find(obj => obj.town === selectedTown);
+        if (json_obj) {
+          idLocation.value = `${json_obj.postal} ${json_obj.prefecture}${json_obj.city}${json_obj.town}`;
+          /* console.log(json_obj); */
+
+        }
+      });
   });
 </script>
 {% endblock %}
