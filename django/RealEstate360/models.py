@@ -15,7 +15,7 @@ class BasicInformation(models.Model):
     control_number = models.CharField(max_length=100, unique=False, verbose_name="管理番号")
     property_name = models.CharField(max_length=255, unique=False, verbose_name="物件名")
     location = models.CharField(max_length=255, unique=False, verbose_name="所在地")
-    address = models.CharField(max_length=255, unique=True, verbose_name="住所地")
+    address = models.CharField(max_length=255, unique=False, verbose_name="住所地")
     is_active = models.BooleanField(default=True, verbose_name="アクティブ")
 
 
