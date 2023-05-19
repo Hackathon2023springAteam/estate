@@ -1,7 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
-
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class User(AbstractUser):
     username = models.CharField(max_length=255, unique=True)
@@ -12,12 +13,17 @@ class User(AbstractUser):
 class BasicInformation(models.Model):
     basic_information_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    control_number = models.CharField(max_length=100, unique=False, verbose_name="管理番号")
+    control_number = models.CharField(max_length=100, blank=True, unique=False, verbose_name="管理番号")
     property_name = models.CharField(max_length=255, unique=False, verbose_name="物件名")
     location = models.CharField(max_length=255, unique=False, verbose_name="所在地")
     address = models.CharField(max_length=255, unique=False, verbose_name="住所地")
     is_active = models.BooleanField(default=True, verbose_name="アクティブ")
 
+@receiver(post_save, sender=BasicInformation)
+def update_control_number(sender, instance, created, **kwargs):
+    if created:
+        instance.control_number = f"ControlNumber_{instance.basic_information_id}"
+        instance.save()
 
 class CityPlanning(models.Model):
     city_planning_id = models.AutoField(primary_key=True)
