@@ -1,10 +1,6 @@
-{% extends 'base.html' %}
-
-{% block title %}
+{% extends 'base.html' %} {% block title %}
 <title>新規登録</title>
-{% endblock %}
-
-{% block header_links %}
+{% endblock %} {% block header_links %}
 <!-- Add Bootstrap navigation bar -->
 <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -25,241 +21,325 @@
     </div>
   </div>
 </nav> -->
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 <h3>新規登録</h3>
 <form method="post">
-  {% csrf_token %}
+    {% csrf_token %}
 
-  <div class="mb-3">
-    <label for="{{ basic_information_form.control_number.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
-      {{ basic_information_form.control_number.label }}
-    </label>
-    <label>
-      ControlNumber_x で自動採番されます。
-    </label>
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ basic_information_form.control_number.id_for_label }}"
+            class="p-6 mb-2 bg-primary text-white"
+        >
+            {{ basic_information_form.control_number.label }}
+        </label>
+        <label> ControlNumber_x で自動採番されます。 </label>
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ basic_information_form.property_name.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
-      {{ basic_information_form.property_name.label }}
-    </label>
-    {{ basic_information_form.property_name }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ basic_information_form.property_name.id_for_label }}"
+            class="p-6 mb-2 bg-secondary text-white"
+        >
+            {{ basic_information_form.property_name.label }}
+        </label>
+        {{ basic_information_form.property_name }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ basic_information_form.location.id_for_label }}" class="p-6 mb-2 bg-success text-white">
-      {{ basic_information_form.location.label }}
-    </label>
-    {{ basic_information_form.location }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ basic_information_form.location.id_for_label }}"
+            class="p-6 mb-2 bg-success text-white"
+        >
+            {{ basic_information_form.location.label }}
+        </label>
+        {{ basic_information_form.location }}
+    </div>
 
-  <select id="geoapi-prefectures" name="geoapi-prefectures">
-    <option value="都道府県を選択してください">都道府県を選択してください</option>
-  </select>
-  <select id="geoapi-cities" name="geoapi-cities">
-    <option value="市区町村名を選択してください">市区町村名を選択してください</option>
-  </select>
-  <select id="geoapi-towns" name="geoapi-towns">
-    <option value="町域を選択してください">町域を選択してください</option>
-  </select>
+    <select id="geoapi-prefectures" name="geoapi-prefectures">
+        <option value="都道府県を選択してください">
+            都道府県を選択してください
+        </option>
+    </select>
+    <select id="geoapi-cities" name="geoapi-cities">
+        <option value="市区町村名を選択してください">
+            市区町村名を選択してください
+        </option>
+    </select>
+    <select id="geoapi-towns" name="geoapi-towns">
+        <option value="町域を選択してください">町域を選択してください</option>
+    </select>
 
-  <div class="mb-3">
-    <label for="{{ basic_information_form.address.id_for_label }}" class="p-6 mb-2 bg-danger text-white">
-      {{ basic_information_form.address.label }}
-    </label>
-    {{ basic_information_form.address }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ basic_information_form.address.id_for_label }}"
+            class="p-6 mb-2 bg-danger text-white"
+        >
+            {{ basic_information_form.address.label }}
+        </label>
+        {{ basic_information_form.address }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ city_planning_form.zoning.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
-      {{ city_planning_form.zoning.label }}
-    </label>
-    {{ city_planning_form.zoning }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ city_planning_form.zoning.id_for_label }}"
+            class="p-6 mb-2 bg-primary text-white"
+        >
+            {{ city_planning_form.zoning.label }}
+        </label>
+        {{ city_planning_form.zoning }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ city_planning_form.public_land_expansion_act.id_for_label }}"
-      class="p-6 mb-2 bg-secondary text-white">
-      {{ city_planning_form.public_land_expansion_act.label }}
-    </label>
-    {{ city_planning_form.public_land_expansion_act }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ city_planning_form.public_land_expansion_act.id_for_label }}"
+            class="p-6 mb-2 bg-secondary text-white"
+        >
+            {{ city_planning_form.public_land_expansion_act.label }}
+        </label>
+        {{ city_planning_form.public_land_expansion_act }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ city_planning_form.road_width.id_for_label }}" class="p-6 mb-2 bg-success text-white">
-      {{ city_planning_form.road_width.label }}
-    </label>
-    {{ city_planning_form.road_width }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ city_planning_form.road_width.id_for_label }}"
+            class="p-6 mb-2 bg-success text-white"
+        >
+            {{ city_planning_form.road_width.label }}
+        </label>
+        {{ city_planning_form.road_width }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ city_planning_form.condition.id_for_label }}" class="p-6 mb-2 bg-danger text-white">
-      {{ city_planning_form.condition.label }}
-    </label>
-    {{ city_planning_form.condition }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ city_planning_form.condition.id_for_label }}"
+            class="p-6 mb-2 bg-danger text-white"
+        >
+            {{ city_planning_form.condition.label }}
+        </label>
+        {{ city_planning_form.condition }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ building_information_form.certified_copy_of_building.id_for_label }}"
-      class="p-6 mb-2 bg-primary text-white">
-      {{ building_information_form.certified_copy_of_building.label }}
-    </label>
-    {{ building_information_form.certified_copy_of_building }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ building_information_form.certified_copy_of_building.id_for_label }}"
+            class="p-6 mb-2 bg-primary text-white"
+        >
+            {{ building_information_form.certified_copy_of_building.label }}
+        </label>
+        {{ building_information_form.certified_copy_of_building }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ building_information_form.building_drawing.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
-      {{ building_information_form.building_drawing.label }}
-    </label>
-    {{ building_information_form.building_drawing }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ building_information_form.building_drawing.id_for_label }}"
+            class="p-6 mb-2 bg-secondary text-white"
+        >
+            {{ building_information_form.building_drawing.label }}
+        </label>
+        {{ building_information_form.building_drawing }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ building_information_form.building_confirmation_screen.id_for_label }}"
-      class="p-6 mb-2 bg-success text-white">
-      {{ building_information_form.building_confirmation_screen.label }}
-    </label>
-    {{ building_information_form.building_confirmation_screen }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ building_information_form.building_confirmation_screen.id_for_label }}"
+            class="p-6 mb-2 bg-success text-white"
+        >
+            {{ building_information_form.building_confirmation_screen.label }}
+        </label>
+        {{ building_information_form.building_confirmation_screen }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ building_information_form.property_tax_assessment_certificate.id_for_label }}"
-      class="p-6 mb-2 bg-danger text-white">
-      {{ building_information_form.property_tax_assessment_certificate.label }}
-    </label>
-    {{ building_information_form.property_tax_assessment_certificate }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ building_information_form.property_tax_assessment_certificate.id_for_label }}"
+            class="p-6 mb-2 bg-danger text-white"
+        >
+            {{
+            building_information_form.property_tax_assessment_certificate.label
+            }}
+        </label>
+        {{ building_information_form.property_tax_assessment_certificate }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ building_information_form.building_use.id_for_label }}" class="p-6 mb-2 bg-warning text-white">
-      {{ building_information_form.building_use.label }}
-    </label>
-    {{ building_information_form.building_use }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ building_information_form.building_use.id_for_label }}"
+            class="p-6 mb-2 bg-warning text-white"
+        >
+            {{ building_information_form.building_use.label }}
+        </label>
+        {{ building_information_form.building_use }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ building_information_form.type_of_rights.id_for_label }}" class="p-6 mb-2 bg-info text-white">
-      {{ building_information_form.type_of_rights.label }}
-    </label>
-    {{ building_information_form.type_of_rights }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ building_information_form.type_of_rights.id_for_label }}"
+            class="p-6 mb-2 bg-info text-white"
+        >
+            {{ building_information_form.type_of_rights.label }}
+        </label>
+        {{ building_information_form.type_of_rights }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ building_information_form.relationship_to_land_owner.id_for_label }}"
-      class="p-6 mb-2 bg-light text-black">
-      {{ building_information_form.relationship_to_land_owner.label }}
-    </label>
-    {{ building_information_form.relationship_to_land_owner }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ building_information_form.relationship_to_land_owner.id_for_label }}"
+            class="p-6 mb-2 bg-light text-black"
+        >
+            {{ building_information_form.relationship_to_land_owner.label }}
+        </label>
+        {{ building_information_form.relationship_to_land_owner }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ land_information_form.area.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
-      {{ land_information_form.area.label }}
-    </label>
-    {{ land_information_form.area }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ land_information_form.area.id_for_label }}"
+            class="p-6 mb-2 bg-primary text-white"
+        >
+            {{ land_information_form.area.label }}
+        </label>
+        {{ land_information_form.area }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ land_information_form.square_meter.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
-      {{ land_information_form.square_meter.label }}
-    </label>
-    {{ land_information_form.square_meter }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ land_information_form.square_meter.id_for_label }}"
+            class="p-6 mb-2 bg-secondary text-white"
+        >
+            {{ land_information_form.square_meter.label }}
+        </label>
+        {{ land_information_form.square_meter }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ land_information_form.land_category.id_for_label }}" class="p-6 mb-2 bg-success text-white">
-      {{ land_information_form.land_category.label }}
-    </label>
-    {{ land_information_form.land_category }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ land_information_form.land_category.id_for_label }}"
+            class="p-6 mb-2 bg-success text-white"
+        >
+            {{ land_information_form.land_category.label }}
+        </label>
+        {{ land_information_form.land_category }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ land_information_form.certified_copy_of_land.id_for_label }}" class="p-6 mb-2 bg-danger text-white">
-      {{ land_information_form.certified_copy_of_land.label }}
-    </label>
-    {{ land_information_form.certified_copy_of_land }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ land_information_form.certified_copy_of_land.id_for_label }}"
+            class="p-6 mb-2 bg-danger text-white"
+        >
+            {{ land_information_form.certified_copy_of_land.label }}
+        </label>
+        {{ land_information_form.certified_copy_of_land }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ land_information_form.character_map.id_for_label }}" class="p-6 mb-2 bg-warning text-white">
-      {{ land_information_form.character_map.label }}
-    </label>
-    {{ land_information_form.character_map }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ land_information_form.character_map.id_for_label }}"
+            class="p-6 mb-2 bg-warning text-white"
+        >
+            {{ land_information_form.character_map.label }}
+        </label>
+        {{ land_information_form.character_map }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ land_information_form.survey_map.id_for_label }}" class="p-6 mb-2 bg-info text-white">
-      {{ land_information_form.survey_map.label }}
-    </label>
-    {{ land_information_form.survey_map }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ land_information_form.survey_map.id_for_label }}"
+            class="p-6 mb-2 bg-info text-white"
+        >
+            {{ land_information_form.survey_map.label }}
+        </label>
+        {{ land_information_form.survey_map }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ land_information_form.type_of_rights.id_for_label }}" class="p-6 mb-2 bg-light text-black">
-      {{ land_information_form.type_of_rights.label }}
-    </label>
-    {{ land_information_form.type_of_rights }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ land_information_form.type_of_rights.id_for_label }}"
+            class="p-6 mb-2 bg-light text-black"
+        >
+            {{ land_information_form.type_of_rights.label }}
+        </label>
+        {{ land_information_form.type_of_rights }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ infrastructure_information_form.water_supply.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
-      {{ infrastructure_information_form.water_supply.label }}
-    </label>
-    {{ infrastructure_information_form.water_supply }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ infrastructure_information_form.water_supply.id_for_label }}"
+            class="p-6 mb-2 bg-primary text-white"
+        >
+            {{ infrastructure_information_form.water_supply.label }}
+        </label>
+        {{ infrastructure_information_form.water_supply }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ infrastructure_information_form.sweage.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
-      {{ infrastructure_information_form.sweage.label }}
-    </label>
-    {{ infrastructure_information_form.sweage }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ infrastructure_information_form.sweage.id_for_label }}"
+            class="p-6 mb-2 bg-secondary text-white"
+        >
+            {{ infrastructure_information_form.sweage.label }}
+        </label>
+        {{ infrastructure_information_form.sweage }}
+    </div>
 
-  <div class="mb-3">
-    <label for="{{ infrastructure_information_form.solar_power_generation.id_for_label }}"
-      class="p-6 mb-2 bg-success text-white">
-      {{ infrastructure_information_form.solar_power_generation.label }}
-    </label>
-    {{ infrastructure_information_form.solar_power_generation }}
-  </div>
+    <div class="mb-3">
+        <label
+            for="{{ infrastructure_information_form.solar_power_generation.id_for_label }}"
+            class="p-6 mb-2 bg-success text-white"
+        >
+            {{ infrastructure_information_form.solar_power_generation.label }}
+        </label>
+        {{ infrastructure_information_form.solar_power_generation }}
+    </div>
 
-  <button type="submit">登録</button>
+    <button type="submit">登録</button>
 </form>
-{% endblock %}
-
-{% block scripts %}
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://geoapi.heartrails.com/api/geoapi.js"></script>
+{% endblock %} {% block scripts %}
+<script
+    type="text/javascript"
+    src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"
+></script>
+<script
+    type="text/javascript"
+    src="http://geoapi.heartrails.com/api/geoapi.js"
+></script>
 <script>
+    document
+        .getElementById("geoapi-prefectures")
+        .addEventListener("change", function (e) {
+            const idLocation = document.getElementById("id_address");
+            idLocation.value = "";
+        });
 
-  document.getElementById('geoapi-prefectures').addEventListener('change', function (e) {
-    const idLocation = document.getElementById('id_address');
-    idLocation.value = ""
-  });
+    document
+        .getElementById("geoapi-cities")
+        .addEventListener("change", function (e) {
+            const idLocation = document.getElementById("id_address");
+            idLocation.value = "";
+        });
 
-  document.getElementById('geoapi-cities').addEventListener('change', function (e) {
-    const idLocation = document.getElementById('id_address');
-    idLocation.value = ""
-  });
+    document
+        .getElementById("geoapi-towns")
+        .addEventListener("change", function (e) {
+            const idLocation = document.getElementById("id_address");
+            const citiesSelect = document.getElementById("geoapi-cities");
+            var encodedCity = encodeURIComponent(citiesSelect.value);
+            var selectedTown = e.target.value;
 
-  document.getElementById('geoapi-towns').addEventListener('change', function (e) {
-    const idLocation = document.getElementById('id_address');
-    const citiesSelect = document.getElementById('geoapi-cities');
-    var encodedCity = encodeURIComponent(citiesSelect.value);
-    var selectedTown = e.target.value;
-
-    fetch('http://geoapi.heartrails.com/api/json?method=getTowns&city=' + encodedCity)
-      .then(response => response.json())
-      .then(data => {
-        let json_obj = data.response.location.find(obj => obj.town === selectedTown);
-        if (json_obj) {
-          idLocation.value = `${json_obj.postal} ${json_obj.prefecture}${json_obj.city}${json_obj.town}`;
-          /* console.log(json_obj); */
-
-        }
-      });
-  });
+            fetch(
+                "http://geoapi.heartrails.com/api/json?method=getTowns&city=" +
+                    encodedCity
+            )
+                .then((response) => response.json())
+                .then((data) => {
+                    let json_obj = data.response.location.find(
+                        (obj) => obj.town === selectedTown
+                    );
+                    if (json_obj) {
+                        idLocation.value = `${json_obj.postal} ${json_obj.prefecture}${json_obj.city}${json_obj.town}`;
+                        /* console.log(json_obj); */
+                    }
+                });
+        });
 </script>
 {% endblock %}
