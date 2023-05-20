@@ -60,7 +60,29 @@ p {
 }
 
 /* 項目タイトルの大きさ指定 入力欄の左側の濃いグレーの四角 */
-/* 基本情報・都市計画・インフラ */
+/* 基本情報 */
+.input-form__title-basic {
+    display: flex;
+    width: 14.6%;
+    height: 515px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--list-title-color);
+}
+/* 項目タイトル モバイル時の文字位置調整 */
+@media screen and (max-width:991px) {
+    /* 画面サイズが991px以下からはここを読み込む */
+    .input-form__title-basic {
+        width: 100%;
+        height: 40px;
+        padding-top: 8px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #BBBBBB;
+    }
+}
+
+/* 都市計画・インフラ */
 .input-form__title {
     display: flex;
     width: 14.6%;
@@ -160,6 +182,30 @@ p {
         }
     }
 }
+
+/* 住所選択フォームの指定 */
+.select-address {
+    height: 42px;
+    border: none;
+    background: #FFFFFF;
+    border: 1px solid #BBBBBB;
+    border: 1px solid var(--list-border-color);
+    border-radius: 5px;
+}
+
+/* 管理番号フォームの指定 */
+.form-control-number {
+    height: 42px;
+    border: none;
+    background: var(--background-color);
+    border: 1px solid var(--list-border-color);
+    border-radius: 5px;
+}
+.form-control-number p {
+    font-size: 16px;
+    padding-left: 10px;
+}
+
 
 /* 画像アプロードボタンのラベルダミー文字の色指定 */
 .label-damy{
