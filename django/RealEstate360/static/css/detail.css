@@ -1,0 +1,27 @@
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.row > * {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+#breadcrumb-text {
+  color: var(--primary);
+}
+
+h2 {
+  margin: 16px 0;
+}
+
+h3 {
+  font-size: 20px;
+  background-color: lightgray;
+  padding-left: 16px;
+}
+
+#button-area {
+  margin: 64px 0;
+}

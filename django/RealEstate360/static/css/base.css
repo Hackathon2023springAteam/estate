@@ -52,10 +52,25 @@ a {
     color: var(--dark);
 }
 
+/* primary属性を付けたoutlineボタンの色変更 */
+.btn-outline-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+/* ホバー時の変化 */
+.btn-outline-primary:hover {
+    background-color: var(--primary);
+}
+
 /* navbarの背景色と下戦 */
 .navbar {
     background-color: var(--background-color);
     border-bottom: 1px solid var(--list-border-color);
+}
+
+/* primary属性を付けたtextの色変更 */
+.text-primary {
+    color: var(--primary) !important;
 }
 
 /* navbarのモバイル時の罫線削除 */
