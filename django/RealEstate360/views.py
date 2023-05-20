@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
-from django.contrib.auth.forms import UserCreationForm
-from django.http import HttpResponseRedirect, HttpResponseNotAllowed
+from django.http import HttpResponseRedirect, HttpResponseNotAllowed, JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from .forms import (
@@ -60,7 +58,7 @@ def propertyinfos_list(request):
 
 @login_required
 def propertyinfo_detail(request, basic_information_id):
-    basic_information = get_object_or_404(BasicInformation, pk=basic_information_id)    
+    basic_information = get_object_or_404(BasicInformation, pk=basic_information_id)
     city_planning = get_object_or_404(CityPlanning, basic_information=basic_information)
     building_information = get_object_or_404(
         BuildingInformation, basic_information=basic_information
@@ -79,17 +77,17 @@ def propertyinfo_detail(request, basic_information_id):
     infrastructure_information_form = InfrastructureInformationForm(
         instance=infrastructure_information
     )
-    
 
     context = {
         "basic_information_form": basic_information_form,
-        "city_planning_form":city_planning_form,
-        "building_information_form":building_information_form,
-        "land_information_form":land_information_form,
-        "infrastructure_information_form":infrastructure_information_form,
+        "city_planning_form": city_planning_form,
+        "building_information_form": building_information_form,
+        "land_information_form": land_information_form,
+        "infrastructure_information_form": infrastructure_information_form,
     }
 
     return render(request, "detail.html", context)
+
 
 @login_required
 def propertyinfo_create(request):
@@ -215,11 +213,11 @@ def propertyinfo_edit(request, basic_information_id):
             )
 
     context = {
-        "basic_information_form":basic_information_form,
-        "city_planning_form":city_planning_form,
-        "building_information_form":building_information_form,
-        "land_information_form":land_information_form,
-        "infrastructure_information_form":infrastructure_information_form,
+        "basic_information_form": basic_information_form,
+        "city_planning_form": city_planning_form,
+        "building_information_form": building_information_form,
+        "land_information_form": land_information_form,
+        "infrastructure_information_form": infrastructure_information_form,
     }
     return render(request, "edit.html", context)
 
@@ -234,3 +232,29 @@ def propertyinfo_inactive(request, basic_information_id):
     else:
         return HttpResponseNotAllowed(["POST"])
 
+
+def get_properties(request):
+    prefecture = request.GET.get("prefecture")
+    city = request.GET.get("city")
+    town = request.GET.get("town")
+    search_location = prefecture + city + town
+    if search_location == "":
+        basic_informations = BasicInformation.objects.filter(is_active=True)
+    else:
+        basic_informations = BasicInformation.objects.filter(
+            location__icontains=search_location, is_active=True
+        )
+
+    properties_list = []
+    for info in basic_informations:
+        # 辞書形式に変換してリストに追加
+        properties_list.append(
+            {
+                "basic_information_id": info.basic_information_id,
+                "control_number": info.control_number,
+                "property_name": info.property_name,
+                "location": info.location,
+            }
+        )
+
+    return JsonResponse(properties_list, safe=False)

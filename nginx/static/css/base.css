@@ -73,6 +73,7 @@ a {
     height: 40px;
     border: 1px solid var(--list-border-color);
     border-radius: 5px 0px 0px 5px;
+    outline: none;
     &:focus {
         box-shadow:none !important;
         border-color: var(--dark);

@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-3
+
 <!-- ページタイトル -->
 <div class="page__title container-lg container-md container-sm">
     <div class="row page-name">
@@ -28,21 +28,13 @@
 <!-- 基本情報 -->
     <div class="container-lg container-md container-sm input-container">
         <div class="row d-flex input-form gx-sm-0">
-            <div class="col col-12 col-md-12 col-lg-2 input-form__title">
+            <div class="col col-12 col-md-12 col-lg-2 input-form__title-basic">
                 <h3>基本情報</h3>
             </div>
             <div class="col col-12 col-sm-12 col-md-12 col-lg-10 ms-auto">                
 
                 <!-- 1行目 -->
                 <div class="row d-flex">
-
-                    <!-- 管理番号 -->
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="{{ basic_information_form.control_number.id_for_label }}" class="">
-                            {{ basic_information_form.control_number.label }}
-                        </label>
-                        {{ basic_information_form.control_number }}
-                    </div>
 
                     <!-- 物件名 -->
                     <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
@@ -51,21 +43,76 @@
                         </label>
                         {{ basic_information_form.property_name }}
                     </div>
+                    
+                    <!-- 管理番号 -->
+                    <!-- ControlNumber_x で自動採番されます。 -->
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="{{ basic_information_form.control_number.id_for_label }}" class="">
+                            {{ basic_information_form.control_number.label }}
+                        </label>
+                        <div class="form-control-number">
+                            <p>ControlNumber_x で自動採番されます。</p>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 2行目 -->
+                <!-- 都道府県選択 -->
                 <div class="row d-flex mt-lg-3">
-
-                    <!-- 所在地 -->
                     <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="">都道府県</label>
+                        <select id="geoapi-prefectures" name="geoapi-prefectures" class="select-address">
+                            <option value="都道府県を選択してください">
+                                都道府県を選択してください
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col col-3 col-md-3 col-lg-3 d-flex input-form__area"></div>
+                </div>
+
+                <!-- 3行目 -->
+                <!-- 市区町村名選択 -->
+                <div class="row d-flex mt-lg-3">
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="">市町村</label>
+                        <select id="geoapi-cities" name="geoapi-cities" class="select-address">
+                            <option value="市区町村名を選択してください">
+                                市区町村名を選択してください
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col col-3 col-md-3 col-lg-3 d-flex input-form__area"></div>
+                </div>
+
+                <!-- 4行目 -->
+                <!-- 町域選択 -->
+                <div class="row d-flex mt-lg-3">
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="">町域</label>
+                        <select id="geoapi-towns" name="geoapi-towns" class="select-address">
+                            <option value="町域を選択してください">
+                                町域を選択してください
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col col-3 col-md-3 col-lg-3 d-flex input-form__area"></div>
+                </div>
+
+                <!-- 5行目 -->
+                <div class="row d-flex mt-lg-3">
+                    <!-- 所在地 -->
+                    <div class="col col-12 input-form__area">
                         <label for="{{ basic_information_form.location.id_for_label }}" class="">
                             {{ basic_information_form.location.label }}
                         </label>
                         {{ basic_information_form.location }}
                     </div>
+                </div>
 
+                <!-- 6行目 -->
+                <div class="row d-flex mt-lg-3">
                     <!-- 住所地 -->
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                    <div class="col col-12 input-form__area">
                         <label for="{{ basic_information_form.address.id_for_label }}" class="">
                             {{ basic_information_form.address.label }}
                         </label>
@@ -97,24 +144,24 @@
                         {{ city_planning_form.zoning }}
                     </div>
 
-                    <!-- 公用地拡大法 -->
-                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="{{ city_planning_form.public_land_expansion_act.id_for_label }}" class="">
-                            {{ city_planning_form.public_land_expansion_act.label }}
-                        </label>
-                        {{ city_planning_form.public_land_expansion_act }}
-                    </div>
-                </div>
-
-                <!-- 2行目 -->
-                <div class="row d-flex mt-lg-3">
-
                     <!-- 道路幅 -->
                     <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
                         <label for="{{ city_planning_form.road_width.id_for_label }}" class="">
                             {{ city_planning_form.road_width.label }}
                         </label>
                         {{ city_planning_form.road_width }}
+                    </div>
+                </div>
+
+                <!-- 2行目 -->
+                <div class="row d-flex mt-lg-3">
+
+                    <!-- 公用地拡大法 -->
+                    <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
+                        <label for="{{ city_planning_form.public_land_expansion_act.id_for_label }}" class="">
+                            {{ city_planning_form.public_land_expansion_act.label }}
+                        </label>
+                        {{ city_planning_form.public_land_expansion_act }}
                     </div>
 
                     <!-- 状態 -->
@@ -387,6 +434,39 @@
         </div>
     </div>
 </form>
+{% endblock %}
 
+{% block scripts %}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://geoapi.heartrails.com/api/geoapi.js"></script>
+<script>
 
+    document.getElementById('geoapi-prefectures').addEventListener('change', function (e) {
+        const idLocation = document.getElementById('id_address');
+        idLocation.value = ""
+    });
+
+    document.getElementById('geoapi-cities').addEventListener('change', function (e) {
+        const idLocation = document.getElementById('id_address');
+        idLocation.value = ""
+    });
+
+    document.getElementById('geoapi-towns').addEventListener('change', function (e) {
+        const idLocation = document.getElementById('id_address');
+        const citiesSelect = document.getElementById('geoapi-cities');
+        var encodedCity = encodeURIComponent(citiesSelect.value);
+        var selectedTown = e.target.value;
+
+        fetch('http://geoapi.heartrails.com/api/json?method=getTowns&city=' + encodedCity)
+        .then(response => response.json())
+        .then(data => {
+            let json_obj = data.response.location.find(obj => obj.town === selectedTown);
+            if (json_obj) {
+            idLocation.value = `${json_obj.postal} ${json_obj.prefecture}${json_obj.city}${json_obj.town}`;
+            /* console.log(json_obj); */
+
+            }
+        });
+    });
+</script>
 {% endblock %}

@@ -22,6 +22,16 @@
     </div>
 </div>
 
+<select id="geoapi-prefectures" name="geoapi-prefectures">
+    <option value="都道府県を選択してください">都道府県を選択してください</option>
+</select>
+<select id="geoapi-cities" name="geoapi-cities">
+    <option value="市区町村名を選択してください">市区町村名を選択してください</option>
+</select>
+<select id="geoapi-towns" name="geoapi-towns">
+    <option value="町域を選択してください">町域を選択してください</option>
+</select>
+
 <!-- 一覧リストの項目名 -->
 <div class="container-lg container-md container-sm">
     <div class="row list__title gx-sm-0 gx-md-1">
@@ -38,24 +48,76 @@
     </div>
 
     <!-- 物件リストの列 -->
-    {% for basic_information in basic_informations %}
-    <div class="row list__item gx-1">
-        <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}" class="d-flex">
-            <div class="col-4">
-                <p class="list__item--tagname">{{ basic_information.control_number }}</p>
-            </div>
-            <div class="col-4">
-                <p>{{ basic_information.property_name }}</p>
-            </div>
-            <div class="col-3">
-                <p>{{ basic_information.location }}</p>
-            </div>
-            <div class="col-1 list__item--arrow">
-                <img src="{% static 'img/web-arrow.svg' %}" alt="詳細ページを見る" width="12.5" height="25" class="web-arrow">
-            </div>
-        </a>
+    <div id="property-lists">
+        {% for basic_information in basic_informations %}
+        <div class="row list__item gx-1">
+            <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}"
+                class="d-flex">
+                <div class="col-4">
+                    <p class="list__item--tagname">{{ basic_information.control_number }}</p>
+                </div>
+                <div class="col-4">
+                    <p>{{ basic_information.property_name }}</p>
+                </div>
+                <div class="col-3">
+                    <p>{{ basic_information.location }}</p>
+                </div>
+                <div class="col-1 list__item--arrow">
+                    <img src="{% static 'img/web-arrow.svg' %}" alt="詳細ページを見る" width="12.5" height="25"
+                        class="web-arrow">
+                </div>
+            </a>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://geoapi.heartrails.com/api/geoapi.js"></script>
+<script>
+    function fetchProperties() {
+        var prefectureSelect = document.getElementById('geoapi-prefectures');
+        var citySelect = document.getElementById('geoapi-cities');
+        var townSelect = document.getElementById('geoapi-towns');
+        var selectedPrefecture = (prefectureSelect.selectedIndex != 0) ? prefectureSelect.value : "";
+        var selectedCity = (citySelect.selectedIndex != 0) ? citySelect.value : "";
+        var selectedTown = (townSelect.selectedIndex != 0) ? townSelect.value : "";
+
+        fetch('/get_properties/?prefecture=' + selectedPrefecture + '&city=' + selectedCity + '&town=' + selectedTown)
+            .then(response => response.json())
+            .then(data => {
+
+                var propertyLists = document.getElementById('property-lists');
+                propertyLists.innerHTML = '';  // 物件リストを一度空にする
+
+                data.forEach(property => {
+                    var listItem = `
+                        <div class="row list__item gx-1">
+                            <a href="/propertyinfo_detail/${property.basic_information_id}" class="d-flex">
+                                <div class="col-4">
+                                    <p class="list__item--tagname">${property.control_number}</p>
+                                </div>
+                                <div class="col-4">
+                                    <p>${property.property_name}</p>
+                                </div>
+                                <div class="col-3">
+                                    <p>${property.location}</p>
+                                </div>
+                                <div class="col-1 list__item--arrow">
+                                    <img src="/static/img/web-arrow.svg" alt="詳細ページを見る" width="12.5" height="25" class="web-arrow">
+                                </div>
+                            </a>
+                        </div>`;
+                    // 生成したHTMLを物件リストに追加
+                    propertyLists.innerHTML += listItem;
+                })
+            })
+    }
+    document.getElementById('geoapi-prefectures').addEventListener('change', fetchProperties);
+    document.getElementById('geoapi-cities').addEventListener('change', fetchProperties);
+    document.getElementById('geoapi-towns').addEventListener('change', fetchProperties);
+</script>
 {% endblock %}
