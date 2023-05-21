@@ -13,6 +13,31 @@
 
 {% block content %}
 
+<!-- パンくずリスト -->
+<div class="container-lg container-md container-sm input-container breadcrumb">
+    <div class="row">
+        <div class="col col-12">
+            <nav
+                style="--bs-breadcrumb-divider: '>'"
+                aria-label="breadcrumb"
+                class="mt-3"
+            >
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/propertyinfos_list">物件一覧</a>
+                    </li>
+                    <li
+                        class="breadcrumb-item active text-primary"
+                        aria-current="page"
+                    >
+                        {{ basic_information_form.instance.property_name }}
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+
 <!-- ページタイトル -->
 <div class="page__title container-lg container-md container-sm">
     <div class="row page-name">
