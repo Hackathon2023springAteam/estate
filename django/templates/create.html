@@ -317,12 +317,12 @@
                 <!-- 2行目 -->
                 <div class="row d-flex mt-lg-3">
 
-                    <!-- 建物図面 -->
+                    <!-- 建物図面取得 -->
                     <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="{{ building_information_form.building_confirmation_screen.id_for_label }}" class="">
-                            {{ building_information_form.building_confirmation_screen.label }}
+                        <label for="{{ building_information_form.building_drawing.id_for_label }}" class="">
+                            {{ building_information_form.building_drawing.label }}
                         </label>
-                        {{ building_information_form.building_confirmation_screen }}
+                        {{ building_information_form.building_drawing }}
                     </div>
 
                     <!-- 固定資産税評価証明書 -->
@@ -337,7 +337,7 @@
                 <!-- 3行目 -->
                 <div class="row d-flex mt-lg-4">
 
-                    <!-- 新築年数 -->
+                    <!-- 権利の種類 -->
                     <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
                         <label for="{{ building_information_form.type_of_rights.id_for_label }}" class="">
                             {{ building_information_form.type_of_rights.label }}
