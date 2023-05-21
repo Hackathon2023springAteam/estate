@@ -29,8 +29,9 @@
 <h1>物件情報の更新</h1>
 <form method="post">
   {% csrf_token %}
-
+<!-- 基本情報 -->
   <div class="mb-3">
+    <!-- 管理番号 -->
     <label for="{{ basic_information_form.control_number.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
       {{ basic_information_form.control_number.label }}
     </label>
@@ -38,6 +39,7 @@
   </div>
 
   <div class="mb-3">
+    <!-- 物件名 -->
     <label for="{{ basic_information_form.property_name.id_for_label }}" class="p-6 mb-2 bg-secondary text-white">
       {{ basic_information_form.property_name.label }}
     </label>
@@ -55,6 +57,7 @@
   </select>
 
   <div class="mb-3">
+    <!-- 所在地 -->
     <label for="{{ basic_information_form.location.id_for_label }}" class="p-6 mb-2 bg-success text-white">
       {{ basic_information_form.location.label }}
     </label>
@@ -62,13 +65,16 @@
   </div>
 
   <div class="mb-3">
+    <!-- 住所地 -->
     <label for="{{ basic_information_form.address.id_for_label }}" class="p-6 mb-2 bg-danger text-white">
       {{ basic_information_form.address.label }}
     </label>
     {{ basic_information_form.address }}
   </div>
 
+<!-- 都市計画 -->
   <div class="mb-3">
+    <!-- 用途地域 -->
     <label for="{{ city_planning_form.zoning.id_for_label }}" class="p-6 mb-2 bg-primary text-white">
       {{ city_planning_form.zoning.label }}
     </label>
@@ -76,6 +82,7 @@
   </div>
 
   <div class="mb-3">
+    <!-- 公用地拡大法 -->
     <label for="{{ city_planning_form.public_land_expansion_act.id_for_label }}"
       class="p-6 mb-2 bg-secondary text-white">
       {{ city_planning_form.public_land_expansion_act.label }}
@@ -84,6 +91,7 @@
   </div>
 
   <div class="mb-3">
+    <!-- 道路幅 -->
     <label for="{{ city_planning_form.road_width.id_for_label }}" class="p-6 mb-2 bg-success text-white">
       {{ city_planning_form.road_width.label }}
     </label>
@@ -91,6 +99,7 @@
   </div>
 
   <div class="mb-3">
+    
     <label for="{{ city_planning_form.condition.id_for_label }}" class="p-6 mb-2 bg-danger text-white">
       {{ city_planning_form.condition.label }}
     </label>
