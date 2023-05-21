@@ -1,0 +1,111 @@
+/* h2-3のフォントサイズ指定 */
+h2 {
+  font-size: 24px;
+}
+h3 {
+  font-size: 20px;
+  line-height: 3.8rem;
+}
+@media screen and (max-width:991px) {
+  h2 {
+      font-size: 18px;
+  }
+  
+  h3 {
+      font-weight: 400;
+  font-size: 16px;
+  line-height: 2.8rem;
+  }
+}
+
+/* ページタイトルの指定（物件情報一覧） */
+.page__title {
+  margin-top: 60px;
+  margin-bottom: 27px;
+}
+@media screen and (max-width:991px) {
+  /* 画面サイズが991px以下からはここを読み込む */
+  .page__title {
+      margin-top: 53px;
+      text-align: center;
+  }
+}
+
+/* 一覧リストの項目名の列（一番上の濃いグレーの列） */
+.list__title {
+  align-items: center;
+  height: 65px;
+  background: #EAEAEA;
+  border-width: 1px 0px 2px 0px;
+  border-style: solid;
+  border-color: #BBBBBB;
+}
+
+/* 一覧リストの項目名の列 「管理タグ」のマージン指定 */
+.list__title--property {
+  margin-left: 2%;
+}
+
+/* 一覧リストの項目名の列 の文字の高さ指定（上下センターに配置）*/
+@media screen and (max-width:991px) {
+/* 画面サイズが991px以下からはここを読み込む */
+  .list__title {
+      height: 50px;       
+      }
+}
+/* 一覧リストの項目名の列 モバイル時の文字位置調整 */
+@media screen and (max-width:575px) {
+/* 画面サイズが991px以下からはここを読み込む */
+  .list__title--property {
+      margin-left: -6%;     
+      }
+  .list__title--location {
+      margin-left: -18%;     
+      }
+}
+
+/* 物件リストの列の文字の高さ指定（上下センターに配置） */
+p {
+  position: relative;
+  width:100%;
+  margin: 0;
+  padding-right: 2%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  
+}
+
+/* 物件リストの列「管理タグNO」の左マージン指定 */
+.list__item--tagname {
+  margin-left: 2%;
+}
+
+/* 物件リストの列のリンク範囲を列の高さに合わせる */
+.list__item a {
+  display: block;
+  height: 80px;
+  align-items: center;
+  background: #F9F9F9;
+  border-bottom: 1px solid #BBBBBB;
+}
+/* hover指定 */
+.list__item a:hover {
+  background: var(--list-title-color);
+}
+
+/* 物件リストの列のリンク範囲を列の高さに合わせる */
+@media screen and (max-width:991px) {
+  /* 画面サイズが991px以下からはここを読み込む */
+  .row list__item a {
+      height: 70px;   
+      }
+}
+
+/* 物件リストの列の右側の矢印 右寄せとマージン指定 */
+.list__item--arrow {
+  text-align:right
+}
+.web-arrow {
+  margin-right: 10%;
+}
