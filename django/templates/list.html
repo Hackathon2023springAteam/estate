@@ -3,7 +3,7 @@
 {% block head %}
 <!-- CSS読み込みの記述 -->
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/list.css' %}">
+<link rel="stylesheet" href="{% static 'css/lists.css' %}">
 {% endblock %}
 
 {% block title %}
@@ -36,10 +36,10 @@
 <div class="container-lg container-md container-sm">
     <div class="row list__title gx-sm-0 gx-md-1">
         <div class="col-4">
-            <h3 class="list__title--tagname">管理タグ</h3>
+            <h3 class="list__title--property">物件名</h3>
         </div>
         <div class="col-4">
-            <h3 class="list__title--property">物件名</h3>
+            <h3 class="list__title--tagname">管理タグ</h3>
         </div>
         <div class="col-3">
             <h3 class="list__title--location">所在地</h3>
@@ -54,10 +54,10 @@
             <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}"
                 class="d-flex">
                 <div class="col-4">
-                    <p class="list__item--tagname">{{ basic_information.control_number }}</p>
+                    <p>{{ basic_information.property_name }}</p>
                 </div>
                 <div class="col-4">
-                    <p>{{ basic_information.property_name }}</p>
+                    <p class="list__item--tagname">{{ basic_information.control_number }}</p>
                 </div>
                 <div class="col-3">
                     <p>{{ basic_information.location }}</p>
