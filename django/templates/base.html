@@ -17,8 +17,10 @@
 
     <!-- staticフォルダ内のcss読み込み -->
     {% load static %}
+    <link rel="icon" href="../static/img/favicon.png">
     <link rel="stylesheet" href="{% static 'css/custom-color-bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <!-- <script src="{% static 'js/logout-modal.js' %}"></script> -->
     {% block head %}{% endblock %}
     <!-- 各ページのタイトル読み込み -->
     {% block title %}{% endblock %}
@@ -57,8 +59,28 @@
                     <input class="serch-form" type="search" placeholder="管理タグで検索" aria-label="Search">
                     <button class="serch-btn btn-secondary" type="submit">検索</button>
                 </form>
-                <button type="button" class="logout-btn btn-secondary flex-shrink-0 ms-auto my-sm-2"><a class="nav-link"
-                        href="{% url 'RealEstate360:logout' %}">ログアウト</a></button>
+                <button type="button" class="logout-btn btn-secondary flex-shrink-0 ms-auto my-sm-2" data-bs-toggle="modal" data-bs-target="#logout-modal" data-backdrop="true">
+                    ログアウト
+                </button>
+                <div class="modal fade" id="logout-modal" tabindex="-1" aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">ログアウト</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>ログアウトしますか？</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+                                <button type="button" class="btn btn-primary">
+                                    <a class="text-white" href="{% url 'RealEstate360:logout' %}">OK</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -73,7 +95,10 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
-    {% block scripts %}{% endblock %}
+
+    {% block scripts %}
+        <!-- <script src="{% static 'js/logout-modal.js' %}"></script> -->
+    {% endblock %}
 </body>
 
 </html>
