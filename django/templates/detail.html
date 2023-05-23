@@ -493,16 +493,16 @@
         </div>
 
         <div id="button-area" class="row align-items-center">
-            <div class="col col-12 col-md-3 col-lg-5 col-xl-5"></div>
-            <div class="col col-12 col-md-4 col-lg-3 col-xl-2 text-center">
+            <div class="col col-12 col-md-12 col-lg-4 col-xl-5"></div>
+            <div class="col col-12 col-md-12 col-lg-3 col-xl-2 text-center">
                 <a
-                    class="btn btn-edit btn-primary text-white mb-3"
+                    class="btn btn-edit btn-primary text-white"
                     href="{% url 'RealEstate360:propertyinfo_edit' basic_information_form.instance.basic_information_id %}"
                 >
                     編集する
                 </a>
             </div>
-            <div class="col col-12 col-md-1 col-lg-1 col-xl-3"></div>
+            <div class="col col-12 col-md-12 col-lg-2 col-xl-3"></div>
 
             <!-- <div class="col col-12 col-sm-12 col-md-12 col-lg-3 col-xl-2 text-center">
                 <form
@@ -520,8 +520,8 @@
                 </form>
             </div> -->
             
-
-            <div class="col col-12 col-sm-12 col-md-12 col-lg-3 col-xl-2 text-center">
+            
+            <div class="col col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 text-center">
                 <form
                     method="POST"
                     action="{% url 'RealEstate360:propertyinfo_inactive' basic_information_form.instance.basic_information_id %}"
@@ -529,43 +529,33 @@
                     {% csrf_token %}
                     <input type="hidden" name="is_active" value="false" />
 
-                    <input type="submit" class="btn-delete mb-2" data-bs-toggle="modal" data-bs-target="#deleteModal" data-backdrop="true" value="この物件を削除する">
-                        
-                    
-
-                    <!-- <input
-                        type="submit"
-                        class="btn-delete mb-2"
-                        value="この物件を削除する"
-                        onclick="return confirm('本当に削除してもよろしいですか？')"
-                    /> -->
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-delete" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                        <!-- <img src="{% static 'img/icon _delete_.svg' %}" width="30" height="30" alt="削除ボタン"> -->
+                        この物件を削除する
+                    </button>
+                
+                    <!-- Modal -->
                     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">この物件を削除する</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    本当に削除してもよろしいですか？
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-modal-delete btn-outline-danger" data-bs-dismiss="modal">キャンセル</button>
+                                    <button type="submit" class="btn btn-modal-delete btn-danger">削除する</button>
+                                </div>
                             </div>
-                            <div class="modal-body">
-                                <p>Modal body text goes here.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
                         </div>
                     </div>
 
                 </form>
-
             </div>
-<!-- 
-            <button type="button" class="logout-btn btn-secondary flex-shrink-0 ms-auto my-sm-2" data-bs-toggle="modal" data-bs-target="#logout-modal" data-backdrop="true">
-                ログアウト
-            </button> -->
-
-
         </div>
     </div>
 </div>
