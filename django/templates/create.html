@@ -454,17 +454,17 @@
 <script>
 
     document.getElementById('geoapi-prefectures').addEventListener('change', function (e) {
-        const idLocation = document.getElementById('id_address');
+        const idLocation = document.getElementById('id_location');
         idLocation.value = ""
     });
 
     document.getElementById('geoapi-cities').addEventListener('change', function (e) {
-        const idLocation = document.getElementById('id_address');
+        const idLocation = document.getElementById('id_location');
         idLocation.value = ""
     });
 
     document.getElementById('geoapi-towns').addEventListener('change', function (e) {
-        const idLocation = document.getElementById('id_address');
+        const idLocation = document.getElementById('id_location');
         const citiesSelect = document.getElementById('geoapi-cities');
         var encodedCity = encodeURIComponent(citiesSelect.value);
         var selectedTown = e.target.value;
@@ -475,10 +475,32 @@
                 let json_obj = data.response.location.find(obj => obj.town === selectedTown);
                 if (json_obj) {
                     idLocation.value = `${json_obj.postal} ${json_obj.prefecture}${json_obj.city}${json_obj.town}`;
-                    /* console.log(json_obj); */
-
                 }
             });
     });
+
+    let updating = false;
+
+    const idSquareMeterListener = function (e) {
+        if (!updating) {
+            updating = true;
+            let area_value = (e.target.value * 3.3025).toFixed(2);
+            document.getElementById('id_area').value = parseFloat(area_value);
+            updating = false;
+        }
+    };
+
+    const idAreaListener = function (e) {
+        if (!updating) {
+            updating = true;
+            let square_meter_value = (e.target.value / 3.3025).toFixed(2);
+            document.getElementById('id_square_meter').value = parseFloat(square_meter_value);
+            updating = false;
+        }
+    };
+
+    document.getElementById('id_square_meter').addEventListener('change', idSquareMeterListener);
+    document.getElementById('id_area').addEventListener('change', idAreaListener);
+
 </script>
 {% endblock %}
