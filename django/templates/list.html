@@ -18,19 +18,24 @@
         <div class="col">
             <h2>物件情報一覧</h2>
         </div>
-        <!-- <div class="col"></div> -->
+    </div>
+    <div class="row">
+        <div id="search-text" class="col-2 text-center py-1 px-4 border-1">住所で検索</div>
+        <div class="col-10">
+            <div class="row">
+                <select id="geoapi-prefectures" name="geoapi-prefectures" class="col form-select">
+                    <option value="都道府県を選択してください">都道府県を選択してください</option>
+                </select>
+                <select id="geoapi-cities" name="geoapi-cities" class="col form-select">
+                    <option value="市区町村名を選択してください">市区町村名を選択してください</option>
+                </select>
+                <select id="geoapi-towns" name="geoapi-towns" class="col form-select">
+                    <option value="町域を選択してください">町域を選択してください</option>
+                </select>
+            </div>
+        </div>
     </div>
 </div>
-
-<select id="geoapi-prefectures" name="geoapi-prefectures">
-    <option value="都道府県を選択してください">都道府県を選択してください</option>
-</select>
-<select id="geoapi-cities" name="geoapi-cities">
-    <option value="市区町村名を選択してください">市区町村名を選択してください</option>
-</select>
-<select id="geoapi-towns" name="geoapi-towns">
-    <option value="町域を選択してください">町域を選択してください</option>
-</select>
 
 <!-- 一覧リストの項目名 -->
 <div class="container-lg container-md container-sm">

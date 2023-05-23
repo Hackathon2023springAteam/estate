@@ -109,3 +109,8 @@ p {
 .web-arrow {
   margin-right: 10%;
 }
+
+/* 検索フォームのCSS */
+.search-text {
+  background-color: #EAEAEA;
+}
