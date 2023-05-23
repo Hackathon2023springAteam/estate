@@ -238,7 +238,7 @@ def get_properties(request):
     city = request.GET.get("city")
     town = request.GET.get("town")
     search_location = prefecture + city + town
-    if search_location == "":
+    if prefecture == "" or search_location == "":
         basic_informations = BasicInformation.objects.filter(is_active=True)
     else:
         basic_informations = BasicInformation.objects.filter(

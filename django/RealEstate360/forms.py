@@ -52,20 +52,50 @@ class CityPlanningForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs.update({"autocomplete": "off"})
 
-        self.fields["zoning"].widget = forms.TextInput(attrs={"class": "form-control"})
+        self.fields["zoning"].widget = forms.Select(
+            attrs={"class": "form-control"},
+            choices=[
+                ("選択してください", "選択してください"),
+                ("第一種低層住居専用地域", "第一種低層住居専用地域"),
+                ("第二種低層住居専用地域", "第二種低層住居専用地域"),
+                ("第一種中高層住居専用地域", "第一種中高層住居専用地域"),
+                ("第二種中高層住居専用地域", "第二種中高層住居専用地域"),
+                ("第一種住居地域", "第一種住居地域"),
+                ("第二種住居地域", "第二種住居地域"),
+                ("準住居地域", "準住居地域"),
+                ("田園住居地域", "田園住居地域"),
+                ("近隣商業地域", "近隣商業地域"),
+                ("商業地域", "商業地域"),
+                ("準工業地域", "準工業地域"),
+                ("工業地域", "工業地域"),
+                ("工業専用地域", "工業専用地域"),
+            ],
+        )
         self.fields["public_land_expansion_act"].widget = forms.Select(
             attrs={"class": "form-control"},
             choices=[
+                ("選択してください", "選択してください"),
                 ("有", "あり"),
                 ("無", "なし"),
                 ("未調査", "未調査"),
             ],
         )
         self.fields["road_width"].widget = forms.NumberInput(
-            attrs={"class": "form-control", "step": "0.1"}
+            attrs={
+                "class": "form-control",
+                "step": "0.1",
+                "min": "0",
+            }
         )
-        self.fields["condition"].widget = forms.TextInput(
-            attrs={"class": "form-control"}
+        self.fields["condition"].widget = forms.Select(
+            attrs={"class": "form-control"},
+            choices=[
+                ("選択してください", "選択してください"),
+                ("空家", "空家"),
+                ("空き地", "空き地"),
+                ("居住中", "居住中"),
+                ("その他", "その他"),
+            ],
         )
 
     def save(self, commit=True):
@@ -97,23 +127,73 @@ class BuildingInformationForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs.update({"autocomplete": "off"})
 
-        self.fields["certified_copy_of_building"].widget = forms.TextInput(
-            attrs={"class": "form-control"}
+        self.fields["certified_copy_of_building"].widget = forms.Select(
+            attrs={"class": "form-control"},
+            choices=[
+                ("選択してください", "選択してください"),
+                ("取得", "取得"),
+                ("未取得", "未取得"),
+                ("登記なし", "登記なし"),
+                ("税務登録のみ", "税務登録のみ"),
+            ],
         )
-        self.fields["building_drawing"].widget = forms.TextInput(
-            attrs={"class": "form-control"}
+        self.fields["building_drawing"].widget = forms.Select(
+            attrs={"class": "form-control"},
+            choices=[
+                ("選択してください", "選択してください"),
+                ("取得", "取得"),
+                ("未取得", "未取得"),
+                ("存在なし", "存在なし"),
+                ("未調査", "未調査"),
+            ],
         )
-        self.fields["building_confirmation_screen"].widget = forms.TextInput(
-            attrs={"class": "form-control"}
+        self.fields["building_confirmation_screen"].widget = forms.Select(
+            attrs={"class": "form-control"},
+            choices=[
+                ("選択してください", "選択してください"),
+                ("取得", "取得"),
+                ("未取得", "未取得"),
+                ("存在なし", "存在なし"),
+                ("未調査", "未調査"),
+            ],
         )
-        self.fields["property_tax_assessment_certificate"].widget = forms.TextInput(
-            attrs={"class": "form-control"}
+        self.fields["property_tax_assessment_certificate"].widget = forms.Select(
+            attrs={"class": "form-control"},
+            choices=[
+                ("選択してください", "選択してください"),
+                ("取得", "取得"),
+                ("未取得", "未取得"),
+                ("存在なし", "存在なし"),
+                ("未調査", "未調査"),
+            ],
         )
-        self.fields["building_use"].widget = forms.TextInput(
-            attrs={"class": "form-control"}
+        self.fields["building_use"].widget = forms.Select(
+            attrs={"class": "form-control"},
+            choices=[
+                ("選択してください", "選択してください"),
+                ("居宅", "居宅"),
+                ("店舗", "店舗"),
+                ("寄宿舎", "寄宿舎"),
+                ("共同住宅", "共同住宅"),
+                ("事務所", "事務所"),
+                ("旅館", "旅館"),
+                ("料理店", "料理店"),
+                ("工場", "工場"),
+                ("倉庫", "倉庫"),
+                ("車庫", "車庫"),
+                ("発電所", "発電所"),
+                ("変電所", "変電所"),
+            ],
         )
-        self.fields["type_of_rights"].widget = forms.TextInput(
-            attrs={"class": "form-control"}
+        self.fields["type_of_rights"].widget = forms.Select(
+            attrs={"class": "form-control"},
+            choices=[
+                ("選択してください", "選択してください"),
+                ("所有権", "所有権"),
+                ("敷地権", "敷地権"),
+                ("地上権", "地上権"),
+                ("借地権", "借地権"),
+            ],
         )
         self.fields["relationship_to_land_owner"].widget = forms.TextInput(
             attrs={"class": "form-control"}
@@ -161,25 +241,87 @@ class LandInformationForm(forms.ModelForm):
             self.fields[field].widget.attrs.update({"autocomplete": "off"})
 
         self.fields["area"].widget = forms.NumberInput(
-            attrs={"class": "form-control", "step": "0.1"}
+            attrs={
+                "class": "form-control",
+                "step": "0.01",
+                "min": "0",
+            }
         )
         self.fields["square_meter"].widget = forms.NumberInput(
-            attrs={"class": "form-control", "step": "0.1"}
+            attrs={
+                "class": "form-control",
+                "step": "0.01",
+                "min": "0",
+            }
         )
-        self.fields["land_category"].widget = forms.NumberInput(
-            attrs={"class": "form-control", "step": "1"}
+        self.fields["land_category"].widget = forms.Select(
+            attrs={"class": "form-control"},
+            choices=[
+                ("選択してください", "選択してください"),
+                ("宅地", "宅地"),
+                ("学校用地", "学校用地"),
+                ("公園", "公園"),
+                ("境内地", "境内地"),
+                ("墓地", "墓地"),
+                ("公衆用道路", "公衆用道路"),
+                ("鉄道用地", "鉄道用地"),
+                ("田", "田"),
+                ("畑", "畑"),
+                ("牧場", "牧場"),
+                ("山林(保安林を除く)", "山林(保安林を除く)"),
+                ("保安林", "保安林"),
+                ("原野", "原野"),
+                ("堤", "堤"),
+                ("水道用地", "水道用地"),
+                ("運河用地", "運河用地"),
+                ("用悪水路", "用悪水路"),
+                ("井溝", "井溝"),
+                ("ため池", "ため池"),
+                ("池沼", "池沼"),
+                ("鉱泉地", "鉱泉地"),
+                ("塩田", "塩田"),
+                ("雑種地", "雑種地"),
+            ],
         )
-        self.fields["certified_copy_of_land"].widget = forms.TextInput(
-            attrs={"class": "form-control"}
+        self.fields["certified_copy_of_land"].widget = forms.Select(
+            attrs={"class": "form-control"},
+            choices=[
+                ("選択してください", "選択してください"),
+                ("取得", "取得"),
+                ("未取得", "未取得"),
+                ("存在なし", "存在なし"),
+                ("未調査", "未調査"),
+            ],
         )
-        self.fields["character_map"].widget = forms.TextInput(
-            attrs={"class": "form-control"}
+        self.fields["character_map"].widget = forms.Select(
+            attrs={"class": "form-control"},
+            choices=[
+                ("選択してください", "選択してください"),
+                ("取得", "取得"),
+                ("未取得", "未取得"),
+                ("存在なし", "存在なし"),
+                ("未調査", "未調査"),
+            ],
         )
-        self.fields["survey_map"].widget = forms.TextInput(
-            attrs={"class": "form-control"}
+        self.fields["survey_map"].widget = forms.Select(
+            attrs={"class": "form-control"},
+            choices=[
+                ("選択してください", "選択してください"),
+                ("取得", "取得"),
+                ("未取得", "未取得"),
+                ("存在なし", "存在なし"),
+                ("未調査", "未調査"),
+            ],
         )
-        self.fields["type_of_rights"].widget = forms.TextInput(
-            attrs={"class": "form-control"}
+        self.fields["type_of_rights"].widget = forms.Select(
+            attrs={"class": "form-control"},
+            choices=[
+                ("選択してください", "選択してください"),
+                ("所有権", "所有権"),
+                ("敷地権", "敷地権"),
+                ("地上権", "地上権"),
+                ("借地権", "借地権"),
+            ],
         )
 
     def save(self, commit=True):
@@ -215,12 +357,31 @@ class InfrastructureInformationForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs.update({"autocomplete": "off"})
 
-        self.fields["water_supply"].widget = forms.TextInput(
-            attrs={"class": "form-control"}
+        self.fields["water_supply"].widget = forms.Select(
+            attrs={"class": "form-control"},
+            choices=[
+                ("選択してください", "選択してください"),
+                ("公営", "公営"),
+                ("井戸水", "井戸水"),
+            ],
         )
-        self.fields["sweage"].widget = forms.TextInput(attrs={"class": "form-control"})
+        self.fields["sweage"].widget = forms.Select(
+            attrs={"class": "form-control"},
+            choices=[
+                ("選択してください", "選択してください"),
+                ("公共下水", "公共下水"),
+                ("浄化槽", "浄化槽"),
+                ("簡易水洗", "簡易水洗"),
+                ("その他", "その他"),
+            ],
+        )
         self.fields["solar_power_generation"].widget = forms.NumberInput(
-            attrs={"class": "form-control", "step": "1"}
+            attrs={
+                "class": "form-control",
+                "step": "0.1",
+                "max": "10",
+                "min": "0",
+            }
         )
 
     def save(self, commit=True):
