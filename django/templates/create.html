@@ -2,12 +2,12 @@
 
 {% block head %}
 <!-- CSS読み込みの記述 -->
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/create.css' %}">
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/create.css' %}">
 {% endblock %}
 
 {% block title %}
-    <title>新規登録</title>
+<title>新規登録</title>
 {% endblock %}
 
 {% block content %}
@@ -15,7 +15,9 @@
 <!-- ページタイトル -->
 <div class="page__title container-lg container-md container-sm">
     <div class="row page-name">
-        <div class="col"><h2>物件情報登録</h2></div>
+        <div class="col">
+            <h2>物件情報登録</h2>
+        </div>
     </div>
 </div>
 
@@ -25,13 +27,13 @@
 <form method="post">
     {% csrf_token %}
 
-<!-- 基本情報 -->
+    <!-- 基本情報 -->
     <div class="container-lg container-md container-sm input-container">
         <div class="row d-flex input-form gx-sm-0">
             <div class="col col-12 col-md-12 col-lg-2 input-form__title-basic">
                 <h3>基本情報</h3>
             </div>
-            <div class="col col-12 col-sm-12 col-md-12 col-lg-10 ms-auto">                
+            <div class="col col-12 col-sm-12 col-md-12 col-lg-10 ms-auto">
 
                 <!-- 1行目 -->
                 <div class="row d-flex">
@@ -43,7 +45,7 @@
                         </label>
                         {{ basic_information_form.property_name }}
                     </div>
-                    
+
                     <!-- 管理番号 -->
                     <!-- ControlNumber_x で自動採番されます。 -->
                     <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
@@ -125,7 +127,7 @@
         </div>
     </div>
 
-<!-- 都市計画 -->
+    <!-- 都市計画 -->
     <div class="container-lg container-md container-sm input-container">
         <div class="row d-flex input-form gx-sm-0">
             <div class="col col-12 col-md-12 col-lg-2 input-form__title">
@@ -162,6 +164,11 @@
                             {{ city_planning_form.public_land_expansion_act.label }}
                         </label>
                         {{ city_planning_form.public_land_expansion_act }}
+                        {% if city_planning_form.public_land_expansion_act.errors %}
+                        <div class="error-message">
+                            {{ city_planning_form.public_land_expansion_act.errors }}
+                        </div>
+                        {% endif %}
                     </div>
 
                     <!-- 状態 -->
@@ -178,7 +185,7 @@
         </div>
     </div>
 
-<!-- 土地入力欄 -->
+    <!-- 土地入力欄 -->
     <div class="container-lg container-md container-sm input-container">
         <div class="row d-flex input-form gx-sm-0">
             <div class="col col-12 col-md-12 col-lg-2 input-form__title--land">
@@ -216,7 +223,7 @@
                         </label>
                         {{ land_information_form.survey_map }}
                     </div>
-                    
+
                     <!-- 面積 -->
                     <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
                         <label for="{{ land_information_form.area.id_for_label }}" class="">
@@ -240,7 +247,7 @@
                         <button type="button" class="pic-upload-btn btn-secondary"></button> -->
                     </div>
                 </div>
-                
+
                 <!-- 4行目 -->
                 <div class="row d-flex mt-lg-3">
 
@@ -256,7 +263,8 @@
                         <label for="" class="label-damy">　　</label>
                         <button type="button" class="pic-upload-btn btn-secondary">
                             <p>画像選択</p>
-                            <img src="{% static 'img/mobile-camera-logo.svg' %}" alt=""  width="30" height="24.55" class="camera-img">
+                            <img src="{% static 'img/mobile-camera-logo.svg' %}" alt="" width="30" height="24.55"
+                                class="camera-img">
                         </button>
                     </div>
                 </div>
@@ -276,7 +284,8 @@
                         <label for="" class="label-damy">　　</label>
                         <button type="button" class="pic-upload-btn btn-secondary">
                             <p>画像選択</p>
-                            <img src="{% static 'img/mobile-camera-logo.svg' %}" alt=""  width="30" height="24.55" class="camera-img">
+                            <img src="{% static 'img/mobile-camera-logo.svg' %}" alt="" width="30" height="24.55"
+                                class="camera-img">
                         </button>
                     </div>
                 </div>
@@ -286,7 +295,7 @@
         </div>
     </div>
 
-<!-- 建物入力欄 -->
+    <!-- 建物入力欄 -->
     <div class="container-lg container-md container-sm input-container">
         <div class="row d-flex input-form gx-sm-0">
             <div class="col col-12 col-md-12 col-lg-2 input-form__title--building">
@@ -327,7 +336,8 @@
 
                     <!-- 固定資産税評価証明書 -->
                     <div class="col col-12 col-md-12 col-lg-6 d-flex input-form__area">
-                        <label for="{{ building_information_form.property_tax_assessment_certificate.id_for_label }}" class="">
+                        <label for="{{ building_information_form.property_tax_assessment_certificate.id_for_label }}"
+                            class="">
                             {{ building_information_form.property_tax_assessment_certificate.label }}
                         </label>
                         {{ building_information_form.property_tax_assessment_certificate }}
@@ -353,7 +363,7 @@
                         {{ building_information_form.relationship_to_land_owner }}
                     </div>
                 </div>
-                
+
                 <!-- 4行目 -->
                 <div class="row d-flex mt-lg-3">
 
@@ -370,7 +380,8 @@
                         <label for="" class="label-damy">　　</label>
                         <button type="button" class="pic-upload-btn btn-secondary">
                             <p>画像選択</p>
-                            <img src="{% static 'img/mobile-camera-logo.svg' %}" alt=""  width="30" height="24.55" class="camera-img">
+                            <img src="{% static 'img/mobile-camera-logo.svg' %}" alt="" width="30" height="24.55"
+                                class="camera-img">
                         </button>
                     </div>
                 </div>
@@ -380,13 +391,13 @@
         </div>
     </div>
 
-<!-- インフラ入力欄 -->
+    <!-- インフラ入力欄 -->
     <div class="container-lg container-md container-sm input-container">
         <div class="row d-flex input-form gx-sm-0">
             <div class="col col-12 col-md-12 col-lg-2 input-form__title">
                 <h3>インフラ</h3>
             </div>
-            
+
             <div class="col col-12 col-sm-12 col-md-12 col-lg-10 ms-auto">
                 <!-- 1行目 -->
                 <div class="row d-flex">
@@ -407,7 +418,7 @@
                         {{ infrastructure_information_form.sweage }}
                     </div>
                 </div>
-                
+
                 <!-- 2行目 -->
                 <div class="row d-flex mt-lg-3">
 
@@ -458,15 +469,15 @@
         var selectedTown = e.target.value;
 
         fetch('http://geoapi.heartrails.com/api/json?method=getTowns&city=' + encodedCity)
-        .then(response => response.json())
-        .then(data => {
-            let json_obj = data.response.location.find(obj => obj.town === selectedTown);
-            if (json_obj) {
-            idLocation.value = `${json_obj.postal} ${json_obj.prefecture}${json_obj.city}${json_obj.town}`;
-            /* console.log(json_obj); */
+            .then(response => response.json())
+            .then(data => {
+                let json_obj = data.response.location.find(obj => obj.town === selectedTown);
+                if (json_obj) {
+                    idLocation.value = `${json_obj.postal} ${json_obj.prefecture}${json_obj.city}${json_obj.town}`;
+                    /* console.log(json_obj); */
 
-            }
-        });
+                }
+            });
     });
 </script>
 {% endblock %}

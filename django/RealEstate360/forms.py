@@ -14,10 +14,16 @@ class BasicInformationForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs.update({"autocomplete": "off"})
 
-        self.fields["control_number"].widget = forms.TextInput(attrs={'class': 'form-control'})
-        self.fields["property_name"].widget = forms.TextInput(attrs={'class': 'form-control'})
-        self.fields["location"].widget = forms.TextInput(attrs={'class': 'form-control'})
-        self.fields["address"].widget = forms.TextInput(attrs={'class': 'form-control'})
+        self.fields["control_number"].widget = forms.TextInput(
+            attrs={"class": "form-control"}
+        )
+        self.fields["property_name"].widget = forms.TextInput(
+            attrs={"class": "form-control"}
+        )
+        self.fields["location"].widget = forms.TextInput(
+            attrs={"class": "form-control"}
+        )
+        self.fields["address"].widget = forms.TextInput(attrs={"class": "form-control"})
 
     def save(self, commit=True):
         instance = super(BasicInformationForm, self).save(commit=False)
@@ -45,11 +51,22 @@ class CityPlanningForm(forms.ModelForm):
         super(CityPlanningForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs.update({"autocomplete": "off"})
-        
-        self.fields["zoning"].widget = forms.TextInput(attrs={'class': 'form-control'})
-        self.fields["public_land_expansion_act"].widget = forms.TextInput(attrs={'class': 'form-control'})
-        self.fields["road_width"].widget = forms.NumberInput(attrs={'class': 'form-control', 'step': '0.1'})
-        self.fields["condition"].widget = forms.TextInput(attrs={'class': 'form-control'})
+
+        self.fields["zoning"].widget = forms.TextInput(attrs={"class": "form-control"})
+        self.fields["public_land_expansion_act"].widget = forms.Select(
+            attrs={"class": "form-control"},
+            choices=[
+                ("有", "あり"),
+                ("無", "なし"),
+                ("未調査", "未調査"),
+            ],
+        )
+        self.fields["road_width"].widget = forms.NumberInput(
+            attrs={"class": "form-control", "step": "0.1"}
+        )
+        self.fields["condition"].widget = forms.TextInput(
+            attrs={"class": "form-control"}
+        )
 
     def save(self, commit=True):
         instance = super(CityPlanningForm, self).save(commit=False)
@@ -80,13 +97,27 @@ class BuildingInformationForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs.update({"autocomplete": "off"})
 
-        self.fields["certified_copy_of_building"].widget = forms.TextInput(attrs={'class': 'form-control'})
-        self.fields["building_drawing"].widget = forms.TextInput(attrs={'class': 'form-control'})
-        self.fields["building_confirmation_screen"].widget = forms.TextInput(attrs={'class': 'form-control'})
-        self.fields["property_tax_assessment_certificate"].widget = forms.TextInput(attrs={'class': 'form-control'})
-        self.fields["building_use"].widget = forms.TextInput(attrs={'class': 'form-control'})
-        self.fields["type_of_rights"].widget = forms.TextInput(attrs={'class': 'form-control'})
-        self.fields["relationship_to_land_owner"].widget = forms.TextInput(attrs={'class': 'form-control'})
+        self.fields["certified_copy_of_building"].widget = forms.TextInput(
+            attrs={"class": "form-control"}
+        )
+        self.fields["building_drawing"].widget = forms.TextInput(
+            attrs={"class": "form-control"}
+        )
+        self.fields["building_confirmation_screen"].widget = forms.TextInput(
+            attrs={"class": "form-control"}
+        )
+        self.fields["property_tax_assessment_certificate"].widget = forms.TextInput(
+            attrs={"class": "form-control"}
+        )
+        self.fields["building_use"].widget = forms.TextInput(
+            attrs={"class": "form-control"}
+        )
+        self.fields["type_of_rights"].widget = forms.TextInput(
+            attrs={"class": "form-control"}
+        )
+        self.fields["relationship_to_land_owner"].widget = forms.TextInput(
+            attrs={"class": "form-control"}
+        )
 
     def save(self, commit=True):
         instance = super(BuildingInformationForm, self).save(commit=False)
@@ -128,14 +159,28 @@ class LandInformationForm(forms.ModelForm):
         super(LandInformationForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs.update({"autocomplete": "off"})
-        
-        self.fields["area"].widget = forms.NumberInput(attrs={'class': 'form-control', 'step': '0.1'})
-        self.fields["square_meter"].widget = forms.NumberInput(attrs={'class': 'form-control', 'step': '0.1'})
-        self.fields["land_category"].widget = forms.NumberInput(attrs={'class': 'form-control', 'step': '1'})
-        self.fields["certified_copy_of_land"].widget = forms.TextInput(attrs={'class': 'form-control'})
-        self.fields["character_map"].widget = forms.TextInput(attrs={'class': 'form-control'})
-        self.fields["survey_map"].widget = forms.TextInput(attrs={'class': 'form-control'})
-        self.fields["type_of_rights"].widget = forms.TextInput(attrs={'class': 'form-control'})
+
+        self.fields["area"].widget = forms.NumberInput(
+            attrs={"class": "form-control", "step": "0.1"}
+        )
+        self.fields["square_meter"].widget = forms.NumberInput(
+            attrs={"class": "form-control", "step": "0.1"}
+        )
+        self.fields["land_category"].widget = forms.NumberInput(
+            attrs={"class": "form-control", "step": "1"}
+        )
+        self.fields["certified_copy_of_land"].widget = forms.TextInput(
+            attrs={"class": "form-control"}
+        )
+        self.fields["character_map"].widget = forms.TextInput(
+            attrs={"class": "form-control"}
+        )
+        self.fields["survey_map"].widget = forms.TextInput(
+            attrs={"class": "form-control"}
+        )
+        self.fields["type_of_rights"].widget = forms.TextInput(
+            attrs={"class": "form-control"}
+        )
 
     def save(self, commit=True):
         instance = super(LandInformationForm, self).save(commit=False)
@@ -170,10 +215,13 @@ class InfrastructureInformationForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs.update({"autocomplete": "off"})
 
-        self.fields["water_supply"].widget = forms.TextInput(attrs={'class': 'form-control'})
-        self.fields["sweage"].widget = forms.TextInput(attrs={'class': 'form-control'})
-        self.fields["solar_power_generation"].widget = forms.NumberInput(attrs={'class': 'form-control', 'step': '1'})
-
+        self.fields["water_supply"].widget = forms.TextInput(
+            attrs={"class": "form-control"}
+        )
+        self.fields["sweage"].widget = forms.TextInput(attrs={"class": "form-control"})
+        self.fields["solar_power_generation"].widget = forms.NumberInput(
+            attrs={"class": "form-control", "step": "1"}
+        )
 
     def save(self, commit=True):
         instance = super(InfrastructureInformationForm, self).save(commit=False)
