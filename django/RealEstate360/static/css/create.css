@@ -253,6 +253,19 @@ p {
     }
 }
 
+/* キャンセルボタンの指定 */
+.registration-btn-cancel {
+    border-color: var(--primary);
+    border-radius: 5px;
+    margin-top: 80px;
+}
+.registration-btn-cancel:hover {
+    background-color: var(--list-title-color);
+}
+.registration-btn-cancel a {
+    color: var(--primary) !important;
+}
+
 /* 登録するボタンの指定 */
 .registration-btn {
     height: 42px;
