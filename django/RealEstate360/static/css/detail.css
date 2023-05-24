@@ -25,3 +25,98 @@ h3 {
 #button-area {
   margin: 64px 0;
 }
+
+.btn-edit {
+    width: 196px;
+    height: 40px;
+    text-align: center;
+    font-size: 20px;
+    &:focus {
+        box-shadow:none !important;
+    }
+}
+
+.btn-delete {
+    background-image: url("/static/img/icon_delete.svg");
+    background-repeat:no-repeat;
+    background-position: left center;
+    background-color: var(--background-color);
+    width: 190px;
+    height: 40px;
+    float: right;
+    color: var(--primary);
+    padding-top: 5px;
+    text-align: right;
+    padding-right: 0;
+    line-height: 1;
+    font-size: 16px;
+    font-weight: 700;
+    &:focus {
+        box-shadow:none !important;
+    }
+}
+.btn-delete:hover {
+    color: red;
+    background-image: url("/static/img/icon_delete-hover.svg");
+    background-repeat:no-repeat;
+}
+
+
+@media screen and (max-width:991px) {
+    /* 画面サイズが991px以下からはここを読み込む */
+        .btn-edit {
+            width: 196px;
+        }
+        .btn-delete {
+            margin-top: 50px;
+            float: none;
+        }
+}
+
+@media screen and (max-width:767px) {
+    /* 画面サイズが767px以下からはここを読み込む */
+        label {
+            margin-left: 15px;
+        }
+        .btn-edit {
+            width: 95%;
+            height: 48px;
+            text-align: center;
+        }
+        .btn-delete {
+            margin-top: 50px;
+        }
+}
+
+
+/* モーダルの中身指定 */
+.modal-content {
+    height: 250px;
+}
+
+.modal-body {
+    align-items: center;
+}
+
+.modal-body p {
+    font-size: 18px;
+    text-align: left;
+}
+
+.btn-modal-delete {
+    width: 150px;
+    height: 40px;
+    &:focus {
+        box-shadow:none !important;
+    }
+}
+
+.btn-modal-delete-cancel {
+    color: #DC3545;
+    border: 2px #DC3545 solid;
+}
+.btn-modal-delete-cancel:hover {
+    color: #DC3545;
+    border: 2px #DC3545 solid;
+    background-color: var(--list-title-color);
+}

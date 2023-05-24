@@ -8,8 +8,9 @@
 <title>物件詳細</title>
 {% endblock %}
 {% block content %}
+<div class="container">
 <div class="row justify-content-center">
-    <div class="col-12 col-md-10">
+    <div class="col">
         <nav
             style="--bs-breadcrumb-divider: '>'"
             aria-label="breadcrumb"
@@ -493,16 +494,18 @@
         </div>
 
         <div id="button-area" class="row align-items-center">
-            <div class="col-12 col-md-4"></div>
-            <div class="col-12 col-md-2 text-center">
+            <div class="col col-12 col-md-12 col-lg-4 col-xl-5"></div>
+            <div class="col col-12 col-md-12 col-lg-3 col-xl-2 text-center">
                 <a
-                    class="btn btn-primary text-white mb-3"
+                    class="btn btn-edit btn-primary text-white"
                     href="{% url 'RealEstate360:propertyinfo_edit' basic_information_form.instance.basic_information_id %}"
                 >
                     編集する
                 </a>
             </div>
-            <div class="col-12 col-md-2 text-center">
+            <!-- <div class="col col-12 col-md-12 col-lg-2 col-xl-3"></div> -->
+
+            <!-- <div class="col col-12 col-sm-12 col-md-12 col-lg-3 col-xl-2 text-center">
                 <form
                     method="POST"
                     action="{% url 'RealEstate360:propertyinfo_inactive' basic_information_form.instance.basic_information_id %}"
@@ -511,15 +514,51 @@
                     <input type="hidden" name="is_active" value="false" />
                     <input
                         type="submit"
-                        class="btn btn-outline-primary mb-3"
-                        value="削除する"
+                        class="btn-delete mb-2"
+                        value="この物件を削除する"
                         onclick="return confirm('本当に削除してもよろしいですか？')"
                     />
                 </form>
+            </div> -->
+            
+            
+            <div class="col col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 text-center">
+                <form
+                    method="POST"
+                    action="{% url 'RealEstate360:propertyinfo_inactive' basic_information_form.instance.basic_information_id %}"
+                >
+                    {% csrf_token %}
+                    <input type="hidden" name="is_active" value="false" />
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-delete" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                        この物件を削除する
+                    </button>
+                
+                    <!-- Modal -->
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">この物件を削除する</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body d-flex">
+                                    <p>本当に削除してもよろしいですか？</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-modal-delete btn-modal-delete-cancel" data-bs-dismiss="modal">キャンセル</button>
+                                    <button type="submit" class="btn btn-modal-delete btn-danger">削除する</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
             </div>
-            <div class="col-12 col-md-4"></div>
         </div>
     </div>
+</div>
 </div>
 
 {% endblock %}
