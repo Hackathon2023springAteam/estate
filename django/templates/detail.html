@@ -8,8 +8,9 @@
 <title>物件詳細</title>
 {% endblock %}
 {% block content %}
+<div class="container">
 <div class="row justify-content-center">
-    <div class="col-12 col-md-10">
+    <div class="col">
         <nav
             style="--bs-breadcrumb-divider: '>'"
             aria-label="breadcrumb"
@@ -502,7 +503,7 @@
                     編集する
                 </a>
             </div>
-            <div class="col col-12 col-md-12 col-lg-2 col-xl-3"></div>
+            <!-- <div class="col col-12 col-md-12 col-lg-2 col-xl-3"></div> -->
 
             <!-- <div class="col col-12 col-sm-12 col-md-12 col-lg-3 col-xl-2 text-center">
                 <form
@@ -521,7 +522,7 @@
             </div> -->
             
             
-            <div class="col col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 text-center">
+            <div class="col col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 text-center">
                 <form
                     method="POST"
                     action="{% url 'RealEstate360:propertyinfo_inactive' basic_information_form.instance.basic_information_id %}"
@@ -531,7 +532,6 @@
 
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-delete" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                        <!-- <img src="{% static 'img/icon _delete_.svg' %}" width="30" height="30" alt="削除ボタン"> -->
                         この物件を削除する
                     </button>
                 
@@ -543,11 +543,11 @@
                                     <h5 class="modal-title" id="exampleModalLabel">この物件を削除する</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
-                                    本当に削除してもよろしいですか？
+                                <div class="modal-body d-flex">
+                                    <p>本当に削除してもよろしいですか？</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-modal-delete btn-outline-danger" data-bs-dismiss="modal">キャンセル</button>
+                                    <button type="button" class="btn btn-modal-delete btn-modal-delete-cancel" data-bs-dismiss="modal">キャンセル</button>
                                     <button type="submit" class="btn btn-modal-delete btn-danger">削除する</button>
                                 </div>
                             </div>
@@ -558,6 +558,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 {% endblock %}
