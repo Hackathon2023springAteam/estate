@@ -389,6 +389,25 @@ class InfrastructureInformationForm(forms.ModelForm):
             instance.save()
         return instance
 
+    def clean(self):
+        cleaned_data = super().clean()
+        for field in self.fields:
+            if field in self.errors:
+                self.errors[self.fields[field].label] = self.errors.pop(field)
+        return cleaned_data
+
+    def clean_water_supply(self):
+        water_supply = self.cleaned_data.get("water_supply")
+        if water_supply == "選択してください":
+            raise forms.ValidationError("水供給を選択してください。")
+        return water_supply
+
+    def clean_sweage(self):
+        sweage = self.cleaned_data.get("sweage")
+        if sweage == "選択してください":
+            raise forms.ValidationError("下水種別を選択してください。")
+        return sweage
+
     class Meta:
         model = InfrastructureInformation
         fields = [

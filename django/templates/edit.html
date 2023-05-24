@@ -44,34 +44,20 @@
 <div class="container-lg container-md container-sm input-container breadcrumb">
     <div class="row">
         <div class="col col-12">
-            {% if basic_information_form_errors %}
-            <div class="alert alert-danger">
-                {{ basic_information_form_errors }}
+            {% for form_name, errors in form_errors.items %}
+            {% if errors %}
+            {% for field, field_errors in errors.items %}
+            {% for error in field_errors %}
+            <div class="alert alert-warning" role="warning">
+                <strong>{{field}}:</strong>
+                <ul>
+                    <li>{{error}}</li>
+                </ul>
             </div>
+            {% endfor %}
+            {% endfor %}
             {% endif %}
-            {% if city_planning_form_errors %}
-            <div class="alert alert-danger">
-                {{ city_planning_form_errors }}
-            </div>
-            {% endif %}
-
-            {% if building_information_form_errors %}
-            <div class="alert alert-danger">
-                {{ building_information_form_errors }}
-            </div>
-            {% endif %}
-
-            {% if land_information_form_errors %}
-            <div class="alert alert-danger">
-                {{ land_information_form_errors }}
-            </div>
-            {% endif %}
-
-            {% if infrastructure_information_form_errors %}
-            <div class="alert alert-danger">
-                {{ infrastructure_information_form_errors }}
-            </div>
-            {% endif %}
+            {% endfor %}
         </div>
     </div>
 </div>
