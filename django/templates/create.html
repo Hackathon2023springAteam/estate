@@ -21,6 +21,27 @@
     </div>
 </div>
 
+<!-- エラー表示 -->
+<div class="container-lg container-md container-sm input-container breadcrumb">
+    <div class="row">
+        <div class="col col-12">
+            {% for form_name, errors in form_errors.items %}
+            {% if errors %}
+            {% for field, field_errors in errors.items %}
+            {% for error in field_errors %}
+            <div class="alert alert-warning" role="warning">
+                <strong>{{form_name.verbose_name}} {{field}}:</strong>
+                <ul>
+                    <li>{{error}}</li>
+                </ul>
+            </div>
+            {% endfor %}
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
 
 <!-- 入力フォームここから -->
 
