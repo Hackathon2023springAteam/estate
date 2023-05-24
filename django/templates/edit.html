@@ -49,7 +49,7 @@
             {% for field, field_errors in errors.items %}
             {% for error in field_errors %}
             <div class="alert alert-warning" role="warning">
-                <strong>{{field}}:</strong>
+                <strong>{{form_name.verbose_name}} {{field}}:</strong>
                 <ul>
                     <li>{{error}}</li>
                 </ul>

@@ -36,7 +36,17 @@ class BasicInformationForm(forms.ModelForm):
             instance.save()
         return instance
 
+    def clean(self):
+        cleaned_data = super().clean()
+        for field in self.fields:
+            if field in self.errors:
+                self.errors[
+                    f"{self.Meta.verbose_name}_{self.fields[field].label}"
+                ] = self.errors.pop(field)
+        return cleaned_data
+
     class Meta:
+        verbose_name = "基本情報"
         model = BasicInformation
         fields = [
             "control_number",
@@ -111,7 +121,35 @@ class CityPlanningForm(forms.ModelForm):
             instance.save()
         return instance
 
+    def clean(self):
+        cleaned_data = super().clean()
+        for field in self.fields:
+            if field in self.errors:
+                self.errors[
+                    f"{self.Meta.verbose_name}_{self.fields[field].label}"
+                ] = self.errors.pop(field)
+        return cleaned_data
+
+    def clean_zoning(self):
+        zoning = self.cleaned_data.get("zoning")
+        if zoning == "選択してください":
+            raise forms.ValidationError("選択されていません。")
+        return zoning
+
+    def clean_public_land_expansion_act(self):
+        public_land_expansion_act = self.cleaned_data.get("public_land_expansion_act")
+        if public_land_expansion_act == "選択してください":
+            raise forms.ValidationError("選択されていません。")
+        return public_land_expansion_act
+
+    def clean_condition(self):
+        condition = self.cleaned_data.get("condition")
+        if condition == "選択してください":
+            raise forms.ValidationError("選択されていません。")
+        return condition
+
     class Meta:
+        verbose_name = "都市計画"
         model = CityPlanning
         fields = [
             "zoning",
@@ -221,7 +259,57 @@ class BuildingInformationForm(forms.ModelForm):
             instance.save()
         return instance
 
+    def clean(self):
+        cleaned_data = super().clean()
+        for field in self.fields:
+            if field in self.errors:
+                self.errors[
+                    f"{self.Meta.verbose_name}_{self.fields[field].label}"
+                ] = self.errors.pop(field)
+        return cleaned_data
+
+    def clean_building_use(self):
+        building_use = self.cleaned_data.get("building_use")
+        if building_use == "選択してください":
+            raise forms.ValidationError("選択されていません。")
+        return building_use
+
+    def clean_building_confirmation_screen(self):
+        building_confirmation_screen = self.cleaned_data.get(
+            "building_confirmation_screen"
+        )
+        if building_confirmation_screen == "選択してください":
+            raise forms.ValidationError("選択されていません。")
+        return building_confirmation_screen
+
+    def clean_building_drawing(self):
+        building_drawing = self.cleaned_data.get("building_drawing")
+        if building_drawing == "選択してください":
+            raise forms.ValidationError("選択されていません。")
+        return building_drawing
+
+    def clean_property_tax_assessment_certificate(self):
+        property_tax_assessment_certificate = self.cleaned_data.get(
+            "property_tax_assessment_certificate"
+        )
+        if property_tax_assessment_certificate == "選択してください":
+            raise forms.ValidationError("選択されていません。")
+        return property_tax_assessment_certificate
+
+    def clean_type_of_rights(self):
+        type_of_rights = self.cleaned_data.get("type_of_rights")
+        if type_of_rights == "選択してください":
+            raise forms.ValidationError("選択されていません。")
+        return type_of_rights
+
+    def clean_certified_copy_of_building(self):
+        certified_copy_of_building = self.cleaned_data.get("certified_copy_of_building")
+        if certified_copy_of_building == "選択してください":
+            raise forms.ValidationError("選択されていません。")
+        return certified_copy_of_building
+
     class Meta:
+        verbose_name = "建物"
         model = BuildingInformation
         fields = [
             "certified_copy_of_building",
@@ -338,7 +426,47 @@ class LandInformationForm(forms.ModelForm):
             instance.save()
         return instance
 
+    def clean(self):
+        cleaned_data = super().clean()
+        for field in self.fields:
+            if field in self.errors:
+                self.errors[
+                    f"{self.Meta.verbose_name}_{self.fields[field].label}"
+                ] = self.errors.pop(field)
+        return cleaned_data
+
+    def clean_land_category(self):
+        land_category = self.cleaned_data.get("land_category")
+        if land_category == "選択してください":
+            raise forms.ValidationError("選択されていません。")
+        return land_category
+
+    def clean_survey_map(self):
+        survey_map = self.cleaned_data.get("survey_map")
+        if survey_map == "選択してください":
+            raise forms.ValidationError("選択されていません。")
+        return survey_map
+
+    def clean_type_of_rights(self):
+        type_of_rights = self.cleaned_data.get("type_of_rights")
+        if type_of_rights == "選択してください":
+            raise forms.ValidationError("選択されていません。")
+        return type_of_rights
+
+    def clean_character_map(self):
+        character_map = self.cleaned_data.get("character_map")
+        if character_map == "選択してください":
+            raise forms.ValidationError("選択されていません。")
+        return character_map
+
+    def clean_certified_copy_of_land(self):
+        certified_copy_of_land = self.cleaned_data.get("certified_copy_of_land")
+        if certified_copy_of_land == "選択してください":
+            raise forms.ValidationError("選択されていません。")
+        return certified_copy_of_land
+
     class Meta:
+        verbose_name = "土地"
         model = LandInformation
         fields = [
             "area",
@@ -393,7 +521,9 @@ class InfrastructureInformationForm(forms.ModelForm):
         cleaned_data = super().clean()
         for field in self.fields:
             if field in self.errors:
-                self.errors[self.fields[field].label] = self.errors.pop(field)
+                self.errors[
+                    f"{self.Meta.verbose_name}_{self.fields[field].label}"
+                ] = self.errors.pop(field)
         return cleaned_data
 
     def clean_water_supply(self):
@@ -409,6 +539,7 @@ class InfrastructureInformationForm(forms.ModelForm):
         return sweage
 
     class Meta:
+        verbose_name = "インフラ"
         model = InfrastructureInformation
         fields = [
             "water_supply",
