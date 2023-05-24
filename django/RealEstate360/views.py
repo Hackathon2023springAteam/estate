@@ -136,6 +136,21 @@ def propertyinfo_create(request):
                     },
                 )
             )
+        else:
+            context = {
+                "basic_information_form": basic_information_form,
+                "city_planning_form": city_planning_form,
+                "building_information_form": building_information_form,
+                "land_information_form": land_information_form,
+                "infrastructure_information_form": infrastructure_information_form,
+                "basic_information_form_errors": basic_information_form.errors,
+                "city_planning_form_errors": city_planning_form.errors,
+                "building_information_form_errors": building_information_form.errors,
+                "land_information_form_errors": land_information_form.errors,
+                "infrastructure_information_form_errors": infrastructure_information_form.errors,
+            }
+            return render(request, "create.html", context)
+
     else:
         basic_information_form = BasicInformationForm()
         city_planning_form = CityPlanningForm()
@@ -211,6 +226,20 @@ def propertyinfo_edit(request, basic_information_id):
                     },
                 )
             )
+        else:
+            context = {
+                "basic_information_form": basic_information_form,
+                "city_planning_form": city_planning_form,
+                "building_information_form": building_information_form,
+                "land_information_form": land_information_form,
+                "infrastructure_information_form": infrastructure_information_form,
+                "basic_information_form_errors": basic_information_form.errors,
+                "city_planning_form_errors": city_planning_form.errors,
+                "building_information_form_errors": building_information_form.errors,
+                "land_information_form_errors": land_information_form.errors,
+                "infrastructure_information_form_errors": infrastructure_information_form.errors,
+            }
+            return render(request, "edit.html", context)
 
     context = {
         "basic_information_form": basic_information_form,

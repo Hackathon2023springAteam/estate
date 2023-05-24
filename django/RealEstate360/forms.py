@@ -375,13 +375,8 @@ class InfrastructureInformationForm(forms.ModelForm):
                 ("その他", "その他"),
             ],
         )
-        self.fields["solar_power_generation"].widget = forms.NumberInput(
-            attrs={
-                "class": "form-control",
-                "step": "0.1",
-                "max": "10",
-                "min": "0",
-            }
+        self.fields["solar_power_generation"].widget = forms.TextInput(
+            attrs={"class": "form-control"}
         )
 
     def save(self, commit=True):
