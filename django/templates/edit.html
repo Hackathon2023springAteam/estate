@@ -44,24 +44,23 @@
 </div>
 
 <!-- エラー表示 -->
-<div class="container-lg container-md container-sm input-container breadcrumb">
-    <div class="row">
-        <div class="col col-12">
-            {% for form_name, errors in form_errors.items %}
-            {% if errors %}
-            {% for field, field_errors in errors.items %}
-            {% for error in field_errors %}
-            <div class="alert alert-warning" role="warning">
-                <strong>{{form_name.verbose_name}} {{field}}:</strong>
-                <ul>
-                    <li>{{error}}</li>
-                </ul>
-            </div>
-            {% endfor %}
-            {% endfor %}
-            {% endif %}
-            {% endfor %}
+<div class="container-lg container-md container-sm input-container">
+    <div class="row gx-2">
+        {% for form_name, errors in form_errors.items %}
+        {% if errors %}
+        {% for field, field_errors in errors.items %}
+        {% for error in field_errors %}
+        <div class="col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 alert alert-warning text-right" role="warning">
+            <!-- <strong>{{form_name.verbose_name}} {{field}}:</strong> -->
+            <strong>{{form_name.verbose_name}} {{field}}：</strong>{{error}}
+            <!-- <ul>
+                <li>{{error}}</li>
+            </ul> -->
         </div>
+        {% endfor %}
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
     </div>
 </div>
 
