@@ -44,7 +44,7 @@
             <h3 class="list__title--property">物件名</h3>
         </div>
         <div class="col-4">
-            <h3 class="list__title--tagname">管理タグ</h3>
+            <h3 class="list__title--tagname">管理番号</h3>
         </div>
         <div class="col-3">
             <h3 class="list__title--location">所在地</h3>
@@ -59,10 +59,10 @@
             <a href="{% url 'RealEstate360:propertyinfo_detail' basic_information.basic_information_id %}"
                 class="d-flex">
                 <div class="col-4">
-                    <p>{{ basic_information.property_name }}</p>
+                    <p class="list__item--property_name">{{ basic_information.property_name }}</p>
                 </div>
                 <div class="col-4">
-                    <p class="list__item--tagname">{{ basic_information.control_number }}</p>
+                    <p>{{ basic_information.control_number }}</p>
                 </div>
                 <div class="col-3">
                     <p>{{ basic_information.location }}</p>
