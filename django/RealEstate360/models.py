@@ -3,7 +3,6 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class User(AbstractUser):
@@ -87,9 +86,10 @@ class LandInformation(models.Model):
 class InfrastructureInformation(models.Model):
     infrastructure_information_id = models.AutoField(primary_key=True)
     basic_information = models.ForeignKey(BasicInformation, on_delete=models.CASCADE)
-    water_supply = models.CharField(max_length=100, unique=False, verbose_name="上水")
+    water_supply = models.CharField(
+        max_length=100,
+        unique=False,
+        verbose_name="上水",
+    )
     sweage = models.CharField(max_length=100, unique=False, verbose_name="下水")
     solar_power_generation = models.IntegerField(verbose_name="太陽光発電(kW)")
-
-
-# Create your models here.

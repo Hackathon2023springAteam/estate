@@ -21,6 +21,29 @@
     </div>
 </div>
 
+<!-- エラー表示 -->
+<div class="container-lg container-md container-sm input-container breadcrumb">
+    <div class="row">
+        <div class="col col-12">
+            {% for form_name, errors in form_errors.items %}
+            {% if errors %}
+            {% for field, field_errors in errors.items %}
+            {% for error in field_errors %}
+
+            <div class="alert alert-warning" role="warning">
+                <strong>{{field}}:</strong>
+                <ul>
+                    <li>{{error}} {{form_name.Meta.verbose_name}}</li>
+                </ul>
+            </div>
+
+            {% endfor %}
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
 
 <!-- 入力フォームここから -->
 
@@ -164,11 +187,6 @@
                             {{ city_planning_form.public_land_expansion_act.label }}
                         </label>
                         {{ city_planning_form.public_land_expansion_act }}
-                        {% if city_planning_form.public_land_expansion_act.errors %}
-                        <div class="error-message">
-                            {{ city_planning_form.public_land_expansion_act.errors }}
-                        </div>
-                        {% endif %}
                     </div>
 
                     <!-- 状態 -->
