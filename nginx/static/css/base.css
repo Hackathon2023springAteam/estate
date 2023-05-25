@@ -143,3 +143,12 @@ button {
         margin-bottom: 0.5em;
     }
 }
+
+
+.logout-button {
+    width: 150px;
+    height: 40px;
+    &:focus {
+        box-shadow:none !important;
+    }
+}

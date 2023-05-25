@@ -17,7 +17,7 @@
 
     <!-- staticフォルダ内のcss読み込み -->
     {% load static %}
-    <link rel="icon" href="../static/img/favicon.png">
+    <link rel="icon" href="{% static 'img/favicon.png' %}">
     <link rel="stylesheet" href="{% static 'css/custom-color-bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <!-- <script src="{% static 'js/logout-modal.js' %}"></script> -->
@@ -69,8 +69,8 @@
                                 <p>ログアウトしますか？</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
-                                <button type="button" class="btn btn-primary">
+                                <button type="button" class="btn btn-secondary logout-button" data-bs-dismiss="modal">キャンセル</button>
+                                <button type="button" class="btn btn-primary logout-button">
                                     <a class="text-white" href="{% url 'RealEstate360:logout' %}">OK</a>
                                 </button>
                             </div>
