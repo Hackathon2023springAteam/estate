@@ -477,7 +477,9 @@
 
     document.getElementById('geoapi-prefectures').addEventListener('change', function (e) {
         const idLocation = document.getElementById('id_location');
+        const idAddress = document.getElementById('id_address');
         idLocation.value = ""
+        idAddress.value = e.target.value
     });
 
     document.getElementById('geoapi-cities').addEventListener('change', function (e) {
