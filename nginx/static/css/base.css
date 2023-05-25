@@ -39,6 +39,13 @@ a {
     color: var(--dark) !important;
 }
 
+button {
+    transition: all 0.3s;
+    &:focus {
+        box-shadow:none !important;
+    }
+}
+
 /* primary属性を付けたボタンの色変更 */
 .btn-primary {
     background-color: var(--primary);
