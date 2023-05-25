@@ -504,7 +504,7 @@ class InfrastructureInformationForm(forms.ModelForm):
             ],
         )
         self.fields["solar_power_generation"].widget = forms.TextInput(
-            attrs={"class": "form-control"}
+            attrs={"class": "form-control", "autocomplete": "off"}
         )
 
     def save(self, commit=True):

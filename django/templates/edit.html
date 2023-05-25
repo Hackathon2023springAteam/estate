@@ -548,6 +548,96 @@
 
     document.getElementById('id_square_meter').addEventListener('change', idSquareMeterListener);
     document.getElementById('id_area').addEventListener('change', idAreaListener);
+    const digit = 5
 
+    var input = document.getElementById('id_solar_power_generation');
+    input.addEventListener('keydown', function (e) {
+        var currentValue = parseFloat(input.value);
+        if (isNaN(currentValue)) {
+            currentValue = 0;
+        }
+
+        var step = calculateStep(input);
+        var cursorPosition = input.selectionStart;
+
+        if (e.key === 'ArrowUp') {
+            /* デフォルトのイベントを止めて、カーソルの移動を停止 */
+            e.preventDefault();
+            input.value = (currentValue + step).toFixed(calculatePrecision(step));
+            adjustCursorForZero(input, cursorPosition, step, 1);
+            if (input.value > Math.pow(10, digit)) {
+                input.value = Math.pow(10, digit) - 1 / Math.pow(10, digit - 1)
+            }
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            input.value = (currentValue - step).toFixed(calculatePrecision(step));
+            adjustCursorForZero(input, cursorPosition, step, -1);
+        } else if (e.key === 'ArrowRight') {
+            var dotPosition = input.value.indexOf('.');
+            var length = input.value.length;
+            if (dotPosition === -1 && cursorPosition === length) {
+                e.preventDefault();
+                input.value = currentValue.toFixed(1);
+            } else if (dotPosition !== -1 && cursorPosition === length && length - dotPosition < digit) {
+                e.preventDefault();
+                input.value = currentValue.toFixed(length - dotPosition);
+            }
+        } else if (e.key === 'ArrowLeft') {
+            var dotPosition = input.value.indexOf('.');
+            var length = dotPosition === -1 ? input.value.length : dotPosition;
+            if (cursorPosition === 1 && length < digit) {
+                e.preventDefault();
+                input.value = '1' + input.value;
+                input.setSelectionRange(1, 1);
+            }
+        }
+    });
+
+    function adjustCursorForZero(input, originalCursorPosition, step, direction) {
+        var newPosition = originalCursorPosition;
+        var dotPosition = input.value.indexOf('.');
+        var newDotPosition = input.value.indexOf('.');
+
+        // 桁を右に移動
+        if (newDotPosition === -1 && dotPosition !== -1) {
+            newPosition += direction;
+        }
+
+        input.setSelectionRange(newPosition, newPosition);
+    }
+
+    function calculateStep(input) {
+        var dotPosition = input.value.indexOf('.');
+        var cursorPosition = input.selectionStart;
+
+        if (dotPosition === -1) {
+            // 小数点がない場合
+            if (cursorPosition === 0 & input.value.length >= digit) {
+                return 0;
+            } else {
+                return Math.pow(10, input.value.length - cursorPosition);
+            }
+        } else if (cursorPosition <= dotPosition) {
+            // カーソルが小数点より左にある場合
+            if (cursorPosition === 0 & dotPosition === digit) {
+                return 0;
+            } else {
+                return Math.pow(10, dotPosition - cursorPosition);
+            }
+        } else {
+            // カーソルが小数点より右にある場合
+            return 1 / Math.pow(10, cursorPosition - dotPosition - 1);
+        }
+    }
+
+    function calculatePrecision(step) {
+        var stepString = step.toString();
+        var dotPosition = stepString.indexOf('.');
+        if (dotPosition === -1) {
+            return 0;
+        } else {
+            return stepString.length - dotPosition - 1;
+        }
+    }
 </script>
 {% endblock %}
