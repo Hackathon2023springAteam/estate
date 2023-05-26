@@ -33,7 +33,6 @@ p {
     font-weight: 400;
 }
 
-/* aタグの下線削除と文字の色を黒に指定 */
 a {
     text-decoration: none;
     color: var(--dark) !important;
@@ -46,11 +45,56 @@ button {
     }
 }
 
-/* primary属性を付けたボタンの色変更 */
-.btn-primary {
-    background-color: var(--primary);
-    border: none;
+#header-block a{
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
 }
+#header-block a:hover, ul#nav-list li.current a {
+    color: var(--primary);
+}
+ul#nav-list {
+    margin: 0;
+    border: none;
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    padding: 0;
+}
+ul#nav-list li {
+    padding: 0;
+    position: relative;
+}
+ul#nav-list li:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    content: "";
+    transition: transform 0.3s ease-in-out;
+    transform: scale(0, 1);
+    transform-origin: left top;
+    background: var(--primary);
+}
+ul#nav-list li:hover:after, ul#nav-list li.current:after {
+    transform: scale(1, 1);
+}
+ul#nav-list li a {
+    height: 60px;
+    line-height: 60px;
+    padding: 0 5px;
+    display: inline-block;
+}
+
+button {
+    transition: all 0.3s;
+    &:focus {
+        box-shadow:none !important;
+    }
+}
+
+
 
 /* secondary属性を付けたボタンの色変更 */
 .btn-secondary {
@@ -159,4 +203,12 @@ button {
     &:focus {
         box-shadow:none !important;
     }
+}
+
+.btn-primary {
+    background: var(--primary) !important;
+    border: 1px solid var(--primary) !important;
+}
+.btn-primary:hover {
+    background: var(--form-border-color) !important;
 }
