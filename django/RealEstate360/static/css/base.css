@@ -35,8 +35,12 @@ p {
 
 /* aタグの下線削除と文字の色を黒に指定 */
 a {
-    text-decoration: none;
+    /* text-decoration: none; */
     color: var(--dark) !important;
+}
+
+a.nav-link.current {
+    text-decoration: underline !important;
 }
 
 /* primary属性を付けたボタンの色変更 */

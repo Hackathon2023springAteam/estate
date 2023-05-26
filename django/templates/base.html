@@ -20,7 +20,7 @@
     <link rel="icon" href="../static/img/favicon.png">
     <link rel="stylesheet" href="{% static 'css/custom-color-bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <!-- <script src="{% static 'js/logout-modal.js' %}"></script> -->
+    <script src="{% static 'js/link-underbar.js' %}"></script>
     {% block head %}{% endblock %}
     <!-- 各ページのタイトル読み込み -->
     {% block title %}{% endblock %}
@@ -44,7 +44,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto">
+                <ul id="nav-list" class="navbar-nav mx-auto">
                     <li class="nav-item ms-lg-5">
                         <a class="nav-link active" aria-current="page"
                             href="{% url 'RealEstate360:propertyinfos_list' %}">物件一覧</a>
@@ -93,7 +93,7 @@
 
 
     {% block scripts %}
-        <!-- <script src="{% static 'js/logout-modal.js' %}"></script> -->
+        <script src="{% static 'js/link-underbar.js' %}"></script>
     {% endblock %}
 </body>
 
