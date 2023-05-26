@@ -90,13 +90,11 @@ class CityPlanningForm(forms.ModelForm):
                 ("未調査", "未調査"),
             ],
         )
-        self.fields["road_width"].widget = forms.NumberInput(
-            attrs={
-                "class": "form-control",
-                "step": "0.1",
-                "min": "0",
-            }
+
+        self.fields["road_width"].widget = forms.TextInput(
+            attrs={"class": "form-control", "autocomplete": "off"}
         )
+
         self.fields["condition"].widget = forms.Select(
             attrs={"class": "form-control"},
             choices=[
@@ -328,20 +326,14 @@ class LandInformationForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs.update({"autocomplete": "off"})
 
-        self.fields["area"].widget = forms.NumberInput(
-            attrs={
-                "class": "form-control",
-                "step": "0.01",
-                "min": "0",
-            }
+        self.fields["area"].widget = forms.TextInput(
+            attrs={"class": "form-control", "autocomplete": "off"}
         )
-        self.fields["square_meter"].widget = forms.NumberInput(
-            attrs={
-                "class": "form-control",
-                "step": "0.01",
-                "min": "0",
-            }
+
+        self.fields["square_meter"].widget = forms.TextInput(
+            attrs={"class": "form-control", "autocomplete": "off"}
         )
+
         self.fields["land_category"].widget = forms.Select(
             attrs={"class": "form-control"},
             choices=[

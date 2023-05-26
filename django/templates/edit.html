@@ -526,29 +526,6 @@
             });
     });
 
-    let updating = false;
-
-    const idSquareMeterListener = function (e) {
-        if (!updating) {
-            updating = true;
-            let area_value = (e.target.value * 3.3025).toFixed(2);
-            document.getElementById('id_area').value = parseFloat(area_value);
-            updating = false;
-        }
-    };
-
-    const idAreaListener = function (e) {
-        if (!updating) {
-            updating = true;
-            let square_meter_value = (e.target.value / 3.3025).toFixed(2);
-            document.getElementById('id_square_meter').value = parseFloat(square_meter_value);
-            updating = false;
-        }
-    };
-
-    document.getElementById('id_square_meter').addEventListener('change', idSquareMeterListener);
-    document.getElementById('id_area').addEventListener('change', idAreaListener);
-
     const digit = 5
     function applyInputLogic(input, digit) {
         input.addEventListener('keydown', function (e) {
@@ -571,7 +548,6 @@
 
             } else if (e.key === 'ArrowDown') {
                 e.preventDefault();
-
                 if (input.value.charAt(0) == 1 & input.value.charAt(1) == 0 & cursorPosition == 1) {
                     var dotPosition = input.value.indexOf('.');
                     if (dotPosition == -1 | cursorPosition <= dotPosition) {
@@ -584,33 +560,31 @@
 
                 input.value = (currentValue - step).toFixed(calculatePrecision(step));
 
+                //小数点
+
                 if (input.value.charAt(0) == 0 & input.value.charAt(1) == "." & cursorPosition == 1) {
                     cursorPosition += 2
                 } else if (input.value.charAt(0) == 0 & input.value.charAt(1) == "." & cursorPosition == 2) {
                     cursorPosition += 1
                 }
-
                 adjustCursorForZero(input, cursorPosition, step, -1);
-
                 if (input.value < 0) {
                     input.value = 0
                 }
-
             } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
                 var dotPosition = input.value.indexOf('.');
                 var length = input.value.length;
                 if (dotPosition === -1 && cursorPosition === length) {
-                    e.preventDefault();
                     input.value = currentValue.toFixed(1);
                 } else if (dotPosition !== -1 && cursorPosition === length && length - dotPosition < digit) {
-                    e.preventDefault();
                     input.value = currentValue.toFixed(length - dotPosition);
                 }
             } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
                 var dotPosition = input.value.indexOf('.');
                 var length = dotPosition === -1 ? input.value.length : dotPosition;
                 if (cursorPosition === 1 && length < digit) {
-                    e.preventDefault();
                     input.value = '1' + input.value;
                     input.setSelectionRange(1, 1);
                 }
@@ -667,8 +641,37 @@
 
     var input_power_generation = document.getElementById('id_solar_power_generation');
     applyInputLogic(input_power_generation, 5);
+    var input_road_width = document.getElementById('id_road_width');
+    applyInputLogic(input_road_width, 5);
+    var input_square_meter = document.getElementById('id_square_meter');
+    applyInputLogic(input_square_meter, 5);
+    var input_area = document.getElementById('id_area');
+    /* applyInputLogic(input_area, 5); */
 
+    let updating = false;
 
+    const idSquareMeterListener = function (e) {
+        console.log("hahaha")
+        /*         if (!updating) {
+                    updating = true;
+                    let area_value = (e.target.value * 3.3025).toFixed(2);
+                    document.getElementById('id_area').value = parseFloat(area_value);
+                    updating = false;
+                } */
+    };
+
+    const idAreaListener = function (e) {
+        console.log("fufufu")
+        /*         if (!updating) {
+                    updating = true;
+                    let square_meter_value = (e.target.value / 3.3025).toFixed(2);
+                    document.getElementById('id_square_meter').value = parseFloat(square_meter_value);
+                    updating = false;
+                } */
+    };
+
+    input_square_meter.addEventListener('input', idSquareMeterListener);
+    input_area.addEventListener('input', idAreaListener);
 
 </script>
 {% endblock %}
