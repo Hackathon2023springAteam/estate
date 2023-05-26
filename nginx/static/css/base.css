@@ -143,7 +143,15 @@ button {
         margin-bottom: 0.5em;
     }
 }
-
+.btn-cancel {
+    color: var(--primary);
+    border: 2px var(--primary) solid;
+}
+.btn-cancel:hover {
+    color: var(--primary);
+    border: 2px var(--primary) solid;
+    background-color: var(--list-title-color);
+}
 
 .logout-button {
     width: 150px;
