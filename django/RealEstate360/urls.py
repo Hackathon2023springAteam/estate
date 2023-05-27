@@ -4,7 +4,7 @@ from . import views
 
 app_name = "RealEstate360"
 urlpatterns = [
-    path("login/", views.loginfunc, name="login"),
+    path("", views.loginfunc, name="login"),
     path("logout/", views.logoutfunc, name="logout"),
     path("propertyinfos_list/", views.propertyinfos_list, name="propertyinfos_list"),
     path("propertyinfo_create/", views.propertyinfo_create, name="propertyinfo_create"),
