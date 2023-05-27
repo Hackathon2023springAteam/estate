@@ -526,7 +526,6 @@
             });
     });
 
-    const digit = 5
     function applyInputLogic(input, digit) {
         input.addEventListener('keydown', function (e) {
             var currentValue = parseFloat(input.value);
@@ -545,6 +544,8 @@
                     input.value = Math.pow(10, digit) - 1 / Math.pow(10, digit - 1)
                 }
                 adjustCursorForZero(input, cursorPosition, step, 1);
+                var event = new Event('input', { bubbles: true });
+                input.dispatchEvent(event);
 
             } else if (e.key === 'ArrowDown') {
                 e.preventDefault();
@@ -571,8 +572,10 @@
                 if (input.value < 0) {
                     input.value = 0
                 }
+                var event = new Event('input', { bubbles: true });
+                input.dispatchEvent(event);
+
             } else if (e.key === 'ArrowRight') {
-                e.preventDefault();
                 var dotPosition = input.value.indexOf('.');
                 var length = input.value.length;
                 if (dotPosition === -1 && cursorPosition === length) {
@@ -580,14 +583,17 @@
                 } else if (dotPosition !== -1 && cursorPosition === length && length - dotPosition < digit) {
                     input.value = currentValue.toFixed(length - dotPosition);
                 }
+                var event = new Event('input', { bubbles: true });
+                input.dispatchEvent(event);
             } else if (e.key === 'ArrowLeft') {
-                e.preventDefault();
                 var dotPosition = input.value.indexOf('.');
                 var length = dotPosition === -1 ? input.value.length : dotPosition;
                 if (cursorPosition === 1 && length < digit) {
                     input.value = '1' + input.value;
                     input.setSelectionRange(1, 1);
                 }
+                var event = new Event('input', { bubbles: true });
+                input.dispatchEvent(event);
             }
         });
 
@@ -646,28 +652,26 @@
     var input_square_meter = document.getElementById('id_square_meter');
     applyInputLogic(input_square_meter, 5);
     var input_area = document.getElementById('id_area');
-    /* applyInputLogic(input_area, 5); */
+    applyInputLogic(input_area, 5);
 
     let updating = false;
 
     const idSquareMeterListener = function (e) {
-        console.log("hahaha")
-        /*         if (!updating) {
-                    updating = true;
-                    let area_value = (e.target.value * 3.3025).toFixed(2);
-                    document.getElementById('id_area').value = parseFloat(area_value);
-                    updating = false;
-                } */
+        if (!updating) {
+            updating = true;
+            let area_value = (e.target.value * 3.3025).toFixed(2);
+            document.getElementById('id_area').value = parseFloat(area_value);
+            updating = false;
+        }
     };
 
     const idAreaListener = function (e) {
-        console.log("fufufu")
-        /*         if (!updating) {
-                    updating = true;
-                    let square_meter_value = (e.target.value / 3.3025).toFixed(2);
-                    document.getElementById('id_square_meter').value = parseFloat(square_meter_value);
-                    updating = false;
-                } */
+        if (!updating) {
+            updating = true;
+            let square_meter_value = (e.target.value / 3.3025).toFixed(2);
+            document.getElementById('id_square_meter').value = parseFloat(square_meter_value);
+            updating = false;
+        }
     };
 
     input_square_meter.addEventListener('input', idSquareMeterListener);
