@@ -1,29 +1,32 @@
+
+
 .row {
-  margin-right: 0px;
-  margin-left: 0px;
+margin-right: 0px;
+margin-left: 0px;
 }
 
 .row > * {
-  padding-right: 0px;
-  padding-left: 0px;
+padding-right: 0px;
+padding-left: 0px;
 }
 
 #breadcrumb-text {
-  color: var(--primary);
+color: var(--primary);
 }
 
 h2 {
-  margin: 16px 0;
+    font-size: 24px !important;
+    margin: 20px 0;
 }
 
 h3 {
-  font-size: 20px;
-  background-color: lightgray;
-  padding-left: 16px;
+font-size: 20px;
+background-color: lightgray;
+padding-left: 16px;
 }
 
 #button-area {
-  margin: 64px 0;
+margin: 64px 0;
 }
 
 .btn-edit {
@@ -35,6 +38,7 @@ h3 {
         box-shadow:none !important;
     }
 }
+
 
 .btn-delete {
     background-image: url("/static/img/icon_delete.svg");
@@ -119,4 +123,8 @@ h3 {
     color: #DC3545;
     border: 2px #DC3545 solid;
     background-color: var(--list-title-color);
+}
+
+.breadcrumb-item a:hover {
+    color: var(--primary) !important;
 }

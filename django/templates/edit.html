@@ -14,7 +14,7 @@
 {% block content %}
 
 <!-- パンくずリスト -->
-<div class="container-lg container-md container-sm input-container breadcrumb">
+<div class="container-lg container-md container-sm input-container breadcrumb ps-3">
     <div class="row">
         <div class="col col-12">
             <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb" class="mt-3">
@@ -35,7 +35,7 @@
 </div>
 
 <!-- ページタイトル -->
-<div class="page__title container-lg container-md container-sm">
+<div class="page__title container-lg container-md container-sm mt-0">
     <div class="row page-name">
         <div class="col">
             <h2>登録情報編集</h2>
@@ -473,13 +473,13 @@
     <div class="container-lg container-md container-sm input-container">
         <div class="row d-flex">
             <div class="col"></div>
-            <div class="col col-12 col-md-4 col-lg-3 col-xl-2">
+            <div class="col col-12 col-md-4 col-lg-3 col-xl-2 mt-5">
                 <button type="submit" class="registration-btn btn-edit-cancel">
                     <a
                         href="{% url 'RealEstate360:propertyinfo_detail' basic_information_form.instance.basic_information_id %}">キャンセル</a>
                 </button>
             </div>
-            <div class="col col-12 col-md-4 col-lg-3 col-xl-2">
+            <div class="col col-12 col-md-4 col-lg-3 col-xl-2 mt-5 mb-5">
                 <button type="submit" class="update-btn btn-primary">更新する</button>
             </div>
             <div class="col"></div>
